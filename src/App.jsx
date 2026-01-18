@@ -12,20 +12,23 @@ import Project from './page/Project'
 import Skill from './page/Skill'
 import Login from './page/Login'
 import NotFound from './page/NotFound'
+import DashboardLayout from './components/layout/DashboardLayout'
 
 const App = () => {
   return (
     <Routes>
       <Route element={<ProtectedRoute />}>
-        <Route path='/' element={<Home />}/>
-        <Route path='/achievements' element={<Achievement />}/>
-        <Route path='/educations' element={<Education />}/>
-        <Route path='/experiences' element={<Experience />}/>
-        <Route path='/profiles' element={<Profile />}/>
-        <Route path='/certificates' element={<Certificate />}/>
-        <Route path='/blogs' element={<Blog />}/>
-        <Route path='/projects' element={<Project />}/>
-        <Route path='/skills' element={<Skill />}/>
+        <Route element={<DashboardLayout />}>
+          <Route path='/' element={<Home />}/>
+          <Route path='/achievements' element={<Achievement />}/>
+          <Route path='/educations' element={<Education />}/>
+          <Route path='/experiences' element={<Experience />}/>
+          <Route path='/profiles' element={<Profile />}/>
+          <Route path='/certificates' element={<Certificate />}/>
+          <Route path='/blogs' element={<Blog />}/>
+          <Route path='/projects' element={<Project />}/>
+          <Route path='/skills' element={<Skill />}/>
+        </Route>
       </Route>
       <Route path='/login' element={<Login />}/>
       {/* === 404 Fallback === */}

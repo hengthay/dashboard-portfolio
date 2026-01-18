@@ -1,0 +1,63 @@
+import React from "react";
+import { GiHamburgerMenu } from "react-icons/gi";
+import { FaBell, FaSearch } from "react-icons/fa";
+
+const NavBar = ({ onToggle, sidebarOpen }) => {
+  return (
+    <header
+      className={`fixed top-0 right-0 z-20 h-16 bg-white border-b border-gray-200
+      transition-all duration-300 shadow
+      ${sidebarOpen ? "left-60" : "left-25"}`}
+    >
+      <div className="flex items-center justify-between px-4 md:px-6 h-16">
+        {/* Left */}
+        <div className="flex items-center gap-3">
+          <button
+            onClick={onToggle}
+            className="p-2 rounded-md hover:bg-gray-100 transition"
+          >
+            <GiHamburgerMenu size={22} />
+          </button>
+
+          <h1 className="text-lg font-semibold text-gray-800 hidden sm:block">
+            Admin Dashboard
+          </h1>
+        </div>
+
+        {/* Center */}
+        <div
+          className={`hidden md:flex items-center bg-gray-100 rounded-lg px-3 py-1.5 ${sidebarOpen ? "w-100" : "w-160"}`}
+        >
+          <FaSearch className="text-gray-400 text-sm" />
+          <input
+            type="text"
+            placeholder="Search..."
+            className="bg-transparent outline-none px-2 py-1.5 text-sm w-full"
+          />
+        </div>
+        <div className="flex items-center gap-2">
+          {/* Right */}
+          <button className="relative p-2 rounded-md hover:bg-gray-100">
+            <FaBell size={18} />
+            <span className="absolute top-0.5 right-0.5 bg-red-500 text-white text-[10px] px-1 rounded-full">
+              3
+            </span>
+          </button>
+          <div className="flex items-center gap-2 cursor-pointer hover:bg-gray-100 px-2 py-1 rounded-md">
+            <img
+              src="https://i.pravatar.cc/40"
+              alt="profile"
+              className="w-8 h-8 rounded-full object-cover"
+            />
+            <div className="hidden md:block leading-tight">
+              <p className="text-sm font-medium">Admin</p>
+              <p className="text-xs text-gray-500">Administrator</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+  );
+};
+
+export default NavBar;
