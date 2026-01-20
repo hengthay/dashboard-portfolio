@@ -225,8 +225,12 @@ const Home = () => {
       </div>
 
       <div className="w-full grid gap-3 grid-cols-12 my-4 border border-gray-300 hover:shadow-sm rounded-md p-2">
-        <ActivityGraph />
-        <RaderGraph />
+        <div className="min-w-0 min-h-0 col-span-12 md:col-span-8">
+          <ActivityGraph />
+        </div>
+        <div className="min-w-0 min-h-0 col-span-12 md:col-span-4">
+          <RaderGraph />
+        </div>
       </div>
 
       {/* Main grid */}

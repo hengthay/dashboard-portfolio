@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
-import authReducer from "../feature/authSlice";
+import authReducer from "../feature/auth/authSlice";
+import achievementReducer from "../feature/achievement/achievementSlice";
 
 const store = configureStore({
   reducer: {
-    auths: authReducer
+    auths: authReducer,
+    achievements: achievementReducer,
   }
 });
 

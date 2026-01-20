@@ -1,5 +1,5 @@
 import { bindActionCreators, createAsyncThunk, createSlice } from "@reduxjs/toolkit"
-import { API_BASE_URL, axiosInstance } from "../components/APIConfig";
+import { API_BASE_URL, axiosInstance } from "../../components/APIConfig";
 
 const initialState = {
   userData: [] || null,

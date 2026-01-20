@@ -2,14 +2,15 @@ import React, { useEffect, useState } from 'react'
 import { API_BASE_URL, axiosInstance } from './APIConfig';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { selectUser } from '../feature/authSlice';
+import { selectUser } from '../feature/auth/authSlice';
 
 const ProtectedRoute = () => {
 
   const [isAuthenticated, setIsAuthenticated] = useState(null);
   const user = useSelector(selectUser);
   const navigate = useNavigate();
-  console.log(user);
+  // console.log(user);
+
   useEffect(() => {
     if (!user) {
       setIsAuthenticated(false);

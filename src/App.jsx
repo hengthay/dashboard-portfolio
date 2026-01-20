@@ -13,6 +13,9 @@ import Skill from './page/Skill'
 import Login from './page/Login'
 import NotFound from './page/NotFound'
 import DashboardLayout from './components/layout/DashboardLayout'
+import AchievementCreate from './components/Achievement/AchievementCreate'
+import AchievementUpdate from './components/Achievement/AchievementUpdate'
+import AchievementDetails from './components/Achievement/AchievementDetails'
 
 const App = () => {
   return (
@@ -21,6 +24,9 @@ const App = () => {
         <Route element={<DashboardLayout />}>
           <Route path='/' element={<Home />}/>
           <Route path='/achievements' element={<Achievement />}/>
+          <Route path='/achievements/create' element={<AchievementCreate />}/>
+          <Route path='/achievements/:id' element={<AchievementDetails />}/>
+          <Route path='/achievements/:id/edit' element={<AchievementUpdate />}/>
           <Route path='/educations' element={<Education />}/>
           <Route path='/experiences' element={<Experience />}/>
           <Route path='/profiles' element={<Profile />}/>

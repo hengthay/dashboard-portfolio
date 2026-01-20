@@ -3,7 +3,7 @@ import { CiLogin } from "react-icons/ci";
 import { FaRegUser } from "react-icons/fa";
 import EyeToggleIcon from "../components/Helper/EyeToggleIcon";
 import { useDispatch } from "react-redux";
-import { loginUser } from "../feature/authSlice";
+import { loginUser } from "../feature/auth/authSlice";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 const Login = () => {
@@ -35,7 +35,7 @@ const Login = () => {
     }))
   }
 
-  console.log(formData);
+  // console.log(formData);
 
   const handleSumbit = async (e) => {
     e.preventDefault();
@@ -50,7 +50,7 @@ const Login = () => {
 
       const payload = {...formData};
 
-      const result = await dispatch(loginUser({ payload })).unwrap();
+      await dispatch(loginUser({ payload })).unwrap();
 
       Swal.fire({
         title: "Login Successfully",
@@ -66,19 +66,18 @@ const Login = () => {
 
       return () => clearTimeout(timeOut);
     } catch (error) {
-      setIsLoading(false);
       Swal.fire({
         title: "Login Failed",
         text: "Your login is not success!",
         icon: 'error'
       })
-      console.log(error);
+      console.log('Error to make login - ',error.message);
     } finally {
       setIsLoading(false);
       setFormData({name: "", password: ""})
-      setIsError(null);
     }
   }
+
   return (
     <div className="min-h-screen w-full mx-auto flex justify-center items-center">
       <div className="bg-white shadow-md shadow-cyan-200 rounded-2xl h-75 w-100 border border-gray-300 py-4 px-6 space-y-4">

@@ -17,54 +17,53 @@ const ActivityGraph = () => {
   const data = useMemo(
     () => [
       {
-        name: "Total Projects",
+        name: "Projects",
         cv: 4000,
         pv: 2400,
         amt: 2400,
       },
       {
-        name: "Total Blogs",
+        name: "Blogs",
         cv: 3000,
         pv: 1398,
         amt: 2210,
       },
       {
-        name: "Total Skills",
+        name: "Skills",
         cv: 2000,
         pv: 9800,
         amt: 2290,
       },
       {
-        name: "Total Certificates",
+        name: "Certificates",
         cv: 2780,
         pv: 3908,
         amt: 2000,
       },
       {
-        name: "Total Educations",
+        name: "Educations",
         cv: 2280,
         pv: 4908,
         amt: 2000,
       },
       {
-        name: "Total Experiences",
+        name: "Experiences",
         cv: 1780,
         pv: 5908,
         amt: 2000,
       },
       {
-        name: "Total Achievements",
+        name: "Achievements",
         cv: 2780,
         pv: 3908,
         amt: 2000,
       },
     ],
-    [],
   );
 
   return (
     <div className="col-span-12 md:col-span-8 bg-white rounded-xl border border-gray-200 shadow-sm">
-      <div className="p-4 h-full flex flex-col">
+      <div className="p-4 flex flex-col">
         {/* Title */}
         <div className="flex items-center gap-2 font-semibold text-gray-800">
           <FiActivity size={22} />
@@ -72,8 +71,8 @@ const ActivityGraph = () => {
         </div>
 
         {/* Chart */}
-        <div className="h-80 mt-4">
-          <ResponsiveContainer width="100%" height="100%">
+        <div className="h-80 min-h-80 mt-4">
+          <ResponsiveContainer width="100%" height={320}>
             <LineChart data={data}>
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="name" />

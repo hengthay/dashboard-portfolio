@@ -44,13 +44,18 @@ const RaderGraph = () => {
         amt: 2000,
       },
       {
+        name: "Experiences",
+        cv: 2780,
+        pv: 3908,
+        amt: 2000,
+      },
+      {
         name: "Achievements",
         cv: 2780,
         pv: 3908,
         amt: 2000,
       },
     ],
-    [],
   );
 
   return (
@@ -61,8 +66,8 @@ const RaderGraph = () => {
           RaderCharts
         </div>
 
-        <div className="h-80 px-4 mt-4">
-          <ResponsiveContainer width="100%" height="100%">
+        <div className="h-80 min-h-80 px-4 mt-4">
+          <ResponsiveContainer width="100%" height={320}>
             <RadarChart cx="50%" cy="50%" outerRadius="80%" data={data}>
               <PolarGrid />
               <PolarAngleAxis
