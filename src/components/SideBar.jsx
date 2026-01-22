@@ -72,7 +72,7 @@ const SideBar = ({ isOpen, onClose }) => {
       <aside
         className={`fixed z-20 min-h-screen bg-gray-200 shadow 
         transition-all duration-300 ease-in-out
-        ${isOpen ? "w-60" : "w-20"}`}
+        ${isOpen ? "w-60" : "w-23"}`}
       >
         <div className="flex flex-col p-4 md:p-6 space-y-10">
           {/* Profile */}

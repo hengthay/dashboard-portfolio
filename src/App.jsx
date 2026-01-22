@@ -16,6 +16,9 @@ import DashboardLayout from './components/layout/DashboardLayout'
 import AchievementCreate from './components/Achievement/AchievementCreate'
 import AchievementUpdate from './components/Achievement/AchievementUpdate'
 import AchievementDetails from './components/Achievement/AchievementDetails'
+import BlogCreate from './components/Blog/BlogCreate'
+import BlogUpdate from './components/Blog/BlogUpdate'
+import BlogDetails from './components/Blog/BlogDetails'
 
 const App = () => {
   return (
@@ -27,11 +30,14 @@ const App = () => {
           <Route path='/achievements/create' element={<AchievementCreate />}/>
           <Route path='/achievements/:id' element={<AchievementDetails />}/>
           <Route path='/achievements/:id/edit' element={<AchievementUpdate />}/>
+          <Route path='/blogs' element={<Blog />}/>
+          <Route path='/blogs/create' element={<BlogCreate />}/>
+          <Route path='/blogs/:id' element={<BlogDetails />}/>
+          <Route path='/blogs/:id/edit' element={<BlogUpdate />}/>
           <Route path='/educations' element={<Education />}/>
           <Route path='/experiences' element={<Experience />}/>
           <Route path='/profiles' element={<Profile />}/>
           <Route path='/certificates' element={<Certificate />}/>
-          <Route path='/blogs' element={<Blog />}/>
           <Route path='/projects' element={<Project />}/>
           <Route path='/skills' element={<Skill />}/>
         </Route>

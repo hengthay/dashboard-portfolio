@@ -47,6 +47,7 @@ const AchievementCard = ({ achievement }) => {
       });
     }
   };
+  
   return (
     <div
       className="w-full flex justify-between items-center bg-gray-200 border border-gray-300 min-h-20 rounded-md p-4 gap-x-6 hover:shadow-sm"
@@ -62,7 +63,7 @@ const AchievementCard = ({ achievement }) => {
           />
         </div>
         <div className="flex flex-col items-start gap-4">
-          <h3 className="md:text-xl text-lg font-semibold text-gray-900 line-clamp-1">
+          <h3 className="md:text-xl sm:text-lg text-base font-semibold text-gray-900 line-clamp-1">
             {achievement.title}
           </h3>
 
@@ -71,12 +72,12 @@ const AchievementCard = ({ achievement }) => {
           </p>
         </div>
       </div>
-      <div className="flex md:flex-row flex-col items-center gap-2">
+      <div className="flex flex-col items-center gap-2">
         {/* View */}
         <Link
           to={`/achievements/${achievement.id}`}
           className={`p-2 rounded-lg bg-amber-100 text-amber-600 
-               hover:bg-amber-200 hover:scale-105
+               hover:bg-amber-200 hover:scale-105 shadow-sm
                transition-all duration-200 flex justify-center items-center ${isOpen ? "gap-0" : "gap-2"}`}
           title="View"
         >
@@ -97,7 +98,7 @@ const AchievementCard = ({ achievement }) => {
         <Link
           to={`/achievements/${achievement.id}/edit`}
           className={`p-2 rounded-lg bg-blue-100 text-blue-600 
-               hover:bg-blue-200 hover:scale-105
+               hover:bg-blue-200 hover:scale-105 shadow-sm
                transition-all duration-200 flex justify-center items-center ${isOpen ? "gap-0" : "gap-2"}`}
           title="Edit"
         >
@@ -118,7 +119,7 @@ const AchievementCard = ({ achievement }) => {
         <button
           type="button"
           onClick={() => handleDelete(achievement.id)}
-          className={`p-2 rounded-lg bg-red-100 text-red-600 hover:bg-red-200 hover:scale-105 transition-all duration-200 cursor-pointer flex justify-center items-center ${isOpen ? "gap-0" : "gap-2"}`}
+          className={`p-2 rounded-lg bg-red-100 text-red-600 hover:bg-red-200 hover:scale-105 transition-all duration-200 shadow-sm cursor-pointer flex justify-center items-center ${isOpen ? "gap-0" : "gap-2"}`}
           title="Delete"
         >
           <MdDelete size={20} />
