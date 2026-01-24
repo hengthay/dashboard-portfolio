@@ -3,7 +3,11 @@ import { FiArrowLeft, FiSave, FiUpload } from "react-icons/fi";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
-import { fetchDetailBlog, selectBlogDetail, updateBlog } from "../../feature/blog/blogSlice";
+import {
+  fetchDetailBlog,
+  selectBlogDetail,
+  updateBlog,
+} from "../../feature/blog/blogSlice";
 const BlogUpdate = () => {
   const [form, setForm] = useState({
     title: "",
@@ -58,9 +62,9 @@ const BlogUpdate = () => {
     try {
       if (id) dispatch(fetchDetailBlog(id));
     } catch (error) {
-      console.log('failed to fetch detail of blog - ', error);
+      console.log("failed to fetch detail of blog - ", error);
     }
-  }, [id, dispatch])
+  }, [id, dispatch]);
 
   // When redux is ready
   useEffect(() => {
@@ -74,7 +78,7 @@ const BlogUpdate = () => {
         cover_image: null,
         published: blog.published || 0,
         tags: blog.tags || [],
-        join_date: blog.join_date || ""
+        join_date: blog.join_date || "",
       });
 
       setCurrentImage(blog.cover_image || "");
@@ -82,7 +86,8 @@ const BlogUpdate = () => {
     } catch (error) {
       console.log(error);
     }
-  }, [blog])
+  }, [blog]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -101,11 +106,11 @@ const BlogUpdate = () => {
       }
 
       const formData = new FormData();
-      formData.append('_method', "PUT");
+      formData.append("_method", "PUT");
       formData.append("title", form.title);
       formData.append("content", form.content);
       formData.append("slug", form.slug);
-      formData.append("published", form.published ? '1' : '0'); // 1 or 0
+      formData.append("published", form.published ? "1" : "0"); // 1 or 0
       formData.append("join_date", form.join_date);
       if (form.cover_image instanceof File) {
         formData.append("cover_image", form.cover_image);
@@ -115,12 +120,12 @@ const BlogUpdate = () => {
       form.tags.forEach((t) => {
         formData.append(`tags[]`, t);
       });
-      
+
       await dispatch(updateBlog({ id, formData })).unwrap();
 
       Swal.fire({
         title: "Updated!",
-        text: "Your Blog is created successfully!",
+        text: "Your Blog is updated successfully!",
         icon: "success",
         timer: 1500,
       });
@@ -143,16 +148,16 @@ const BlogUpdate = () => {
     } catch (error) {
       Swal.fire({
         title: "Failed",
-        text: "Your Blog is created failed!",
+        text: "Your Blog is updated failed!",
         icon: "error",
         timer: 1500,
       });
-      console.log('failed - ', error.message);
+      console.log("failed - ", error.message);
     } finally {
       setLoading(false);
     }
   };
-  
+
   const displayedImage =
     preview ||
     (currentImage
@@ -165,7 +170,7 @@ const BlogUpdate = () => {
       <div className="flex items-center justify-between">
         <div>
           <h2 className="md:text-4xl font-semibold sm:text-3xl text-2xl text-gray-900">
-            Add New Blog
+            Update Blog
           </h2>
           <p className="text-sm text-gray-500 mt-1">
             Fill in the form to create a new blog.
@@ -187,7 +192,7 @@ const BlogUpdate = () => {
         className="bg-white border border-gray-200 rounded-xl p-6 space-y-6 shadow-sm"
         encType="multipart/form-data"
       >
-        <div className="grid grid-cols-12 items-start gap-6">
+        <div className="grid grid-cols-12 max-sm:w-70 items-center justify-center gap-6 mx-auto">
           <div className="md:col-span-8 col-span-12 flex flex-col item-start justify-start space-y-4">
             {/* Title */}
             <div className="space-y-1">
@@ -308,7 +313,7 @@ const BlogUpdate = () => {
 
             <div className="flex flex-col items-start gap-6">
               {/* Preview */}
-              <div className="w-120 h-70 border border-dashed border-gray-300 rounded-xl flex items-center justify-center overflow-hidden bg-gray-50">
+              <div className="w-full h-70 border border-dashed border-gray-300 rounded-xl flex items-center justify-center overflow-hidden bg-gray-50">
                 {displayedImage ? (
                   <img
                     src={displayedImage}
@@ -316,9 +321,17 @@ const BlogUpdate = () => {
                     className="w-full h-full object-contain"
                   />
                 ) : (
-                  <span className="text-xs text-gray-400 text-center px-2">
-                    No image selected
-                  </span>
+                  <div className="space-y-2 flex flex-col">
+                    <span className="sm:text-sm text-xs text-gray-400 text-center px-2">
+                      No image selected
+                    </span>
+                    <span className="sm:text-sm text-xs text-gray-400 text-center px-2">
+                      Accept type: JPG, PNG, JPEG, SVG
+                    </span>
+                    <span className="sm:text-sm text-xs text-gray-400 text-center px-2">
+                      File Size should be less than 2 MB.
+                    </span>
+                  </div>
                 )}
               </div>
 
@@ -381,7 +394,7 @@ const BlogUpdate = () => {
         {isError && <p className="text-base text-red-500">{isError}</p>}
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default BlogUpdate
+export default BlogUpdate;

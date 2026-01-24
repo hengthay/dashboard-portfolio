@@ -19,6 +19,9 @@ import AchievementDetails from './components/Achievement/AchievementDetails'
 import BlogCreate from './components/Blog/BlogCreate'
 import BlogUpdate from './components/Blog/BlogUpdate'
 import BlogDetails from './components/Blog/BlogDetails'
+import CertificateCreate from './components/Certificate/CertificateCreate'
+import CertificateDetail from './components/Certificate/CertificateDetail'
+import CertificateUpdate from './components/Certificate/CertificateUpdate'
 
 const App = () => {
   return (
@@ -34,10 +37,13 @@ const App = () => {
           <Route path='/blogs/create' element={<BlogCreate />}/>
           <Route path='/blogs/:id' element={<BlogDetails />}/>
           <Route path='/blogs/:id/edit' element={<BlogUpdate />}/>
+          <Route path='/certificates' element={<Certificate />}/>
+          <Route path='/certificates/create' element={<CertificateCreate />}/>
+          <Route path='/certificates/:id' element={<CertificateDetail />}/>
+          <Route path='/certificates/:id/edit' element={<CertificateUpdate />}/>
           <Route path='/educations' element={<Education />}/>
           <Route path='/experiences' element={<Experience />}/>
           <Route path='/profiles' element={<Profile />}/>
-          <Route path='/certificates' element={<Certificate />}/>
           <Route path='/projects' element={<Project />}/>
           <Route path='/skills' element={<Skill />}/>
         </Route>

@@ -116,7 +116,7 @@ export const removeBlogById = createAsyncThunk(
       // ✅ fallback if your API returns data.data
       if (res?.data?.data) return id;
 
-      return thunkAPI.rejectWithValue("Failed to delete achievement");
+      return thunkAPI.rejectWithValue("Failed to delete blog");
     } catch (error) {
       const msg =
         error?.response?.data?.message ||
@@ -205,7 +205,7 @@ const blogSlice = createSlice({
         }
       })
       .addCase(removeBlogById.rejected, (state) => {
-        state.error = "Unable to update blogs due to Internal Server!";
+        state.error = "Unable to delete blogs due to Internal Server!";
         state.status = "failed";
       })
   },

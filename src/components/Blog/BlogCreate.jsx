@@ -146,10 +146,10 @@ const BlogCreate = () => {
         className="bg-white border border-gray-200 rounded-xl p-6 space-y-6 shadow-sm"
         encType="multipart/form-data"
       >
-        <div className="grid grid-cols-12 items-start gap-6">
+        <div className="grid grid-cols-12 max-sm:w-70 items-center justify-center gap-6 mx-auto">
           <div className="md:col-span-8 col-span-12 flex flex-col item-start justify-start space-y-4">
             {/* Title */}
-            <div className="space-y-1">
+            <div className="space-y-1 flex flex-col">
               <label id="title" className="text-sm font-medium text-gray-700">
                 Blog Title
               </label>
@@ -161,10 +161,10 @@ const BlogCreate = () => {
                 onChange={handleChange}
                 required
                 placeholder="e.g. Winner"
-                className="w-full border border-gray-300 rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-gray-200"
+                className="w-full max-sm:w-70 border border-gray-300 rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-gray-200"
               />
             </div>
-            <div className="space-y-1">
+            <div className="space-y-1 flex flex-col">
               <label id="slug" className="text-sm font-medium text-gray-700">
                 Slug Title
               </label>
@@ -176,10 +176,10 @@ const BlogCreate = () => {
                 onChange={handleChange}
                 required
                 placeholder="e.g php-learner"
-                className="w-full border border-gray-300 rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-gray-200"
+                className="w-full max-sm:w-70 border border-gray-300 rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-gray-200"
               />
             </div>
-            <div className="space-y-1">
+            <div className="space-y-1 flex flex-col">
               <label
                 id="published"
                 className="text-sm font-medium text-gray-700"
@@ -194,11 +194,11 @@ const BlogCreate = () => {
                 onChange={handleChange}
                 required
                 placeholder="e.g. 0"
-                className="w-full border border-gray-300 rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-gray-200"
+                className="w-full max-sm:w-70 border border-gray-300 rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-gray-200"
               />
             </div>
             {/* Description */}
-            <div className="space-y-1">
+            <div className="space-y-1 flex flex-col">
               <label id="content" className="text-sm font-medium text-gray-700">
                 Content
               </label>
@@ -210,10 +210,10 @@ const BlogCreate = () => {
                 rows={4}
                 required
                 placeholder="Describe your blogs..."
-                className="w-full border border-gray-300 rounded-lg px-3 py-2 outline-none resize-none focus:ring-2 focus:ring-gray-200"
+                className="w-full max-sm:w-70 border border-gray-300 rounded-lg px-3 py-2 outline-none resize-none focus:ring-2 focus:ring-gray-200"
               />
             </div>
-            <div className="space-y-2">
+            <div className="space-y-2 flex flex-col">
               <label className="text-sm font-medium text-gray-700">Tags</label>
 
               <div className="flex md:flex-row flex-col gap-2">
@@ -222,7 +222,7 @@ const BlogCreate = () => {
                   value={tagInput}
                   onChange={(e) => setTagInput(e.target.value)}
                   placeholder="Type tag and press Enter"
-                  className="flex-1 border border-gray-300 rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-gray-200"
+                  className="flex-1 max-sm:w-70 border border-gray-300 rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-gray-200"
                   onKeyDown={(e) => {
                     if (e.key === "Enter") {
                       e.preventDefault();
@@ -233,7 +233,7 @@ const BlogCreate = () => {
                 <button
                   type="button"
                   onClick={addTag}
-                  className="px-4 py-2 rounded-lg bg-gray-900 text-white text-sm font-semibold hover:bg-gray-800 transition"
+                  className="px-4 py-2 max-sm:w-70 rounded-lg bg-gray-900 text-white text-sm font-semibold hover:bg-gray-800 transition"
                 >
                   Add
                 </button>
@@ -260,14 +260,14 @@ const BlogCreate = () => {
           </div>
 
           {/* Image upload */}
-          <div className="space-y-2 md:col-span-4 col-span-12">
+          <div className="space-y-2 md:col-span-4 col-span-12 flex flex-col">
             <p className="text-sm font-medium text-gray-700 mb-2">
               Achievement Icon / Image
             </p>
 
             <div className="flex flex-col items-start gap-6">
               {/* Preview */}
-              <div className="w-full h-70 border border-dashed border-gray-300 rounded-xl flex items-center justify-center overflow-hidden bg-gray-50">
+              <div className="w-full max-sm:w-70 h-70 border border-dashed border-gray-300 rounded-xl flex items-center justify-center overflow-hidden bg-gray-50">
                 {preview ? (
                   <img
                     src={preview}
@@ -275,14 +275,22 @@ const BlogCreate = () => {
                     className="w-full h-full object-contain"
                   />
                 ) : (
-                  <span className="text-xs text-gray-400 text-center px-2">
-                    No image selected
-                  </span>
+                  <div className="space-y-2 flex flex-col">
+                    <span className="sm:text-sm text-xs text-gray-400 text-center px-2">
+                      No image selected
+                    </span>
+                    <span className="sm:text-sm text-xs text-gray-400 text-center px-2">
+                      Accept type: JPG, PNG, JPEG, SVG
+                    </span>
+                    <span className="sm:text-sm text-xs text-gray-400 text-center px-2">
+                      File Size should be less than 2 MB.
+                    </span>
+                  </div>
                 )}
               </div>
 
               {/* Upload */}
-              <p className="flex justify-end items-end w-full">
+              <p className="flex justify-end items-end w-full max-sm:w-70">
                 <label
                   id="cover_image"
                   className="cursor-pointer inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gray-900 text-white text-sm font-semibold hover:bg-gray-800 transition"
@@ -300,7 +308,7 @@ const BlogCreate = () => {
                 </label>
               </p>
             </div>
-            <div className="space-y-1">
+            <div className="space-y-1 flex flex-col">
               <label
                 id="join_date"
                 className="text-sm font-medium text-gray-700"
@@ -315,7 +323,7 @@ const BlogCreate = () => {
                 onChange={handleChange}
                 required
                 placeholder="e.g. 0"
-                className="w-full border border-gray-300 rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-gray-200"
+                className="w-full max-sm:w-70 border border-gray-300 rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-gray-200"
               />
             </div>
           </div>
@@ -331,7 +339,7 @@ const BlogCreate = () => {
 
           <button
             type="submit"
-            className="inline-flex items-center gap-2 px-5 py-2 rounded-lg bg-gray-900 text-white text-sm font-semibold hover:bg-gray-800 transition cursor-pointer"
+            className="inline-flex items-center gap-2 px-5 py-2 rounded-lg bg-gray-900 text-white text-sm font-semibold hover:bg-gray-800 transition cursor-pointer text-nowrap"
           >
             <FiSave />
             Save Blog

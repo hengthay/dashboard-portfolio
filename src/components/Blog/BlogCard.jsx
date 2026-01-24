@@ -10,7 +10,7 @@ import { useDispatch } from "react-redux";
 const BlogCard = ({ blog }) => {
   const { isOpen } = useOutletContext();
   const dispatch = useDispatch();
-  
+
   const handleDelete = async (id) => {
     const result = await Swal.fire({
       title: "Are you sure?",
@@ -46,13 +46,13 @@ const BlogCard = ({ blog }) => {
   };
 
   return (
-    <div className="w-full flex justify-between items-center bg-white border border-gray-200 rounded-2xl p-4 sm:p-5 hover:shadow-md hover:border-gray-300 transition">
-      <div className="w-full flex items-center gap-4">
-        <div className="w-40 h-40">
+    <div className="w-full group flex justify-between items-center bg-white border border-gray-200 rounded-2xl p-4 sm:p-5 hover:shadow-md hover:border-gray-300 transition">
+      <div className="w-full flex flex-col sm:flex-row items-center gap-4">
+        <div className="w-full sm:w-100 sm:h-50 h-44">
           <img
             src={`${import.meta.env.VITE_BASE_URL}/storage/${blog?.cover_image}`}
             alt={blog?.title}
-            className="w-full h-full object-cover hover:scale-105 transition duration-300 bg-gray-300 rounded-xl shadow"
+            className="w-full h-full object-cover group-hover:scale-105 transition duration-300 bg-gray-300 rounded-xl shadow"
           />
         </div>
         <div className="w-full flex flex-col items-start gap-4">
@@ -87,69 +87,69 @@ const BlogCard = ({ blog }) => {
               ))}
           </div>
         </div>
-      </div>
-      <div className="flex flex-col items-center gap-2">
-        {/* View */}
-        <Link
-          to={`/blogs/${blog?.id}`}
-          className={`p-2 rounded-lg bg-amber-100 text-amber-600 
+        <div className="w-full flex flex-col gap-2 sm:items-end">
+          {/* View */}
+          <Link
+            to={`/blogs/${blog?.id}`}
+            className={`p-2 rounded-xl bg-amber-100 text-amber-600 
             hover:bg-amber-200 hover:scale-105 shadow-sm
             transition-all duration-200 flex justify-center items-center ${isOpen ? "gap-0" : "gap-2"}`}
-          title="View"
-        >
-          <GrView size={20} />
-          <span
-            className={`
+            title="View"
+          >
+            <GrView size={20} />
+            <span
+              className={`
               whitespace-nowrap
               overflow-hidden
               transition-all duration-300
               ${isOpen ? "w-0 opacity-0" : "w-12 opacity-100"}
             `}
-          >
-            View
-          </span>
-        </Link>
+            >
+              View
+            </span>
+          </Link>
 
-        {/* Edit */}
-        <Link
-          to={`/blogs/${blog?.id}/edit`}
-          className={`p-2 rounded-lg bg-blue-100 text-blue-600 
+          {/* Edit */}
+          <Link
+            to={`/blogs/${blog?.id}/edit`}
+            className={`p-2 rounded-xl bg-blue-100 text-blue-600 
           hover:bg-blue-200 hover:scale-105 shadow-sm
           transition-all duration-200 flex justify-center items-center ${isOpen ? "gap-0" : "gap-2"}`}
-          title="Edit"
-        >
-          <CiEdit size={20} />
-          <span
-            className={`
+            title="Edit"
+          >
+            <CiEdit size={20} />
+            <span
+              className={`
               whitespace-nowrap
               overflow-hidden
               transition-all duration-300
               ${isOpen ? "w-0 opacity-0" : "w-12 opacity-100"}
             `}
-          >
-            Edit
-          </span>
-        </Link>
+            >
+              Edit
+            </span>
+          </Link>
 
-        {/* Delete */}
-        <button
-          type="button"
-          onClick={() => handleDelete(blog.id)}
-          className={`p-2 rounded-lg bg-red-100 text-red-600 hover:bg-red-200 hover:scale-105 shadow-sm transition-all duration-200 cursor-pointer flex justify-center items-center ${isOpen ? "gap-0" : "gap-2"}`}
-          title="Delete"
-        >
-          <MdDelete size={20} />
-          <span
-            className={`
+          {/* Delete */}
+          <button
+            type="button"
+            onClick={() => handleDelete(blog.id)}
+            className={`p-2 rounded-xl bg-red-100 text-red-600 hover:bg-red-200 hover:scale-105 shadow-sm transition-all duration-200 cursor-pointer flex justify-center items-center ${isOpen ? "gap-0" : "gap-2"}`}
+            title="Delete"
+          >
+            <MdDelete size={20} />
+            <span
+              className={`
               whitespace-nowrap
               overflow-hidden
               transition-all duration-300
               ${isOpen ? "w-0 opacity-0" : "w-14 opacity-100"}
             `}
-          >
-            Remove
-          </span>
-        </button>
+            >
+              Remove
+            </span>
+          </button>
+        </div>
       </div>
     </div>
   );

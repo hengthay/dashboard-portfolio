@@ -1,43 +1,45 @@
-import { useState } from "react";
-import { FiUpload, FiSave, FiArrowLeft } from "react-icons/fi";
-import { useDispatch } from "react-redux";
-import { Link, useNavigate, useParams } from "react-router-dom";
-import { createAchievement } from "../../feature/achievement/achievementSlice";
+import React, { useState } from "react";
+import { FiArrowLeft, FiSave, FiUpload } from "react-icons/fi";
+import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { createCertificate } from "../../feature/certificate/certificateSlice";
+import { useDispatch } from "react-redux";
 
-const AchievementCreate = () => {
+const CertificateCreate = () => {
   const [form, setForm] = useState({
     title: "",
-    description: "",
-    icon_url: null,
+    issuer: "",
+    image: null,
+    issue_date: "",
   });
-
-  const navigate = useNavigate();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [isError, setIsError] = useState("");
+  const [preview, setPreview] = useState("");
   const [loading, setLoading] = useState(false);
-  const [isError, setIsError] = useState(null);
-  const [preview, setPreview] = useState(null);
-
   const handleChange = (e) => {
     const { name, value, files } = e.target;
-
-    if (name === "icon_url") {
+    // Select file
+    if (name === "image") {
       const file = files?.[0];
-      setForm((prev) => ({ ...prev, icon_url: file || null }));
+      setForm((prev) => ({ ...prev, image: file || null }));
       if (file) setPreview(URL.createObjectURL(file));
       return;
     } else {
       setForm((prev) => ({ ...prev, [name]: value }));
     }
   };
-  console.log("icon_url:", form.icon_url);
-  console.log("isFile:", form.icon_url instanceof File);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       setLoading(true);
 
-      if (!form.title || !form.description || !form.icon_url) {
+      if (
+        !form.title ||
+        !form.issue_date ||
+        !form.issuer
+      ) {
         setIsError("Please fill out the box to create");
         setLoading(false);
         return;
@@ -45,29 +47,36 @@ const AchievementCreate = () => {
 
       const formData = new FormData();
       formData.append("title", form.title);
-      formData.append("description", form.description);
-      formData.append("icon_url", form.icon_url);
+      formData.append("issuer", form.issuer);
+      formData.append("issue_date", form.issue_date);
+      formData.append("image", form.image); // 1 or 0
 
-      await dispatch(createAchievement(formData));
+      await dispatch(createCertificate(formData));
 
       Swal.fire({
         title: "Created!",
-        text: "Your Achievement is created successfully!",
+        text: "Your Certificate is created successfully!",
         icon: "success",
         timer: 1500,
       });
       const timeOut = setTimeout(() => {
-        navigate("/achievements");
+        navigate("/certificates");
       }, 2000);
 
       // Clear form
-      setForm({ title: "", description: "", icon_url: "" });
+      setForm({
+        title: "",
+        issuer: "",
+        issue_date: "",
+        published: 0,
+        image: null,
+      });
 
       return () => clearTimeout(timeOut);
     } catch (error) {
       Swal.fire({
         title: "Failed",
-        text: "Your Achievement is created failed!",
+        text: "Your Certificate is created failed!",
         icon: "error",
         timer: 1500,
       });
@@ -78,20 +87,19 @@ const AchievementCreate = () => {
   };
 
   return (
-    <div className="w-full p-8 mx-auto space-y-8">
-      {/* Header */}
+    <div className="w-full md:p-8 p-2 mx-auto space-y-8">
       <div className="flex items-center justify-between">
         <div>
           <h2 className="md:text-4xl font-semibold sm:text-3xl text-2xl text-gray-900">
-            Add New Achievement
+            Add New Certificate
           </h2>
           <p className="text-sm text-gray-500 mt-1">
-            Fill in the form to create a new achievement.
+            Fill in the form to create a new certificate.
           </p>
         </div>
 
         <Link
-          to="/achievements"
+          to="/certificates"
           className="inline-flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-gray-900"
         >
           <FiArrowLeft />
@@ -99,18 +107,17 @@ const AchievementCreate = () => {
         </Link>
       </div>
 
-      {/* Form */}
       <form
         onSubmit={handleSubmit}
         className="bg-white border border-gray-200 rounded-xl p-6 space-y-6 shadow-sm"
         encType="multipart/form-data"
       >
-        <div className="grid grid-cols-12 w-full max-sm:w-70 items-center justify-center gap-6 mx-auto">
+        <div className="grid grid-cols-12 w-full max-sm:w-70 justify-center gap-6 mx-auto">
           <div className="md:col-span-8 col-span-12 space-y-4">
             {/* Title */}
             <div className="space-y-2 flex flex-col">
               <label className="text-sm font-medium text-gray-700">
-                Achievement Title
+                Certificate Title
               </label>
               <input
                 type="text"
@@ -123,19 +130,32 @@ const AchievementCreate = () => {
               />
             </div>
 
-            {/* Description */}
             <div className="space-y-2 flex flex-col">
               <label className="text-sm font-medium text-gray-700">
-                Description
+                Issuer
               </label>
-              <textarea
-                name="description"
-                value={form.description}
+              <input
+                type="text"
+                name="issuer"
+                value={form.issuer}
                 onChange={handleChange}
-                rows={4}
                 required
-                placeholder="Describe your achievement..."
-                className="w-full border border-gray-300 rounded-lg px-3 py-2 outline-none resize-none focus:ring-2 focus:ring-gray-200"
+                placeholder="e.g. Codecademy"
+                className="w-full border border-gray-300 rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-gray-200"
+              />
+            </div>
+
+            <div className="space-y-2 flex flex-col">
+              <label className="text-sm font-medium text-gray-700">
+                Issue Date
+              </label>
+              <input
+                type="date"
+                name="issue_date"
+                value={form.issue_date}
+                onChange={handleChange}
+                required
+                className="w-full border border-gray-300 rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-gray-200"
               />
             </div>
           </div>
@@ -143,7 +163,7 @@ const AchievementCreate = () => {
             {/* Image upload */}
             <div className="space-y-2 flex flex-col w-full">
               <label className="text-sm font-medium text-gray-700">
-                Achievement Icon / Image
+                Certificate Icon / Image
               </label>
 
               <div className="flex flex-col items-center gap-6">
@@ -156,7 +176,7 @@ const AchievementCreate = () => {
                       className="w-full h-full object-contain"
                     />
                   ) : (
-                    <div className="space-y-2 flex flex-col">  
+                    <div className="space-y-2 flex flex-col">
                       <span className="sm:text-sm text-xs text-gray-400 text-center px-2">
                         No image selected
                       </span>
@@ -177,7 +197,7 @@ const AchievementCreate = () => {
                     Upload image
                     <input
                       type="file"
-                      name="icon_url"
+                      name="image"
                       accept="image/*"
                       onChange={handleChange}
                       className="hidden"
@@ -187,30 +207,28 @@ const AchievementCreate = () => {
               </div>
             </div>
           </div>
-
-          
         </div>
         {/* Actions */}
-          <div className="flex justify-end gap-3 pt-4">
-            <Link
-              to="/achievements"
-              className="px-4 py-2 rounded-lg border border-gray-300 text-gray-700 text-sm font-medium hover:bg-gray-100 transition"
-            >
-              Cancel
-            </Link>
+        <div className="flex justify-end gap-3 pt-4">
+          <Link
+            to="/certificates"
+            className="px-4 py-2 rounded-lg border border-gray-300 text-gray-700 text-sm font-medium hover:bg-gray-100 transition"
+          >
+            Cancel
+          </Link>
 
-            <button
-              type="submit"
-              className="inline-flex items-center gap-2 px-5 py-2 rounded-lg bg-gray-900 text-white text-sm font-semibold hover:bg-gray-800 transition cursor-pointer"
-            >
-              <FiSave />
-              Save Achievement
-            </button>
-          </div>
+          <button
+            type="submit"
+            className="inline-flex items-center gap-2 px-5 py-2 rounded-lg bg-gray-900 text-white text-sm font-semibold hover:bg-gray-800 transition cursor-pointer"
+          >
+            <FiSave />
+            Save Certificate
+          </button>
+        </div>
         {isError && <p className="text-base text-red-500">{isError}</p>}
       </form>
     </div>
   );
 };
 
-export default AchievementCreate;
+export default CertificateCreate;

@@ -97,7 +97,7 @@ const Blog = () => {
         </div>
         <div className="w-full md:pt-4 pt-6 mt-10">
           {blogStatus === "loading" && (
-            <p className="text-gray-500 text-center">Loading achievements...</p>
+            <p className="text-gray-500 text-center">Loading blogs...</p>
           )}
 
           {/* Not found */}
@@ -105,7 +105,7 @@ const Blog = () => {
             filteredBlogs.length === 0 && (
               <div className="w-full flex flex-col items-center justify-center py-16 bg-white border border-dashed border-gray-300 rounded-xl">
                 <h3 className="text-lg font-semibold text-gray-900">
-                  No achievements found 😕
+                  No blog found 😕
                 </h3>
                 <p className="text-sm text-gray-500 mt-2">
                   Try another keyword or change the filter.
