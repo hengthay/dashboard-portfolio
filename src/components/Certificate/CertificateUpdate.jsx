@@ -3,7 +3,7 @@ import { FiArrowLeft, FiSave, FiUpload } from "react-icons/fi";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
-import { fetchDetailCertificate, selectCertificateDetail, updateCertificate } from "../../feature/certificate/certificateSlice";
+import { fetchCertificateDetail, selectCertificateDetail, updateCertificate } from "../../feature/certificate/certificateSlice";
 
 const CertificateUpdate = () => {
   const [form, setForm] = useState({
@@ -35,7 +35,7 @@ const CertificateUpdate = () => {
 
   // Fetch certificate with id
   useEffect(() => {
-    if (id) dispatch(fetchDetailCertificate(id));
+    if (id) dispatch(fetchCertificateDetail(id));
   }, [id, dispatch]);
 
   // When redux is ready
@@ -70,7 +70,7 @@ const CertificateUpdate = () => {
       formData.append("issue_date", form.issue_date);
       formData.append("image", form.image); // 1 or 0
 
-      await dispatch(updateCertificate({id, formData}));
+      await dispatch(updateCertificate({id, formData})).unwrap();
 
       Swal.fire({
         title: "Updated!",

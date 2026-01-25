@@ -22,6 +22,9 @@ import BlogDetails from './components/Blog/BlogDetails'
 import CertificateCreate from './components/Certificate/CertificateCreate'
 import CertificateDetail from './components/Certificate/CertificateDetail'
 import CertificateUpdate from './components/Certificate/CertificateUpdate'
+import EducationCreate from './components/Education/EducationCreate'
+import EducationDetail from './components/Education/EducationDetail'
+import EducationUpdate from './components/Education/EducationUpdate'
 
 const App = () => {
   return (
@@ -42,6 +45,9 @@ const App = () => {
           <Route path='/certificates/:id' element={<CertificateDetail />}/>
           <Route path='/certificates/:id/edit' element={<CertificateUpdate />}/>
           <Route path='/educations' element={<Education />}/>
+          <Route path='/educations/create' element={<EducationCreate />}/>
+          <Route path='/educations/:id' element={<EducationDetail />}/>
+          <Route path='/educations/:id/edit' element={<EducationUpdate />}/>
           <Route path='/experiences' element={<Experience />}/>
           <Route path='/profiles' element={<Profile />}/>
           <Route path='/projects' element={<Project />}/>

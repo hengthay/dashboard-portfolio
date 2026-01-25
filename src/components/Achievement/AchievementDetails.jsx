@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import {
-  fetchDetailAchievement,
+  fetchAchievementDetail,
   selectAchievementDetail,
 } from "../../feature/achievement/achievementSlice";
 import { FiArrowLeft } from "react-icons/fi";
@@ -13,7 +13,7 @@ const AchievementDetails = () => {
   const achievementDetail = useSelector(selectAchievementDetail);
   console.log(id);
   useEffect(() => {
-    if (id) dispatch(fetchDetailAchievement(id));
+    if (id) dispatch(fetchAchievementDetail(id));
   }, [id, dispatch]);
 
   console.log(achievementDetail);

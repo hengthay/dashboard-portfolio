@@ -51,7 +51,7 @@ const CertificateCreate = () => {
       formData.append("issue_date", form.issue_date);
       formData.append("image", form.image); // 1 or 0
 
-      await dispatch(createCertificate(formData));
+      await dispatch(createCertificate(formData)).unwrap();
 
       Swal.fire({
         title: "Created!",

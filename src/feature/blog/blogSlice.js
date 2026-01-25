@@ -33,8 +33,8 @@ export const fetchBlog = createAsyncThunk(
   },
 );
 
-export const fetchDetailBlog = createAsyncThunk(
-  'blogs/fetchDetailBlog', async (id, thunkAPI) => {
+export const fetchBlogDetail = createAsyncThunk(
+  'blogs/fetchBlogDetail', async (id, thunkAPI) => {
     try {
       const res = await axiosInstance.get(`${API_BASE_URL}/blogs/${id}`);
 
@@ -146,16 +146,16 @@ const blogSlice = createSlice({
         state.error = "Unable to get blogs due to Internal Server!";
         state.status = "failed";
       })
-      .addCase(fetchDetailBlog.pending, (state) => {
+      .addCase(fetchBlogDetail.pending, (state) => {
         state.error = null;
         state.statusDetail = "loading";
       })
-      .addCase(fetchDetailBlog.fulfilled, (state, action) => {
+      .addCase(fetchBlogDetail.fulfilled, (state, action) => {
         state.error = null;
         state.status = "succeeded";
         state.blogDetail = action.payload;
       })
-      .addCase(fetchDetailBlog.rejected, (state) => {
+      .addCase(fetchBlogDetail.rejected, (state) => {
         state.error = "Unable to get individual blogs due to Internal Server!";
         state.statusDetail = "failed";
       })

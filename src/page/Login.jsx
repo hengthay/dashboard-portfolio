@@ -55,7 +55,8 @@ const Login = () => {
       Swal.fire({
         title: "Login Successfully",
         text: "Your login is successfully!",
-        icon: 'success'
+        icon: 'success',
+        timer: 2000,
       })
       const timeOut = setTimeout(() => {
         navigate('/');
@@ -69,7 +70,8 @@ const Login = () => {
       Swal.fire({
         title: "Login Failed",
         text: "Your login is not success!",
-        icon: 'error'
+        icon: 'error',
+        timer: 2000,
       })
       console.log('Error to make login - ',error.message);
     } finally {

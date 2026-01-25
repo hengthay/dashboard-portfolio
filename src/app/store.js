@@ -3,6 +3,8 @@ import authReducer from "../feature/auth/authSlice";
 import achievementReducer from "../feature/achievement/achievementSlice";
 import blogReducer from "../feature/blog/blogSlice";
 import certificateReducer from "../feature/certificate/certificateSlice";
+import educationReducer from "../feature/education/educationSlice";
+
 
 const store = configureStore({
   reducer: {
@@ -10,6 +12,7 @@ const store = configureStore({
     achievements: achievementReducer,
     blogs: blogReducer,
     certificates: certificateReducer,
+    educations: educationReducer,
   }
 });
 

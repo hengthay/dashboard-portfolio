@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import {
-  fetchDetailBlog,
+  fetchBlogDetail,
   selectBlogDetail,
   updateBlog,
 } from "../../feature/blog/blogSlice";
@@ -60,7 +60,7 @@ const BlogUpdate = () => {
   // Fetch individual Achievements
   useEffect(() => {
     try {
-      if (id) dispatch(fetchDetailBlog(id));
+      if (id) dispatch(fetchBlogDetail(id));
     } catch (error) {
       console.log("failed to fetch detail of blog - ", error);
     }

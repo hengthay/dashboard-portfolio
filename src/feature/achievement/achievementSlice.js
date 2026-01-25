@@ -88,8 +88,8 @@ export const updateAchievement = createAsyncThunk(
   },
 );
 
-export const fetchDetailAchievement = createAsyncThunk(
-  "achievements/fetchDetailAchievement",
+export const fetchAchievementDetail = createAsyncThunk(
+  "achievements/fetchAchievementDetail",
   async (id, thunkAPI) => {
     try {
       const res = await axiosInstance.get(`${API_BASE_URL}/achievements/${id}`);
@@ -187,16 +187,16 @@ const achievementSlice = createSlice({
         state.error = "Unable to update achievemnts due to Internal Server!";
         state.status = "failed";
       })
-      .addCase(fetchDetailAchievement.pending, (state) => {
+      .addCase(fetchAchievementDetail.pending, (state) => {
         state.error = null;
         state.statusDetail = "loading";
       })
-      .addCase(fetchDetailAchievement.fulfilled, (state, action) => {
+      .addCase(fetchAchievementDetail.fulfilled, (state, action) => {
         state.error = null;
         state.statusDetail = "succeeded";
         state.achievementDetail = action.payload;
       })
-      .addCase(fetchDetailAchievement.rejected, (state) => {
+      .addCase(fetchAchievementDetail.rejected, (state) => {
         state.error =
           "Unable to get individual achievemnts due to Internal Server!";
         state.statusDetail = "failed";

@@ -25,15 +25,15 @@ export const fetchCertificate = createAsyncThunk(
 
       return res?.data?.data ?? [];
     } catch (error) {
-      console.log("Certificate error - ", error.response);
+      console.log("Certificate fetch data error - ", error.response);
       const msg = error?.response?.data?.message;
       return thunkAPI.rejectWithValue(msg);
     }
   },
 );
 
-export const fetchDetailCertificate = createAsyncThunk(
-  "certificates/fetchDetailCertificate",
+export const fetchCertificateDetail = createAsyncThunk(
+  "certificates/fetchCertificateDetail",
   async (id, thunkAPI) => {
     try {
       const res = await axiosInstance.get(`${API_BASE_URL}/certificates/${id}`);
@@ -48,7 +48,7 @@ export const fetchDetailCertificate = createAsyncThunk(
 
       return res?.data?.data ?? [];
     } catch (error) {
-      console.log("Certificate error - ", error.response);
+      console.log("Certificate fetch detail error - ", error.response);
       const msg = error?.response?.data?.message;
       return thunkAPI.rejectWithValue(msg);
     }
@@ -75,7 +75,7 @@ export const createCertificate = createAsyncThunk(
 
       return res?.data?.data ?? [];
     } catch (error) {
-      console.log("Certificate error - ", error.response);
+      console.log("Certificate create error - ", error.response);
       const msg = error?.response?.data?.message;
       return thunkAPI.rejectWithValue(msg);
     }
@@ -102,7 +102,7 @@ export const updateCertificate = createAsyncThunk(
 
       return res?.data?.data ?? [];
     } catch (error) {
-      console.log("Certificate error - ", error.response);
+      console.log("Certificate update error - ", error.response);
       const msg = error?.response?.data?.message;
       return thunkAPI.rejectWithValue(msg);
     }
@@ -124,7 +124,7 @@ export const removeCertificateById = createAsyncThunk(
 
       return thunkAPI.rejectWithValue("Failed to delete certificate");
     } catch (error) {
-      console.log("Certificate error - ", error.response);
+      console.log("Certificate remove error - ", error.response);
       const msg = error?.response?.data?.message;
       return thunkAPI.rejectWithValue(msg);
     }
@@ -151,16 +151,16 @@ const certificateSlice = createSlice({
           "Unable to get certificate data due to Internal Server Error!";
         state.status = "failed";
       })
-      .addCase(fetchDetailCertificate.pending, (state) => {
+      .addCase(fetchCertificateDetail.pending, (state) => {
         state.error = null;
         state.statusDetail = "loading";
       })
-      .addCase(fetchDetailCertificate.fulfilled, (state, action) => {
+      .addCase(fetchCertificateDetail.fulfilled, (state, action) => {
         state.error = null;
         state.statusDetail = "succeeded";
         state.certificateDetail = action.payload;
       })
-      .addCase(fetchDetailCertificate.rejected, (state) => {
+      .addCase(fetchCertificateDetail.rejected, (state) => {
         state.error =
           "Unable to get individual certificate data due to Internal Server Error!";
         state.statusDetail = "failed";

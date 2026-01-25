@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import {
-  fetchDetailCertificate,
+  fetchCertificateDetail,
   selectCertificateDetail,
 } from "../../feature/certificate/certificateSlice";
 import { FiArrowLeft } from "react-icons/fi";
@@ -15,7 +15,7 @@ const CertificateDetail = () => {
   const certificateDetail = useSelector(selectCertificateDetail);
 
   useEffect(() => {
-    if (id) dispatch(fetchDetailCertificate(id));
+    if (id) dispatch(fetchCertificateDetail(id));
   }, [id, dispatch]);
 
   return (
@@ -59,7 +59,7 @@ const CertificateDetail = () => {
             {/* Image */}
             <div className="col-span-12 lg:col-span-7 bg-gray-50 border-b lg:border-b-0 lg:border-r border-gray-200">
               <div className="p-5 sm:p-6 md:p-8">
-                <div className="w-full h-[320px] sm:h-[380px] md:h-[420px] rounded-2xl bg-white border border-gray-200 overflow-hidden flex items-center justify-center">
+                <div className="w-full h-80 sm:h-95 md:h-105 rounded-2xl bg-white border border-gray-200 overflow-hidden flex items-center justify-center">
                   <img
                     src={`${import.meta.env.VITE_BASE_URL}/storage/${certificateDetail?.image}`}
                     alt={certificateDetail?.title}

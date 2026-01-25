@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import {
-  fetchDetailBlog,
+  fetchBlogDetail,
   selectBlogDetail,
 } from "../../feature/blog/blogSlice";
 import { FiArrowLeft } from "react-icons/fi";
@@ -17,7 +17,7 @@ const BlogDetails = () => {
   const blogDetail = useSelector(selectBlogDetail);
   console.log(id);
   useEffect(() => {
-    if (id) dispatch(fetchDetailBlog(id));
+    if (id) dispatch(fetchBlogDetail(id));
   }, [id, dispatch]);
 
   console.log(blogDetail);

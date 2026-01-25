@@ -3,7 +3,7 @@ import { FiArrowLeft, FiSave, FiUpload } from "react-icons/fi";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import {
-  fetchDetailAchievement,
+  fetchAchievementDetail,
   selectAchievementDetail,
   selectAchievementStatusDetail,
   updateAchievement,
@@ -50,7 +50,7 @@ const AchievementUpdate = () => {
 
   // Fetch individual Achievements
   useEffect(() => {
-    if (id) dispatch(fetchDetailAchievement(id));
+    if (id) dispatch(fetchAchievementDetail(id));
   }, [id, dispatch]);
 
   // When redux is ready
