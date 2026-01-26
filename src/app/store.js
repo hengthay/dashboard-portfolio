@@ -4,6 +4,7 @@ import achievementReducer from "../feature/achievement/achievementSlice";
 import blogReducer from "../feature/blog/blogSlice";
 import certificateReducer from "../feature/certificate/certificateSlice";
 import educationReducer from "../feature/education/educationSlice";
+import experienceReducer from "../feature/experience/experienceSlice";
 
 
 const store = configureStore({
@@ -13,6 +14,7 @@ const store = configureStore({
     blogs: blogReducer,
     certificates: certificateReducer,
     educations: educationReducer,
+    experiences: experienceReducer,
   }
 });
 
