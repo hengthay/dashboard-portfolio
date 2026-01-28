@@ -28,6 +28,9 @@ import EducationUpdate from './components/Education/EducationUpdate'
 import ExperienceCreate from './components/Experience/ExperienceCreate'
 import ExperienceDetail from './components/Experience/ExperienceDetail'
 import ExperienceUpdate from './components/Experience/ExperienceUpdate'
+import ProjectCreate from './components/Project/ProjectCreate'
+import ProjectDetail from './components/Project/ProjectDetail'
+import ProjectUpdate from './components/Project/ProjectUpdate'
 
 const App = () => {
   return (
@@ -55,8 +58,11 @@ const App = () => {
           <Route path='/experiences/create' element={<ExperienceCreate />}/>
           <Route path='/experiences/:id' element={<ExperienceDetail />}/>
           <Route path='/experiences/:id/edit' element={<ExperienceUpdate />}/>
-          <Route path='/profiles' element={<Profile />}/>
           <Route path='/projects' element={<Project />}/>
+          <Route path='/projects/create' element={<ProjectCreate />}/>
+          <Route path='/projects/:id' element={<ProjectDetail />}/>
+          <Route path='/projects/:id/edit' element={<ProjectUpdate />}/>
+          <Route path='/profiles' element={<Profile />}/>
           <Route path='/skills' element={<Skill />}/>
         </Route>
       </Route>
