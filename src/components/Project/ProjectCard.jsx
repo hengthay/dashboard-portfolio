@@ -2,12 +2,49 @@ import React from 'react'
 import { CiEdit } from 'react-icons/ci';
 import { GrView } from 'react-icons/gr';
 import { MdDelete } from 'react-icons/md';
+import { useDispatch } from 'react-redux';
 import { Link, useOutletContext } from 'react-router-dom'
+import Swal from 'sweetalert2';
+import { removeProjectById } from '../../feature/project/projectSlice';
 
 const ProjectCard = ({ project }) => {
 
   const { isOpen } = useOutletContext();
+  const dispatch = useDispatch();
 
+  const handleDelete = async (id) => {
+    const result = await Swal.fire({
+      title: "Are you sure?",
+      text: "This project will be permanently deleted!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#6b7280",
+      confirmButtonText: "Yes, delete it",
+      cancelButtonText: "Cancel",
+    });
+
+    if (!result.isConfirmed) return; // ❌ user canceled
+    try {
+      await dispatch(removeProjectById(id)).unwrap();
+
+      Swal.fire({
+        title: "Deleted",
+        text: "Project has been deleted successfully!",
+        icon: "success",
+        timer: 1500,
+        showConfirmButton: false,
+      });
+    } catch (error) {
+      console.log(error);
+      Swal.fire({
+        title: "Failed",
+        text: "Your project could not be deleted.",
+        icon: "error",
+        timer: 1500,
+      });
+    }
+  };
   return (
     <div className="w-full group bg-white border border-gray-200 rounded-2xl p-4 sm:p-5 hover:shadow-lg hover:border-gray-300 transition" key={project.id}>
       <div className="flex flex-col items-start space-y-2.5 group">
@@ -102,7 +139,7 @@ const ProjectCard = ({ project }) => {
           {/* Delete */}
           <button
             type="button"
-            onClick={() => handleDelete()}
+            onClick={() => handleDelete(project.id)}
             className={`p-2 rounded-xl bg-red-100 text-red-600 hover:bg-red-200 hover:scale-105 shadow-sm transition-all duration-200 cursor-pointer flex justify-center items-center ${isOpen ? "gap-0" : "gap-2"}`}
             title="Delete"
           >
