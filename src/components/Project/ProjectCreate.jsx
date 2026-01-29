@@ -73,7 +73,7 @@ const ProjectCreate = () => {
       formData.append("demo_url", form.demo_url);
       formData.append("github_url", form.github_url);
 
-      // tags loop through tag and append to formdata
+      // techs loop through tech and append to formdata
       form.technologies.forEach((t, i) => {
         formData.append(`technologies[${i}]`, t);
       });

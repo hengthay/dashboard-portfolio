@@ -1,12 +1,12 @@
-import React from "react";
 import { FaHome } from "react-icons/fa";
-import { GiHamburgerMenu, GiAchievement, GiSkills } from "react-icons/gi";
+import { GiAchievement, GiSkills } from "react-icons/gi";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaBlogger } from "react-icons/fa";
 import { TbCertificate } from "react-icons/tb";
 import { MdCastForEducation } from "react-icons/md";
 import { GrProjects, GrVulnerability } from "react-icons/gr";
 import { FiLogOut } from "react-icons/fi";
+import { RiProfileLine } from "react-icons/ri";
 import { useDispatch } from "react-redux";
 import { logoutUser } from "../feature/auth/authSlice";
 
@@ -42,8 +42,24 @@ const SideBar = ({ isOpen, onClose }) => {
       label: "Experiences",
       pathName: "/experiences",
     },
-    { id: 7, iconName: GrProjects, label: "Project", pathName: "/projects" },
-    { id: 8, iconName: GiSkills, label: "Skills", pathName: "/skills" },
+    { 
+      id: 7, 
+      iconName: GrProjects, 
+      label: "Project", 
+      pathName: "/projects" 
+    },
+    { 
+      id: 8, 
+      iconName: RiProfileLine, 
+      label: "Profile", 
+      pathName: "/profiles" 
+    },
+    { 
+      id: 9, 
+      iconName: GiSkills, 
+      label: "Skills", 
+      pathName: "/skills" 
+    },
   ];
 
   const handleLogout = async () => {

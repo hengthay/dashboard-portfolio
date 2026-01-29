@@ -31,6 +31,9 @@ import ExperienceUpdate from './components/Experience/ExperienceUpdate'
 import ProjectCreate from './components/Project/ProjectCreate'
 import ProjectDetail from './components/Project/ProjectDetail'
 import ProjectUpdate from './components/Project/ProjectUpdate'
+import ProfileUpdate from './components/Profile/ProfileUpdate'
+import ProfileDetail from './components/Profile/ProfileDetail'
+import ProfileCreate from './components/Profile/ProfileCreate'
 
 const App = () => {
   return (
@@ -63,6 +66,9 @@ const App = () => {
           <Route path='/projects/:id' element={<ProjectDetail />}/>
           <Route path='/projects/:id/edit' element={<ProjectUpdate />}/>
           <Route path='/profiles' element={<Profile />}/>
+          <Route path='/profiles/create' element={<ProfileCreate />}/>
+          <Route path='/profiles/:id' element={<ProfileDetail />}/>
+          <Route path='/profiles/:id/edit' element={<ProfileUpdate />}/>
           <Route path='/skills' element={<Skill />}/>
         </Route>
       </Route>

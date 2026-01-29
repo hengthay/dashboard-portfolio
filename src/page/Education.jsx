@@ -64,7 +64,7 @@ const Education = () => {
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 className="bg-gray-100 shadow w-full py-1.5 px-6 outline-none focus:ring-2 focus:ring-gray-200"
-                placeholder="Search Certificate..."
+                placeholder="Search Education..."
               />
             </div>
             <div className="flex md:flex-row flex-col justify-center items-center gap-x-3">

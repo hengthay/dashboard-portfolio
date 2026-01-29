@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { API_BASE_URL, axiosInstance } from './APIConfig';
-import { Outlet, useNavigate } from 'react-router-dom';
+import { Navigate, Outlet, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { selectUser } from '../feature/auth/authSlice';
 
@@ -8,7 +8,7 @@ const ProtectedRoute = () => {
 
   const [isAuthenticated, setIsAuthenticated] = useState(null);
   const user = useSelector(selectUser);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   // console.log(user);
 
   useEffect(() => {
@@ -27,7 +27,7 @@ const ProtectedRoute = () => {
 
   if(isAuthenticated === null) return <div>Under Authentication...</div>
 
-  return isAuthenticated ? <Outlet /> : navigate('/login');
+  return isAuthenticated ? <Outlet /> : <Navigate to="/login" replace />;
 }
 
 export default ProtectedRoute
