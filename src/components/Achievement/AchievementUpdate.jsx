@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { FiArrowLeft, FiSave, FiUpload } from "react-icons/fi";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import {
   fetchAchievementDetail,
   selectAchievementDetail,
-  selectAchievementStatusDetail,
   updateAchievement,
 } from "../../feature/achievement/achievementSlice";
 import Swal from "sweetalert2";
@@ -23,7 +22,6 @@ const AchievementUpdate = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const achievement = useSelector(selectAchievementDetail);
-  const achivementStatusDetail = useSelector(selectAchievementStatusDetail);
   const [loading, setLoading] = useState(false);
   const [isError, setIsError] = useState(null);
   const [currentImage, setCurrentImage] = useState("");
@@ -76,8 +74,8 @@ const AchievementUpdate = () => {
     try {
       setLoading(true);
 
-      if (!form.title || !form.description) {
-        setIsError("Title and description are required");
+      if (!form.title) {
+        setIsError("Title is require!");
         setLoading(false);
         return;
       }
@@ -156,7 +154,7 @@ const AchievementUpdate = () => {
             {/* Title */}
             <div className="space-y-2 flex flex-col">
               <label className="text-sm font-medium text-gray-700">
-                Achievement Title
+                Achievement Title <span className="text-sm text-red-500">*</span>
               </label>
               <input
                 type="text"

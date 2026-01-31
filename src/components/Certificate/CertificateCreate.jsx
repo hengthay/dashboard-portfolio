@@ -35,12 +35,8 @@ const CertificateCreate = () => {
     try {
       setLoading(true);
 
-      if (
-        !form.title ||
-        !form.issue_date ||
-        !form.issuer
-      ) {
-        setIsError("Please fill out the box to create");
+      if (!form.title) {
+        setIsError("Title is require!");
         setLoading(false);
         return;
       }
@@ -49,7 +45,10 @@ const CertificateCreate = () => {
       formData.append("title", form.title);
       formData.append("issuer", form.issuer);
       formData.append("issue_date", form.issue_date);
-      formData.append("image", form.image); // 1 or 0
+
+      if (form.image) {
+        formData.append("image", form.image); 
+      }
 
       await dispatch(createCertificate(formData)).unwrap();
 
@@ -139,7 +138,6 @@ const CertificateCreate = () => {
                 name="issuer"
                 value={form.issuer}
                 onChange={handleChange}
-                required
                 placeholder="e.g. Codecademy"
                 className="w-full border border-gray-300 rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-gray-200"
               />
@@ -154,7 +152,6 @@ const CertificateCreate = () => {
                 name="issue_date"
                 value={form.issue_date}
                 onChange={handleChange}
-                required
                 className="w-full border border-gray-300 rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-gray-200"
               />
             </div>

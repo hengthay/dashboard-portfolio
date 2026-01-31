@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { FiSearch } from "react-icons/fi";
 import { HiOutlineSparkles } from "react-icons/hi";
 import { IoMdAdd } from "react-icons/io";

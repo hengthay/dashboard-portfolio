@@ -9,6 +9,7 @@ import { FiLogOut } from "react-icons/fi";
 import { RiProfileLine } from "react-icons/ri";
 import { useDispatch } from "react-redux";
 import { logoutUser } from "../feature/auth/authSlice";
+import Swal from "sweetalert2";
 
 const SideBar = ({ isOpen, onClose }) => {
   const location = useLocation();
@@ -64,14 +65,24 @@ const SideBar = ({ isOpen, onClose }) => {
 
   const handleLogout = async () => {
     try {
-      await dispatch(logoutUser());
+      await dispatch(logoutUser()).unwrap();
 
-      alert("Logged out successfully");
+      Swal.fire({
+        title: "Successfully",
+        text: "Your logout is successfully!",
+        icon: 'success',
+        timer: 1000,
+      })
 
       navigate("/login");
     } catch (error) {
       console.log(error);
-      alert("Logout Failed");
+      Swal.fire({
+        title: "Failed",
+        text: "Your logout is failed!",
+        icon: 'error',
+        timer: 1000,
+      })
     }
   };
 

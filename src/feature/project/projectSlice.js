@@ -18,7 +18,7 @@ export const fetchProject = createAsyncThunk(
         return thunkAPI.rejectWithValue('Project did not contain any data!');
       }
 
-      console.log('Project Data - ', res?.data?.data);
+      // console.log('Project Data - ', res?.data?.data);
 
       return res?.data?.data ?? [];
     } catch (error) {
@@ -38,7 +38,7 @@ export const fetchProjectDetail = createAsyncThunk(
         return thunkAPI.rejectWithValue(`Project with id:${id} is not found!`);
       }
 
-      console.log('Project Detail - ', res?.data?.data);
+      // console.log('Project Detail - ', res?.data?.data);
 
       return res?.data?.data ?? [];
     } catch (error) {
@@ -60,7 +60,7 @@ export const createProject = createAsyncThunk(
         return thunkAPI.rejectWithValue('Failed to create project');
       }
 
-      console.log('Project created - ', res?.data?.data);
+      // console.log('Project created - ', res?.data?.data);
 
       return res?.data?.data ?? [];
     } catch (error) {
@@ -74,6 +74,7 @@ export const createProject = createAsyncThunk(
 export const updateProject = createAsyncThunk(
   "projects/updateProject", async ({ id, formData }, thunkAPI) => {
     try {
+      console.log('formdata', formData);
       const res = await axiosInstance.put(`${API_BASE_URL}/projects/${id}`, formData, {
         headers: {"Content-Type": "multipart/form"}
       });
@@ -82,7 +83,7 @@ export const updateProject = createAsyncThunk(
         return thunkAPI.rejectWithValue('Failed to update project');
       }
 
-      console.log('Project updated - ', res?.data?.data);
+      // console.log('Project updated - ', res?.data?.data);
 
       return res?.data?.data ?? [];
     } catch (error) {

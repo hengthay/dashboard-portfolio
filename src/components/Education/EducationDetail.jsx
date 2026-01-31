@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { CiEdit } from "react-icons/ci";
 import { FiArrowLeft } from "react-icons/fi";
 import { HiOutlineSparkles } from "react-icons/hi";
@@ -69,7 +69,7 @@ const EducationDetail = () => {
                 <div className="space-y-1">
                   <p className="text-xs font-semibold text-gray-500">Institution</p>
                   <p className="text-lg font-bold text-gray-900">
-                    {educationDetail?.institution || "—"}
+                    {educationDetail?.institution ?? "--"}
                   </p>
                 </div>
 
@@ -78,14 +78,14 @@ const EducationDetail = () => {
                   <div className="rounded-2xl border border-gray-200 bg-gray-50 p-4">
                     <p className="text-xs font-semibold text-gray-500">Degree</p>
                     <p className="mt-1 text-sm font-bold text-gray-900">
-                      {educationDetail?.degree || "—"}
+                      {educationDetail?.degree ?? "--"}
                     </p>
                   </div>
 
                   <div className="rounded-2xl border border-gray-200 bg-gray-50 p-4">
                     <p className="text-xs font-semibold text-gray-500">Field of Study</p>
                     <p className="mt-1 text-sm font-bold text-gray-900">
-                      {educationDetail?.field || "—"}
+                      {educationDetail?.field ?? "--"}
                     </p>
                   </div>
                 </div>
@@ -111,7 +111,7 @@ const EducationDetail = () => {
               <div className="mt-4 space-y-3 text-sm">
                 <div className="flex items-center justify-between gap-3">
                   <span className="text-gray-500">ID</span>
-                  <span className="font-semibold text-gray-900">{educationDetail?.id ?? "—"}</span>
+                  <span className="font-semibold text-gray-900">{educationDetail?.id ?? "--"}</span>
                 </div>
 
                 <div className="flex items-center justify-between gap-3">

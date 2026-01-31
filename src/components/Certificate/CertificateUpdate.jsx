@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { FiArrowLeft, FiSave, FiUpload } from "react-icons/fi";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
@@ -58,8 +58,8 @@ const CertificateUpdate = () => {
     try {
       setLoading(true);
 
-      if (!form.title || !form.issue_date || !form.issuer) {
-        setIsError("Please fill out the box to create");
+      if (!form.title) {
+        setIsError("Title is require!");
         setLoading(false);
         return;
       }
@@ -68,13 +68,16 @@ const CertificateUpdate = () => {
       formData.append("title", form.title);
       formData.append("issuer", form.issuer);
       formData.append("issue_date", form.issue_date);
-      formData.append("image", form.image); // 1 or 0
+      
+      if(form.image) {
+        formData.append("image", form.image); 
+      }
 
       await dispatch(updateCertificate({id, formData})).unwrap();
 
       Swal.fire({
         title: "Updated!",
-        text: "Your Certificate is created successfully!",
+        text: "Your Certificate is updated successfully!",
         icon: "success",
         timer: 1500,
       });
@@ -161,7 +164,6 @@ const CertificateUpdate = () => {
                 name="issuer"
                 value={form.issuer}
                 onChange={handleChange}
-                required
                 placeholder="e.g. Codecademy"
                 className="w-full border border-gray-300 rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-gray-200"
               />
@@ -176,7 +178,6 @@ const CertificateUpdate = () => {
                 name="issue_date"
                 value={form.issue_date}
                 onChange={handleChange}
-                required
                 className="w-full border border-gray-300 rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-gray-200"
               />
             </div>

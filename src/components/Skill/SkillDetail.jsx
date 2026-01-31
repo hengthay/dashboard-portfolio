@@ -59,16 +59,16 @@ const SkillDetail = () => {
             {/* Header */}
             <div className="flex items-center justify-between flex-wrap gap-4">
               <div>
-                <h1 className="lg:text-4xl md:text-3xl text-2xl font-bold text-gray-900">{skillDetail?.name}</h1>
+                <h1 className="lg:text-4xl md:text-3xl text-2xl font-bold text-gray-900">{skillDetail?.name ?? "--"}</h1>
 
                 <span className="inline-block mt-2 px-4 py-1 text-sm font-medium bg-blue-100 text-blue-700 rounded-full">
-                  {skillDetail?.category}
+                  {skillDetail?.category ?? "--"}
                 </span>
               </div>
 
               {/* Level Circle */}
               <div className="sm:w-24 sm:h-24 h-14 w-14 rounded-full bg-blue-600 text-white flex items-center justify-center md:text-2xl sm:text-xl text-base font-bold shadow">
-                {skillDetail?.level}%
+                {skillDetail?.level ?? "--"}%
               </div>
             </div>
 
@@ -106,7 +106,7 @@ const SkillDetail = () => {
             <div className="mt-4 space-y-3 text-sm">
               <div className="flex items-center justify-between gap-3">
                 <span className="text-gray-500">ID</span>
-                <span className="font-semibold text-gray-900">{skillDetail?.id}</span>
+                <span className="font-semibold text-gray-900">{skillDetail?.id ?? "--"}</span>
               </div>
 
               <div className="flex items-center justify-between gap-3">

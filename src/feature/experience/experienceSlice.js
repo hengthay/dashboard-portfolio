@@ -18,7 +18,7 @@ export const fetchExperience = createAsyncThunk(
         return thunkAPI.rejectWithValue("Experiences didn't contain any data!");
       }
 
-      console.log("Experiences data - ", res?.data?.data);
+      // console.log("Experiences data - ", res?.data?.data);
 
       return res?.data?.data ?? [];
     } catch (error) {
@@ -38,7 +38,7 @@ export const fetchExperienceDetail = createAsyncThunk(
         return thunkAPI.rejectWithValue(`Experience with id:${id} is not found!`);
       }
 
-      console.log("Experiences detail - ", res?.data?.data);
+      // console.log("Experiences detail - ", res?.data?.data);
       
       return res?.data?.data ?? [];
     } catch (error) {
@@ -60,7 +60,7 @@ export const createExperience = createAsyncThunk(
         return thunkAPI.rejectWithValue("Failed to create experience");
       }
 
-      console.log("Experiences created - ", res?.data?.data);
+      // console.log("Experiences created - ", res?.data?.data);
       
       return res?.data?.data ?? [];
     } catch (error) {
@@ -80,7 +80,7 @@ export const updateExperience = createAsyncThunk(
         return thunkAPI.rejectWithValue("Failed to update experience");
       }
 
-      console.log("Experiences updated - ", res?.data?.data);
+      // console.log("Experiences updated - ", res?.data?.data);
       
       return res?.data?.data ?? [];
     } catch (error) {

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { CiEdit } from 'react-icons/ci';
 import { FiArrowLeft } from 'react-icons/fi';
 import { HiOutlineSparkles } from 'react-icons/hi'
@@ -51,11 +51,20 @@ const ProfileDetail = () => {
       <div className="grid grid-cols-12 gap-6 md:p-6 p-1">
         <div className="md:col-span-4 col-span-12 w-full group bg-white border border-gray-200 rounded-2xl p-4 sm:p-5 hover:shadow-lg hover:border-gray-300 transition">
           <div className="w-full md:h-full h-60">
-            <img
-              src={`${import.meta.env.VITE_BASE_URL}/storage/${profileDetail?.avatar_url}`}
-              alt={profileDetail?.name}
-              className="w-full h-full object-contain"
-            />
+            {
+              profileDetail?.avatar_url ? (
+                <img
+                  src={`${import.meta.env.VITE_BASE_URL}/storage/${profileDetail?.avatar_url}`}
+                  alt={profileDetail?.name}
+                  className="w-full h-full object-contain group-hover:scale-105 transition duration-300"
+                  loading="lazy"
+                />
+              ) : (
+                <div className="w-full h-full flex flex-col items-center justify-center bg-gray-100 text-gray-400 rounded-2xl">
+                  <span className="text-sm font-medium">No image available</span>
+                </div>
+              )
+            }
           </div>
         </div>
         <div className="md:col-span-8 col-span-12 w-full group bg-white border border-gray-200 rounded-2xl p-4 sm:p-5 hover:shadow-lg hover:border-gray-300 transition">

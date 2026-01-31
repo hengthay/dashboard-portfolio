@@ -1,4 +1,3 @@
-import React from "react";
 import { CiEdit } from "react-icons/ci";
 import { GrView } from "react-icons/gr";
 import { MdDelete } from "react-icons/md";
@@ -49,11 +48,15 @@ const BlogCard = ({ blog }) => {
     <div className="w-full group flex justify-between items-center bg-white border border-gray-200 rounded-2xl p-4 sm:p-5 hover:shadow-md hover:border-gray-300 transition">
       <div className="w-full flex flex-col sm:flex-row items-center gap-4">
         <div className="w-full sm:w-100 sm:h-50 h-44">
-          <img
-            src={`${import.meta.env.VITE_BASE_URL}/storage/${blog?.cover_image}`}
-            alt={blog?.title}
-            className="w-full h-full object-cover group-hover:scale-105 transition duration-300 bg-gray-300 rounded-xl shadow"
-          />
+          {
+            blog.cover_image ? (
+              <img src={`${import.meta.env.VITE_BASE_URL}/storage/${blog.cover_image}`} alt={blog.title} className="w-full h-full object-cover transform transition-all ease-in-out duration-500 rounded-2xl group-hover:scale-105 shadow-sm"/>
+            ) : (
+              <div className="w-full h-full flex flex-col items-center justify-center bg-gray-100 text-gray-400 rounded-2xl">
+                <span className="text-sm font-medium">No image available</span>
+              </div>
+            )
+          }
         </div>
         <div className="w-full flex flex-col items-start gap-4">
           <div className="flex justify-between items-center gap-x-10">

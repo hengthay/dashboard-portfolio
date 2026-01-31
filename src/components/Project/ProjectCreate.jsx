@@ -69,10 +69,12 @@ const ProjectCreate = () => {
       formData.append("title", form.title);
       formData.append("description", form.description);
       formData.append("category", form.category);
-      formData.append("image_url", form.image_url); 
       formData.append("demo_url", form.demo_url);
       formData.append("github_url", form.github_url);
 
+      if (form.image_url) {
+        formData.append("image_url", form.image_url); 
+      }
       // techs loop through tech and append to formdata
       form.technologies.forEach((t, i) => {
         formData.append(`technologies[${i}]`, t);
@@ -148,7 +150,7 @@ const ProjectCreate = () => {
             {/* Title */}
             <div className="space-y-1 flex flex-col">
               <label id="title" className="text-sm font-medium text-gray-700">
-                Project Title
+                Project Title <span className='text-base text-red-500'>*</span>
               </label>
               <input
                 type="text"
@@ -233,7 +235,7 @@ const ProjectCreate = () => {
           {/* Image upload */}
           <div className="space-y-2 md:col-span-4 col-span-12 flex flex-col">
             <p className="text-sm font-medium text-gray-700 mb-2">
-              Achievement Icon / Image
+              Project Icon / Image
             </p>
 
             <div className="flex flex-col items-start gap-6">

@@ -62,7 +62,6 @@ export const updateAchievement = createAsyncThunk(
   "achievements/updateAchievement",
   async ({ id, formData }, thunkAPI) => {
     try {
-      console.log("formdata in redux: ", formData);
       const res = await axiosInstance.put(
         `${API_BASE_URL}/achievements/${id}`,
         formData,

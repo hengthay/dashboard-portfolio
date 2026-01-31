@@ -5,7 +5,6 @@ import { IoMdAdd } from 'react-icons/io'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { fetchSkill, selectSkills, selectSkillStatus } from '../feature/skill/skillSlice'
-import { formatDate } from '../components/Helper/formatDate'
 import SkillCard from '../components/Skill/SkillCard'
 
 const Skill = () => {
@@ -93,7 +92,7 @@ const Skill = () => {
           </div>
           <div className="mt-10">
             {skillStatus === "loading" && (
-              <p className="text-gray-500 text-center">Loading experience...</p>
+              <p className="text-gray-500 text-center">Loading skill...</p>
             )}
 
             {/* Not found */}

@@ -93,14 +93,8 @@ const BlogUpdate = () => {
     try {
       setLoading(true);
 
-      if (
-        !form.title ||
-        !form.content ||
-        !form.slug ||
-        form.tags.length === 0 ||
-        !form.join_date
-      ) {
-        setIsError("Please fill out required fields");
+      if (!form.title || !form.slug || form.tags.length === 0 ) {
+        setIsError("Title, Slug and Tags are require!");
         setLoading(false);
         return;
       }
@@ -112,7 +106,8 @@ const BlogUpdate = () => {
       formData.append("slug", form.slug);
       formData.append("published", form.published ? "1" : "0"); // 1 or 0
       formData.append("join_date", form.join_date);
-      if (form.cover_image instanceof File) {
+
+      if (form.cover_image) {
         formData.append("cover_image", form.cover_image);
       }
 
@@ -238,7 +233,6 @@ const BlogUpdate = () => {
                 name="published"
                 value={form.published}
                 onChange={handleChange}
-                required
                 placeholder="e.g. 0"
                 className="w-full border border-gray-300 rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-gray-200"
               />
@@ -254,7 +248,6 @@ const BlogUpdate = () => {
                 value={form.content}
                 onChange={handleChange}
                 rows={4}
-                required
                 placeholder="Describe your blogs..."
                 className="w-full border border-gray-300 rounded-lg px-3 py-2 outline-none resize-none focus:ring-2 focus:ring-gray-200"
               />
@@ -308,7 +301,7 @@ const BlogUpdate = () => {
           {/* Image upload */}
           <div className="space-y-2 md:col-span-4 col-span-12">
             <p className="text-sm font-medium text-gray-700 mb-2">
-              Achievement Icon / Image
+              Blog Icon / Image
             </p>
 
             <div className="flex flex-col items-start gap-6">
@@ -367,7 +360,6 @@ const BlogUpdate = () => {
                 name="join_date"
                 value={form.join_date}
                 onChange={handleChange}
-                required
                 placeholder="e.g. 0"
                 className="w-full border border-gray-300 rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-gray-200"
               />

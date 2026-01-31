@@ -53,7 +53,7 @@ const EducationUpdate = () => {
       setLoading(true);
 
       if (!form.institution || !form.degree) {
-        setIsError("Institution and Degree is required!");
+        setIsError("Institution and Degree are required!");
         setLoading(false);
         return;
       }

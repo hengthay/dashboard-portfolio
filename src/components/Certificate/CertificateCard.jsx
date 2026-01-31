@@ -49,12 +49,21 @@ const CertificateCard = ({ certificate }) => {
       <div className="flex flex-col sm:flex-row sm:items-center gap-4">
         {/* Image */}
         <div className="w-full sm:w-44 sm:h-32 h-44 overflow-hidden rounded-xl bg-gray-100 border border-gray-200">
-          <img
-            src={`${import.meta.env.VITE_BASE_URL}/storage/${certificate?.image}`}
-            alt={certificate?.title}
-            className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
-            loading="lazy"
-          />
+          {
+            certificate?.image ? (
+              <img
+                src={`${import.meta.env.VITE_BASE_URL}/storage/${certificate?.image}`}
+                alt={certificate?.title}
+                className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+                loading="lazy"
+              />
+            ) : (
+              <div className="w-full h-full flex flex-col items-center justify-center bg-gray-100 text-gray-400 rounded-2xl">
+                <span className="text-sm font-medium">No image available</span>
+              </div>
+            )
+          }
+          
         </div>
 
         {/* Content */}
@@ -65,7 +74,7 @@ const CertificateCard = ({ certificate }) => {
             </h3>
 
             <span className="inline-flex items-center text-xs font-semibold rounded-full px-2.5 py-1 bg-gray-100 text-gray-700 border border-gray-200">
-              #{certificate?.id}
+              #{certificate?.id ?? "--"}
             </span>
           </div>
 
@@ -73,14 +82,14 @@ const CertificateCard = ({ certificate }) => {
             <p className="truncate">
               <span className="text-gray-400">Issuer:</span>{" "}
               <span className="font-medium text-gray-700">
-                {certificate?.issuer}
+                {certificate?.issuer ?? '--'}
               </span>
             </p>
 
             <p className="truncate">
               <span className="text-gray-400">Issued:</span>{" "}
               <span className="font-medium text-gray-700">
-                {certificate?.issue_date}
+                {certificate?.issue_date ?? '--'}
               </span>
             </p>
           </div>

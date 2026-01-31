@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { CiEdit } from 'react-icons/ci'
 import { FiArrowLeft } from 'react-icons/fi'
 import { HiOutlineSparkles } from 'react-icons/hi'
@@ -55,8 +55,8 @@ const ExperienceDetail = () => {
             <div className='bg-white border border-gray-300 shadow-sm rounded-2xl transition ease-in duration-300 md:p-6 p-2'>
               <div className="space-y-4">
                 <div className='space-y-1'>
-                  <h2 className='md:text-xl text-lg font-semibold leading-relaxed tracking-wider'>{experienceDetail?.company}</h2>
-                  <p className='md:text-lg text-base font-semibold text-cyan-500 leading-relaxed tracking-wider'>{experienceDetail?.position}</p>
+                  <h2 className='md:text-xl text-lg font-semibold leading-relaxed tracking-wider'>{experienceDetail?.company ?? "--"}</h2>
+                  <p className='md:text-lg text-base font-semibold text-cyan-500 leading-relaxed tracking-wider'>{experienceDetail?.position ?? "--"}</p>
                 </div>
                 <hr className='mt-4 text-gray-400'/>
                 <div className='grid grid-cols-2 items-center gap-6'>
@@ -77,7 +77,7 @@ const ExperienceDetail = () => {
                 <div className='mt-2 space-y-1'>
                   <p className='md:text-sm text-xs text-gray-500'>Description</p>
                   <span className='font-normal text-base leading-relaxed'>
-                    {experienceDetail?.description}
+                    {experienceDetail?.description ?? "No Description"}
                   </span>
                 </div>
               </div>
@@ -90,7 +90,7 @@ const ExperienceDetail = () => {
               <div className="mt-4 space-y-3 text-sm">
                 <div className="flex items-center justify-between gap-3">
                   <span className="text-gray-500">ID</span>
-                  <span className="font-semibold text-gray-900">{experienceDetail?.id}</span>
+                  <span className="font-semibold text-gray-900">{experienceDetail?.id ?? "--"}</span>
                 </div>
 
                 <div className="flex items-center justify-between gap-3">

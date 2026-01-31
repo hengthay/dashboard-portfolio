@@ -20,8 +20,9 @@ export const loginUser = createAsyncThunk(
 
       return res?.data?.data ?? [];
     } catch (error) {
-      console.log('Failed to login user - ', error);
-      return thunkAPI.rejectWithValue(error);
+      console.log('Failed to login user - ', error.response);
+      const msg = error?.response?.data?.message;
+      return thunkAPI.rejectWithValue(msg);
     }
   }
 )
@@ -33,14 +34,11 @@ export const logoutUser = createAsyncThunk(
         withCredentials: true
       });
 
-      if(!res?.data?.data) {
-        return thunkAPI.rejectWithValue('Failed to logout');
-      }
-
-      return res?.data?.data ?? [];
+      return res?.data?.data ?? {message: "Logged out"};
     } catch (error) {
       console.log('Failed to logout user - ', error);
-      return thunkAPI.rejectWithValue(error);
+      const msg = error?.response?.data?.message;
+      return thunkAPI.rejectWithValue(msg);
     }
   }
 )

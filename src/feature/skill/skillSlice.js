@@ -18,7 +18,7 @@ export const fetchSkill = createAsyncThunk(
         return thunkAPI.rejectWithValue('Skill is not contain any data!');
       }
 
-      console.log('Skill Data - ', res?.data?.data);
+      // console.log('Skill Data - ', res?.data?.data);
       
       return res?.data?.data ?? [];
     } catch (error) {
@@ -38,7 +38,7 @@ export const fetchSkillDetail = createAsyncThunk(
         return thunkAPI.rejectWithValue(`Skill with id:${id} is not found!`);
       }
 
-      console.log('Skill Detail - ', res?.data?.data);
+      // console.log('Skill Detail - ', res?.data?.data);
 
       return res?.data?.data ?? [];
     } catch (error) {
@@ -60,7 +60,7 @@ export const createSkill = createAsyncThunk(
         return thunkAPI.rejectWithValue('Failed to create skill');
       }
 
-      console.log('Skill created - ', res?.data?.data);
+      // console.log('Skill created - ', res?.data?.data);
 
       return res?.data?.data ?? [];
     } catch (error) {
@@ -82,7 +82,7 @@ export const updateSkill = createAsyncThunk(
         return thunkAPI.rejectWithValue('Failed to update skill');
       }
 
-      console.log('Skill updated - ', res?.data?.data);
+      // console.log('Skill updated - ', res?.data?.data);
 
       return res?.data?.data ?? [];
     } catch (error) {

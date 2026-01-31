@@ -1,4 +1,3 @@
-import React from 'react'
 import { CiEdit } from 'react-icons/ci'
 import { GrView } from 'react-icons/gr'
 import { MdDelete } from 'react-icons/md'
@@ -40,7 +39,7 @@ const SkillCard = ({ skill }) => {
       console.log(error);
       Swal.fire({
         title: "Failed",
-        text: "Your project could not be deleted.",
+        text: "Your skill could not be deleted.",
         icon: "error",
         timer: 1500,
       });
@@ -52,7 +51,7 @@ const SkillCard = ({ skill }) => {
       <div className="flex md:flex-row flex-col justify-between sm:items-center items-start mb-4 space-y-2">
         <h3 className="text-xl font-bold">{skill.name}</h3>
         <span className="px-3 py-1 text-xs bg-blue-100 text-blue-600 rounded-full">
-          {skill.category}
+          {skill.category ?? "--"}
         </span>
       </div>
       
@@ -62,7 +61,7 @@ const SkillCard = ({ skill }) => {
             Proficiency
           </span>
           <span className="text-sm font-semibold inline-block text-blue-600">
-            {skill.level}%
+            {skill.level ?? "--"}%
           </span>
         </div>
         <div className="overflow-hidden h-2 mb-4 text-xs flex rounded bg-blue-200">
@@ -71,7 +70,7 @@ const SkillCard = ({ skill }) => {
       </div>
 
       <p className="text-gray-400 text-xs mt-4">
-        Last updated: {formatDate(skill.updated_at)}
+        Last updated: {skill.updated_at ? formatDate(skill.updated_at) : '--'}
       </p>
       <div className="w-full flex md:flex-row flex-col gap-2 mt-2">
         {/* View */}

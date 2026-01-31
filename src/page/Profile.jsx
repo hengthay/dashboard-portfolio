@@ -1,19 +1,14 @@
-import React, { useEffect, useMemo, useState } from "react";
-import { CiEdit } from "react-icons/ci";
+import { useEffect, useMemo, useState } from "react";
 import { FiSearch } from "react-icons/fi";
-import { GrView } from "react-icons/gr";
 import { HiOutlineSparkles } from "react-icons/hi";
 import { IoMdAdd } from "react-icons/io";
-import { MdDelete } from "react-icons/md";
 import { Link, useOutletContext } from "react-router-dom";
-import { selectProject } from "../feature/project/projectSlice";
 import { fetchProfile, selectProfile, selectProfileStatus } from "../feature/profile/profileSlice";
 import { useDispatch, useSelector } from "react-redux";
 import ProfileCard from "../components/Profile/ProfileCard";
 
 const Profile = () => {
   const [search, setSearch] = useState("");
-  const { isOpen } = useOutletContext();
   const profiles = useSelector(selectProfile);
   const profileStatus = useSelector(selectProfileStatus);
   const dispatch = useDispatch();

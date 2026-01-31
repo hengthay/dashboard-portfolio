@@ -19,7 +19,7 @@ export const fetchBlog = createAsyncThunk(
         return thunkAPI.rejectWithValue("Blogs is not contain any data!");
       }
 
-      console.log("Blog data - ", res?.data?.data);
+      // console.log("Blog data - ", res?.data?.data);
 
       return res?.data?.data ?? [];
     } catch (error) {
@@ -42,7 +42,7 @@ export const fetchBlogDetail = createAsyncThunk(
         return thunkAPI.rejectWithValue(`Blog with id: ${id} is not found!`);
       }
 
-      console.log("Blog Detail data - ", res?.data?.data);
+      // console.log("Blog Detail data - ", res?.data?.data);
 
       return res?.data?.data ?? [];
     } catch (error) {
@@ -66,7 +66,7 @@ export const createBlog = createAsyncThunk(
         return thunkAPI.rejectWithValue('Blog is not able to create');
       }
 
-      console.log("Blog updated - ", res?.data?.data);
+      // console.log("Blog updated - ", res?.data?.data);
 
       return res?.data?.data ?? [];
     } catch (error) {
@@ -93,7 +93,7 @@ export const updateBlog = createAsyncThunk(
         return thunkAPI.rejectWithValue('Blog is not able to update');
       }
       
-      console.log("Blog updated - ", res?.data?.data);
+      // console.log("Blog updated - ", res?.data?.data);
       return res?.data?.data ?? [];
     } catch (error) {
       console.log('update error response:', error.response); // Better debugging

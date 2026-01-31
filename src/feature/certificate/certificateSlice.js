@@ -21,7 +21,7 @@ export const fetchCertificate = createAsyncThunk(
         );
       }
 
-      console.log("Certificate - ", res?.data?.data);
+      // console.log("Certificate - ", res?.data?.data);
 
       return res?.data?.data ?? [];
     } catch (error) {
@@ -44,7 +44,7 @@ export const fetchCertificateDetail = createAsyncThunk(
         );
       }
 
-      console.log("Certificate detail - ", res?.data?.data);
+      // console.log("Certificate detail - ", res?.data?.data);
 
       return res?.data?.data ?? [];
     } catch (error) {
@@ -71,7 +71,7 @@ export const createCertificate = createAsyncThunk(
         return thunkAPI.rejectWithValue("Failed to create certificate");
       }
 
-      console.log("Certificate created - ", res?.data?.data);
+      // console.log("Certificate created - ", res?.data?.data);
 
       return res?.data?.data ?? [];
     } catch (error) {
@@ -98,7 +98,7 @@ export const updateCertificate = createAsyncThunk(
         return thunkAPI.rejectWithValue("Failed to update certificate");
       }
 
-      console.log("Certificate updated - ", res?.data?.data);
+      // console.log("Certificate updated - ", res?.data?.data);
 
       return res?.data?.data ?? [];
     } catch (error) {

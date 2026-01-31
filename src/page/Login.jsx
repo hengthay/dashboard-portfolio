@@ -53,7 +53,7 @@ const Login = () => {
       await dispatch(loginUser({ payload })).unwrap();
 
       Swal.fire({
-        title: "Login Successfully",
+        title: "Successfully",
         text: "Your login is successfully!",
         icon: 'success',
         timer: 2000,

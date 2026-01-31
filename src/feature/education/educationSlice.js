@@ -18,7 +18,7 @@ export const fetchEducation = createAsyncThunk(
         return thunkAPI.rejectWithValue('Education is not contain any data');
       }
 
-      console.log('Education data - ', res?.data?.data);
+      // console.log('Education data - ', res?.data?.data);
 
       return res?.data?.data ?? [];
     } catch (error) {
@@ -38,7 +38,7 @@ export const fetchEducationDetail = createAsyncThunk(
         return thunkAPI.rejectWithValue(`Education with id:${id} is not found!`);
       }
 
-      console.log('Education detail data - ', res?.data?.data);
+      // console.log('Education detail data - ', res?.data?.data);
 
       return res?.data?.data ?? [];
     } catch (error) {
@@ -60,7 +60,7 @@ export const createEducation = createAsyncThunk(
         return thunkAPI.rejectWithValue('Failed to create education');
       }
 
-      console.log('Education created data - ', res?.data?.data);
+      // console.log('Education created data - ', res?.data?.data);
 
       return res?.data?.data ?? [];
     } catch (error) {
@@ -80,7 +80,7 @@ export const updateEducation = createAsyncThunk(
         return thunkAPI.rejectWithValue('Failed to create education');
       }
 
-      console.log('Education updated data - ', res?.data?.data);
+      // console.log('Education updated data - ', res?.data?.data);
 
       return res?.data?.data ?? [];
     } catch (error) {

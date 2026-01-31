@@ -16,7 +16,7 @@ export const fetchProfile = createAsyncThunk(
 
       if(!res?.data?.data) return thunkAPI.rejectWithValue('Profile did not contain any data!');
 
-      console.log('Profile Data - ', res?.data?.data);
+      // console.log('Profile Data - ', res?.data?.data);
 
       return res?.data?.data ?? [];
     } catch (error) {
@@ -34,7 +34,7 @@ export const fetchProfileDetail = createAsyncThunk(
 
       if(!res?.data?.data) return thunkAPI.rejectWithValue(`Profile with id:${id} is not found!`);
 
-      console.log('Profile Detail - ', res?.data?.data);
+      // console.log('Profile Detail - ', res?.data?.data);
 
       return res?.data?.data ?? [];
     } catch (error) {
@@ -54,7 +54,7 @@ export const createProfile = createAsyncThunk(
 
       if(!res?.data?.data) return thunkAPI.rejectWithValue('Failed to create profile!');
 
-      console.log('Profile created - ', res?.data?.data);
+      // console.log('Profile created - ', res?.data?.data);
 
       return res?.data?.data ?? [];
     } catch (error) {
@@ -74,7 +74,7 @@ export const updateProfile = createAsyncThunk(
 
       if(!res?.data?.data) return thunkAPI.rejectWithValue('Failed to update profile!');
 
-      console.log('Profile updated - ', res?.data?.data);
+      // console.log('Profile updated - ', res?.data?.data);
 
       return res?.data?.data ?? [];
     } catch (error) {

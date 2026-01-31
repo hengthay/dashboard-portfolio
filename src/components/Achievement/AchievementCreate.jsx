@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { FiUpload, FiSave, FiArrowLeft } from "react-icons/fi";
 import { useDispatch } from "react-redux";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { createAchievement } from "../../feature/achievement/achievementSlice";
 import Swal from "sweetalert2";
 
@@ -30,15 +30,14 @@ const AchievementCreate = () => {
       setForm((prev) => ({ ...prev, [name]: value }));
     }
   };
-  console.log("icon_url:", form.icon_url);
-  console.log("isFile:", form.icon_url instanceof File);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       setLoading(true);
 
-      if (!form.title || !form.description || !form.icon_url) {
-        setIsError("Please fill out the box to create");
+      if (!form.title) {
+        setIsError("Title is require!");
         setLoading(false);
         return;
       }
@@ -48,7 +47,7 @@ const AchievementCreate = () => {
       formData.append("description", form.description);
       formData.append("icon_url", form.icon_url);
 
-      await dispatch(createAchievement(formData));
+      await dispatch(createAchievement(formData)).unwrap();
 
       Swal.fire({
         title: "Created!",
@@ -110,7 +109,7 @@ const AchievementCreate = () => {
             {/* Title */}
             <div className="space-y-2 flex flex-col">
               <label className="text-sm font-medium text-gray-700">
-                Achievement Title
+                Achievement Title <span className="text-sm text-red-500">*</span>
               </label>
               <input
                 type="text"

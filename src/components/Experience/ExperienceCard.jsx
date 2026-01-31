@@ -3,33 +3,72 @@ import { GrView } from 'react-icons/gr'
 import { MdDelete } from 'react-icons/md'
 import { Link, useOutletContext } from 'react-router-dom'
 import { formatDate } from '../Helper/formatDate'
+import { useDispatch } from 'react-redux'
+import Swal from 'sweetalert2'
+import { removeExperienceById } from '../../feature/experience/experienceSlice'
 
 const ExperienceCard = ({ experience }) => {
 
   const { isOpen } = useOutletContext();
+
+  const dispatch = useDispatch();
+
+  const handleDelete = async (id) => {
+    const result = await Swal.fire({
+      title: "Are you sure?",
+      text: "This experience will be permanently deleted!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#6b7280",
+      confirmButtonText: "Yes, delete it",
+      cancelButtonText: "Cancel",
+    });
+
+    if (!result.isConfirmed) return; // ❌ user canceled
+    try {
+      await dispatch(removeExperienceById(id)).unwrap();
+
+      Swal.fire({
+        title: "Deleted",
+        text: "Experience has been deleted successfully!",
+        icon: "success",
+        timer: 1500,
+        showConfirmButton: false,
+      });
+    } catch (error) {
+      console.log(error);
+      Swal.fire({
+        title: "Failed",
+        text: "Your experience could not be deleted.",
+        icon: "error",
+        timer: 1500,
+      });
+    }
+  };
 
   return (
     <div key={experience.id} className="w-full group bg-white border border-gray-200 rounded-2xl p-4 sm:p-5 hover:shadow-lg hover:border-gray-300 transition">
       <div className="flex flex-col items-start space-y-2.5">
         <div className="flex flex-wrap items-center gap-2">
           <h3 className="text-base sm:text-lg md:text-xl font-semibold text-gray-900 truncate leading-relaxed tracking-wider">
-            {experience.company}
+            {experience.company ?? '--'}
           </h3>
           <span className="inline-flex items-center text-xs font-semibold rounded-full px-2.5 py-1 bg-gray-100 text-gray-700 border border-gray-200">
-            #{experience.id}
+            #{experience.id ?? "--"}
           </span>
         </div>
         <div className="flex flex-wrap items-center gap-2">
           <p className="font-medium sm:text-base text-sm leading-relaxed tracking-wider">
-            {experience.position}
+            {experience.position ?? "--"}
           </p>
 
           <p className="text-gray-600 text-sm leading-relaxed tracking-wider">
-            {experience.description}
+            {experience.description ?? "No Description"}
           </p>
         </div>
         <p className="text-sm text-gray-400">
-          Created at • {formatDate(experience?.created_at)}
+          Created at • {experience.created_at ? formatDate(experience?.created_at) : "--"}
         </p>
 
         {/* Actions */}

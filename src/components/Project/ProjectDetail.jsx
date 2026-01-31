@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom'
 import { fetchProjectDetail, selectProjectDetail } from '../../feature/project/projectSlice';
@@ -56,7 +56,7 @@ const ProjectDetail = () => {
             <div className='bg-white border border-gray-300 shadow-sm rounded-2xl transition ease-in duration-300 md:p-4 p-2'>
               <div className='flex justify-between items-center'>
                 <h4 className="text-xl font-semibold text-gray-900">Overview</h4>
-                <p className="px-2.5 py-1 text-xs font-semibold rounded-full bg-cyan-500/20 text-cyan-500 border border-cyan-500/50 transition-all ease-in-out duration-300 hover:shadow-sm">{projectDetail?.category}</p>
+                <p className="px-2.5 py-1 text-xs font-semibold rounded-full bg-cyan-500/20 text-cyan-500 border border-cyan-500/50 transition-all ease-in-out duration-300 hover:shadow-sm">{projectDetail?.category ?? "--"}</p>
               </div>
               <hr className='text-gray-400 my-4'/>
               <div className="mt-6 space-y-4 grid md:grid-cols-2 grid-cols-1 gap-6">
@@ -95,8 +95,8 @@ const ProjectDetail = () => {
                   </div>
                 </div>
                 <div className='p-2 space-y-3'>
-                  <h2 className="text-base sm:text-lg md:text-xl font-semibold text-gray-900 truncate leading-relaxed tracking-wider">{projectDetail?.title}</h2>
-                  <p className="font-normal sm:text-base text-sm leading-relaxed tracking-wide text-gray-500">{projectDetail?.description}</p>
+                  <h2 className="text-base sm:text-lg md:text-xl font-semibold text-gray-900 truncate leading-relaxed tracking-wider">{projectDetail?.title ?? "--"}</h2>
+                  <p className="font-normal sm:text-base text-sm leading-relaxed tracking-wide text-gray-500">{projectDetail?.description ?? "No Description"}</p>
                   <div className='flex flex-col space-y-2'>
                     <div className='flex flex-wrap items-center gap-1.5'>
                       <p className="text-sm font-medium text-gray-500 leading-relaxed tracking-wider">Built With :</p>
@@ -123,7 +123,7 @@ const ProjectDetail = () => {
                 <div className="mt-4 space-y-3 text-sm">
                   <div className="flex items-center justify-between gap-3">
                     <span className="text-gray-500">ID</span>
-                    <span className="font-semibold text-gray-900">{projectDetail?.id ?? "—"}</span>
+                    <span className="font-semibold text-gray-900">{projectDetail?.id ?? "--"}</span>
                   </div>
   
                   <div className="flex items-center justify-between gap-3">

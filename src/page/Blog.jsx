@@ -1,12 +1,9 @@
-import React, { useEffect, useMemo, useState } from "react";
-import { CiEdit } from "react-icons/ci";
+import { useEffect, useMemo, useState } from "react";
 import { FiSearch } from "react-icons/fi";
-import { GrView } from "react-icons/gr";
 import { HiOutlineSparkles } from "react-icons/hi";
 import { IoMdAdd } from "react-icons/io";
-import { MdDelete } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useOutletContext } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { fetchBlog, selectBlog, selectBlogStatus } from "../feature/blog/blogSlice";
 import BlogCard from "../components/Blog/BlogCard";
 

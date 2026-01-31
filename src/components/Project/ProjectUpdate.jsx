@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import { createProject, fetchProjectDetail, selectProjectDetail, updateProject } from '../../feature/project/projectSlice';
+import { fetchProjectDetail, selectProjectDetail, updateProject } from '../../feature/project/projectSlice';
 import Swal from 'sweetalert2';
 import { FiArrowLeft, FiSave, FiUpload } from 'react-icons/fi';
 
@@ -82,18 +82,17 @@ const ProjectUpdate = () => {
       console.log(error);
     }
   }, [project]);
-
+      console.log(form.description);
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       setLoading(true);
 
       if (!form.title || form.technologies.length === 0) {
-        setIsError("Title and Technologies is required!");
+        setIsError("Title and Technologies are required!");
         setLoading(false);
         return;
       }
-
       const formData = new FormData();
       formData.append("title", form.title);
       formData.append("description", form.description);
@@ -101,7 +100,7 @@ const ProjectUpdate = () => {
       formData.append("demo_url", form.demo_url);
       formData.append("github_url", form.github_url);
       // ✅ only append if user selected a NEW file
-      if (form.image_url instanceof File) {
+      if (form.image_url) {
         formData.append("image_url", form.image_url);
       }
       // tags loop through tag and append to formdata
@@ -185,7 +184,7 @@ const ProjectUpdate = () => {
             {/* Title */}
             <div className="space-y-1 flex flex-col">
               <label id="title" className="text-sm font-medium text-gray-700">
-                Project Title
+                Project Title <span className='text-base text-red-500'>*</span>
               </label>
               <input
                 type="text"
@@ -270,7 +269,7 @@ const ProjectUpdate = () => {
           {/* Image upload */}
           <div className="space-y-2 md:col-span-4 col-span-12 flex flex-col">
             <p className="text-sm font-medium text-gray-700 mb-2">
-              Achievement Icon / Image
+              Project Icon / Image
             </p>
 
             <div className="flex flex-col items-start gap-6">

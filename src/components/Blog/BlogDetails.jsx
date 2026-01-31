@@ -20,7 +20,7 @@ const BlogDetails = () => {
     if (id) dispatch(fetchBlogDetail(id));
   }, [id, dispatch]);
 
-  console.log(blogDetail);
+  // console.log(blogDetail);
 
   return (
     <div className="w-full flex justify-center px-4 mt-6">
@@ -50,11 +50,15 @@ const BlogDetails = () => {
             key={blogDetail?.id}
           >
             <div className="w-full h-90 bg-white flex items-center justify-center p-6">
-              <img
-                src={`${import.meta.env.VITE_BASE_URL}/storage/${blogDetail?.cover_image}`}
-                alt={blogDetail?.title}
-                className="h-full w-full object-contain hover:scale-105 transition duration-300"
-              />
+              {
+                blogDetail.cover_image ? (
+                  <img src={`${import.meta.env.VITE_BASE_URL}/storage/${blogDetail.cover_image}`} alt={blogDetail.title} className="w-full h-full object-cover transform transition-all ease-in-out duration-500 rounded-2xl group-hover:scale-105 shadow-sm"/>
+                ) : (
+                  <div className="w-full h-full flex flex-col items-center justify-center bg-gray-100 text-gray-400 rounded-2xl">
+                    <span className="text-sm font-medium">No image available</span>
+                  </div>
+                )
+              }
             </div>
           </div>
           <div className="w-full max-w-6xl mt-6 space-y-6">

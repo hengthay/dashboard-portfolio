@@ -60,12 +60,20 @@ const CertificateDetail = () => {
             <div className="col-span-12 lg:col-span-7 bg-gray-50 border-b lg:border-b-0 lg:border-r border-gray-200">
               <div className="p-5 sm:p-6 md:p-8">
                 <div className="w-full h-80 sm:h-95 md:h-105 rounded-2xl bg-white border border-gray-200 overflow-hidden flex items-center justify-center">
-                  <img
-                    src={`${import.meta.env.VITE_BASE_URL}/storage/${certificateDetail?.image}`}
-                    alt={certificateDetail?.title}
-                    className="w-full h-full object-contain hover:scale-105 transition duration-300"
-                    loading="lazy"
-                  />
+                  {
+                    certificateDetail?.image ? (
+                      <img
+                        src={`${import.meta.env.VITE_BASE_URL}/storage/${certificateDetail?.image}`}
+                        alt={certificateDetail?.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+                        loading="lazy"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex flex-col items-center justify-center bg-gray-100 text-gray-400 rounded-2xl">
+                        <span className="text-sm font-medium">No image available</span>
+                      </div>
+                    )
+                  }
                 </div>
               </div>
             </div>
@@ -77,11 +85,11 @@ const CertificateDetail = () => {
                 <div className="space-y-2">
                   <div className="flex flex-wrap items-center gap-2">
                     <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 leading-snug">
-                      {certificateDetail?.title || "—"}
+                      {certificateDetail?.title || "No Title"}
                     </h2>
 
                     <span className="inline-flex items-center text-xs font-bold rounded-full px-3 py-1 bg-gray-100 text-gray-700 border border-gray-200">
-                      #{certificateDetail?.id ?? "—"}
+                      #{certificateDetail?.id ?? "--"}
                     </span>
                   </div>
 
@@ -95,7 +103,7 @@ const CertificateDetail = () => {
                   <div className="rounded-2xl border border-gray-200 bg-gray-50 p-4">
                     <p className="text-xs font-semibold text-gray-500">Issuer</p>
                     <p className="mt-1 text-sm font-semibold text-gray-900 truncate">
-                      {certificateDetail?.issuer || "—"}
+                      {certificateDetail?.issuer || "--"}
                     </p>
                   </div>
 

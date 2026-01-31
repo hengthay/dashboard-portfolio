@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { FiArrowLeft, FiSave, FiUpload } from "react-icons/fi";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
@@ -56,14 +56,8 @@ const BlogCreate = () => {
     try {
       setLoading(true);
 
-      if (
-        !form.title ||
-        !form.content ||
-        !form.slug ||
-        form.tags.length === 0 ||
-        !form.join_date
-      ) {
-        setIsError("Please fill out the box to create");
+      if (!form.title || !form.slug || form.tags.length === 0) {
+        setIsError("Title, Slug and Tags are require!");
         setLoading(false);
         return;
       }
@@ -74,14 +68,17 @@ const BlogCreate = () => {
       formData.append("slug", form.slug);
       formData.append("published", form.published); // 1 or 0
       formData.append("join_date", form.join_date);
-      formData.append("cover_image", form.cover_image);
+
+      if (form.cover_image) {
+        formData.append("cover_image", form.cover_image);
+      }
 
       // tags loop through tag and append to formdata
       form.tags.forEach((t, i) => {
         formData.append(`tags[${i}]`, t);
       });
 
-      await dispatch(createBlog(formData));
+      await dispatch(createBlog(formData)).unwrap();
 
       Swal.fire({
         title: "Created!",
@@ -192,7 +189,6 @@ const BlogCreate = () => {
                 name="published"
                 value={form.published}
                 onChange={handleChange}
-                required
                 placeholder="e.g. 0"
                 className="w-full max-sm:w-70 border border-gray-300 rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-gray-200"
               />
@@ -208,7 +204,6 @@ const BlogCreate = () => {
                 value={form.content}
                 onChange={handleChange}
                 rows={4}
-                required
                 placeholder="Describe your blogs..."
                 className="w-full max-sm:w-70 border border-gray-300 rounded-lg px-3 py-2 outline-none resize-none focus:ring-2 focus:ring-gray-200"
               />
@@ -262,7 +257,7 @@ const BlogCreate = () => {
           {/* Image upload */}
           <div className="space-y-2 md:col-span-4 col-span-12 flex flex-col">
             <p className="text-sm font-medium text-gray-700 mb-2">
-              Achievement Icon / Image
+              Blog Icon / Image
             </p>
 
             <div className="flex flex-col items-start gap-6">
@@ -321,7 +316,6 @@ const BlogCreate = () => {
                 name="join_date"
                 value={form.join_date}
                 onChange={handleChange}
-                required
                 placeholder="e.g. 0"
                 className="w-full max-sm:w-70 border border-gray-300 rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-gray-200"
               />

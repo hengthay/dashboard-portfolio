@@ -1,4 +1,3 @@
-import React from "react";
 import { CiEdit } from "react-icons/ci";
 import { GrView } from "react-icons/gr";
 import { MdDelete } from "react-icons/md";
@@ -55,19 +54,19 @@ const EducationCard = ({ education }) => {
         <div className="flex-1 min-w-0 space-y-4">
           <div className="flex flex-wrap items-center gap-2">
             <h3 className="text-base sm:text-lg md:text-xl font-semibold text-gray-900 truncate">
-              {education?.institution}
+              {education?.institution ?? "--"}
             </h3>
 
             <span className="inline-flex items-center text-xs font-semibold rounded-full px-2.5 py-1 bg-gray-100 text-gray-700 border border-gray-200">
-              #{education?.id}
+              #{education?.id  ?? "--"}
             </span>
           </div>
           <div className="mt-3 flex flex-wrap items-center gap-2">
             {/* Degree + Field */}
             <p className="text-sm sm:text-base text-gray-700">
-              <span className="font-semibold">{education?.degree}</span>
+              <span className="font-semibold">{education?.degree  ?? "--"}</span>
               <span className="text-gray-400"> • </span>
-              <span className="font-medium">{education?.field}</span>
+              <span className="font-medium">{education?.field  ?? "--"}</span>
             </p>
           </div>
           <div className="mt-3 flex items-center gap-2">

@@ -1,4 +1,3 @@
-import React from 'react'
 import { CiEdit } from 'react-icons/ci';
 import { GrView } from 'react-icons/gr';
 import { MdDelete } from 'react-icons/md';
@@ -82,8 +81,8 @@ const ProjectCard = ({ project }) => {
           </div>
         </div>
         <div className="my-2">
-          <h2 className="text-base sm:text-lg md:text-xl font-semibold text-gray-900 truncate leading-relaxed tracking-wider">New Projects</h2>
-          <p className="font-normal sm:text-base text-sm leading-relaxed tracking-wide text-gray-500">The full-stack ecommerce website that allow user to interact with shopping cart and buy products online, also receive the order id and tracking of order.</p>
+          <h2 className="text-base sm:text-lg md:text-xl font-semibold text-gray-900 truncate leading-relaxed tracking-wider">{project.title ?? "--"}</h2>
+          <p className="font-normal sm:text-base text-sm leading-relaxed tracking-wide text-gray-500">{project.description ?? "--"}</p>
         </div>
         <div className="my-2 flex flex-wrap items-center gap-x-2">
           <p className="text-sm font-medium text-gray-400 leading-relaxed tracking-wider">
