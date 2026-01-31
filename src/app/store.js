@@ -7,6 +7,7 @@ import educationReducer from "../feature/education/educationSlice";
 import experienceReducer from "../feature/experience/experienceSlice";
 import projectReducer from "../feature/project/projectSlice";
 import profileReducer from "../feature/profile/profileSlice";
+import skillReducer from "../feature/skill/skillSlice";
 
 
 const store = configureStore({
@@ -19,6 +20,7 @@ const store = configureStore({
     experiences: experienceReducer,
     projects: projectReducer,
     profiles: profileReducer,
+    skills: skillReducer,
   }
 });
 

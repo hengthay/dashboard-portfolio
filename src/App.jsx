@@ -34,6 +34,9 @@ import ProjectUpdate from './components/Project/ProjectUpdate'
 import ProfileUpdate from './components/Profile/ProfileUpdate'
 import ProfileDetail from './components/Profile/ProfileDetail'
 import ProfileCreate from './components/Profile/ProfileCreate'
+import SkillCreate from './components/Skill/SkillCreate'
+import SkillUpdate from './components/Skill/SkillUpdate'
+import SkillDetail from './components/Skill/SkillDetail'
 
 const App = () => {
   return (
@@ -70,6 +73,9 @@ const App = () => {
           <Route path='/profiles/:id' element={<ProfileDetail />}/>
           <Route path='/profiles/:id/edit' element={<ProfileUpdate />}/>
           <Route path='/skills' element={<Skill />}/>
+          <Route path='/skills/create' element={<SkillCreate  />}/>
+          <Route path='/skills/:id' element={<SkillDetail />}/>
+          <Route path='/skills/:id/edit' element={<SkillUpdate />}/>
         </Route>
       </Route>
       <Route path='/login' element={<Login />}/>
