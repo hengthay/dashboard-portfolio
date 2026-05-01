@@ -99,8 +99,8 @@ const SkillUpdate = () => {
 
 
   return (
-    <div className="w-full md:p-8 p-2 mx-auto space-y-8">
-      <div className="flex items-center justify-between">
+    <div className="w-full md:p-8 mx-auto space-y-8">
+      <div className="flex md:items-center items-start justify-between">
         <div>
           <h2 className="md:text-4xl font-semibold sm:text-3xl text-2xl text-gray-900">
             Update Skill
@@ -121,10 +121,10 @@ const SkillUpdate = () => {
 
       <form
         onSubmit={handleSubmit}
-        className="bg-white border border-gray-200 rounded-xl p-6 space-y-6 shadow-sm"
+        className="w-full bg-white border border-gray-200 rounded-xl p-6 space-y-6 shadow-sm"
         encType="multipart/form-data"
       >
-        <div className="flex flex-col w-full max-sm:w-70 justify-center gap-6 mx-auto">
+        <div className="flex flex-col w-full justify-center gap-6 mx-auto">
           <div className="space-y-4">
             {/* Title */}
             <div className="space-y-2 flex flex-col">
@@ -194,7 +194,7 @@ const SkillUpdate = () => {
             className="inline-flex items-center gap-2 px-5 py-2 rounded-lg bg-gray-900 text-white text-sm font-semibold hover:bg-gray-800 transition cursor-pointer"
           >
             <FiSave />
-            Save Skill
+            Save
           </button>
         </div>
         {isError && <p className="text-base text-red-500">{isError}</p>}

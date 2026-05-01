@@ -116,9 +116,9 @@ const BlogCreate = () => {
   };
 
   return (
-    <div className="w-full md:p-8 p-2 mx-auto space-y-8">
+    <div className="w-full md:p-8 mx-auto space-y-8">
       {/* Header */}
-      <div className="flex items-center justify-between">
+      <div className="flex md:items-center items-start justify-between">
         <div>
           <h2 className="md:text-4xl font-semibold sm:text-3xl text-2xl text-gray-900">
             Add New Blog
@@ -130,7 +130,7 @@ const BlogCreate = () => {
 
         <Link
           to="/blogs"
-          className="inline-flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-gray-900"
+          className="inline-flex items-center md:gap-2 gap-1 text-sm font-medium text-gray-600 hover:text-gray-900"
         >
           <FiArrowLeft />
           Back
@@ -140,10 +140,10 @@ const BlogCreate = () => {
       {/* Form */}
       <form
         onSubmit={handleSubmit}
-        className="bg-white border border-gray-200 rounded-xl p-6 space-y-6 shadow-sm"
+        className="w-full bg-white border border-gray-200 rounded-xl md:p-6 p-3 space-y-6 shadow-sm"
         encType="multipart/form-data"
       >
-        <div className="grid grid-cols-12 max-sm:w-70 items-center justify-center gap-6 mx-auto">
+        <div className="grid grid-cols-12 items-center justify-center gap-6 mx-auto">
           <div className="md:col-span-8 col-span-12 flex flex-col item-start justify-start space-y-4">
             {/* Title */}
             <div className="space-y-1 flex flex-col">
@@ -158,7 +158,7 @@ const BlogCreate = () => {
                 onChange={handleChange}
                 required
                 placeholder="e.g. Winner"
-                className="w-full max-sm:w-70 border border-gray-300 rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-gray-200"
+                className="w-full border border-gray-300 rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-gray-200"
               />
             </div>
             <div className="space-y-1 flex flex-col">
@@ -173,7 +173,7 @@ const BlogCreate = () => {
                 onChange={handleChange}
                 required
                 placeholder="e.g php-learner"
-                className="w-full max-sm:w-70 border border-gray-300 rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-gray-200"
+                className="w-full border border-gray-300 rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-gray-200"
               />
             </div>
             <div className="space-y-1 flex flex-col">
@@ -190,7 +190,7 @@ const BlogCreate = () => {
                 value={form.published}
                 onChange={handleChange}
                 placeholder="e.g. 0"
-                className="w-full max-sm:w-70 border border-gray-300 rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-gray-200"
+                className="w-full border border-gray-300 rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-gray-200"
               />
             </div>
             {/* Description */}
@@ -205,7 +205,7 @@ const BlogCreate = () => {
                 onChange={handleChange}
                 rows={4}
                 placeholder="Describe your blogs..."
-                className="w-full max-sm:w-70 border border-gray-300 rounded-lg px-3 py-2 outline-none resize-none focus:ring-2 focus:ring-gray-200"
+                className="w-full border border-gray-300 rounded-lg px-3 py-2 outline-none resize-none focus:ring-2 focus:ring-gray-200"
               />
             </div>
             <div className="space-y-2 flex flex-col">
@@ -217,7 +217,7 @@ const BlogCreate = () => {
                   value={tagInput}
                   onChange={(e) => setTagInput(e.target.value)}
                   placeholder="Type tag and press Enter"
-                  className="flex-1 max-sm:w-70 border border-gray-300 rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-gray-200"
+                  className="flex-1 border border-gray-300 rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-gray-200"
                   onKeyDown={(e) => {
                     if (e.key === "Enter") {
                       e.preventDefault();
@@ -225,13 +225,15 @@ const BlogCreate = () => {
                     }
                   }}
                 />
-                <button
-                  type="button"
-                  onClick={addTag}
-                  className="px-4 py-2 max-sm:w-70 rounded-lg bg-gray-900 text-white text-sm font-semibold hover:bg-gray-800 transition"
-                >
-                  Add
-                </button>
+                <div className="flex justify-end items-end">
+                  <button
+                    type="button"
+                    onClick={addTag}
+                    className="px-4 py-2 rounded-lg bg-gray-900 text-white text-sm font-semibold hover:bg-gray-800 transition"
+                  >
+                    Add
+                  </button>
+                </div>
               </div>
               {/* Display tags */}
               <div className="flex flex-wrap gap-2">
@@ -262,7 +264,7 @@ const BlogCreate = () => {
 
             <div className="flex flex-col items-start gap-6">
               {/* Preview */}
-              <div className="w-full max-sm:w-70 h-70 border border-dashed border-gray-300 rounded-xl flex items-center justify-center overflow-hidden bg-gray-50">
+              <div className="w-full h-70 border border-dashed border-gray-300 rounded-xl flex items-center justify-center overflow-hidden bg-gray-50">
                 {preview ? (
                   <img
                     src={preview}
@@ -285,7 +287,7 @@ const BlogCreate = () => {
               </div>
 
               {/* Upload */}
-              <p className="flex justify-end items-end w-full max-sm:w-70">
+              <p className="flex justify-end items-end w-full">
                 <label
                   id="cover_image"
                   className="cursor-pointer inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gray-900 text-white text-sm font-semibold hover:bg-gray-800 transition"
@@ -317,7 +319,7 @@ const BlogCreate = () => {
                 value={form.join_date}
                 onChange={handleChange}
                 placeholder="e.g. 0"
-                className="w-full max-sm:w-70 border border-gray-300 rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-gray-200"
+                className="w-full border border-gray-300 rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-gray-200"
               />
             </div>
           </div>
@@ -336,7 +338,7 @@ const BlogCreate = () => {
             className="inline-flex items-center gap-2 px-5 py-2 rounded-lg bg-gray-900 text-white text-sm font-semibold hover:bg-gray-800 transition cursor-pointer text-nowrap"
           >
             <FiSave />
-            Save Blog
+            Save
           </button>
         </div>
         {isError && <p className="text-base text-red-500">{isError}</p>}

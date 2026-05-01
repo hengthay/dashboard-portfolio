@@ -160,9 +160,9 @@ const BlogUpdate = () => {
       : null);
 
   return (
-    <div className="w-full p-8 mx-auto space-y-8">
+    <div className="w-full md:p-8 mx-auto space-y-8">
       {/* Header */}
-      <div className="flex items-center justify-between">
+      <div className="flex md:items-center items-start justify-between">
         <div>
           <h2 className="md:text-4xl font-semibold sm:text-3xl text-2xl text-gray-900">
             Update Blog
@@ -174,7 +174,7 @@ const BlogUpdate = () => {
 
         <Link
           to="/blogs"
-          className="inline-flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-gray-900"
+          className="inline-flex items-center md:gap-2 gap-1 text-sm font-medium text-gray-600 hover:text-gray-900"
         >
           <FiArrowLeft />
           Back
@@ -184,10 +184,10 @@ const BlogUpdate = () => {
       {/* Form */}
       <form
         onSubmit={handleSubmit}
-        className="bg-white border border-gray-200 rounded-xl p-6 space-y-6 shadow-sm"
+        className="w-full bg-white border border-gray-200 rounded-xl p-6 space-y-6 shadow-sm"
         encType="multipart/form-data"
       >
-        <div className="grid grid-cols-12 max-sm:w-70 items-center justify-center gap-6 mx-auto">
+        <div className="grid grid-cols-12 items-center justify-center gap-6 mx-auto">
           <div className="md:col-span-8 col-span-12 flex flex-col item-start justify-start space-y-4">
             {/* Title */}
             <div className="space-y-1">
@@ -255,7 +255,7 @@ const BlogUpdate = () => {
             <div className="space-y-2">
               <label className="text-sm font-medium text-gray-700">Tags</label>
 
-              <div className="flex gap-2">
+              <div className="flex md:flex-row flex-col gap-2">
                 <input
                   type="text"
                   value={tagInput}
@@ -269,13 +269,15 @@ const BlogUpdate = () => {
                     }
                   }}
                 />
-                <button
-                  type="button"
-                  onClick={addTag}
-                  className="px-4 py-2 rounded-lg bg-gray-900 text-white text-sm font-semibold hover:bg-gray-800 transition"
-                >
-                  Add
-                </button>
+                <div className="flex justify-end items-end">
+                  <button
+                    type="button"
+                    onClick={addTag}
+                    className="px-4 py-2 rounded-lg bg-gray-900 text-white text-sm font-semibold hover:bg-gray-800 transition"
+                  >
+                    Add
+                  </button>
+                </div>
               </div>
               {/* Display tags */}
               <div className="flex flex-wrap gap-2">
@@ -380,7 +382,7 @@ const BlogUpdate = () => {
             className="inline-flex items-center gap-2 px-5 py-2 rounded-lg bg-gray-900 text-white text-sm font-semibold hover:bg-gray-800 transition cursor-pointer"
           >
             <FiSave />
-            Save Blog
+            Save
           </button>
         </div>
         {isError && <p className="text-base text-red-500">{isError}</p>}

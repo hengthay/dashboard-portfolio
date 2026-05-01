@@ -17,20 +17,19 @@ const ProfileDetail = () => {
   }, [id, dispatch]);
 
   return (
-    <div className='w-full mt-6'>
-       <div className="w-full flex justify-between items-center p-2">
-        <div className="w-full mt-4">
-          <div className="p-2 space-y-4">
+    <div className='w-full my-6'>
+       <div className="w-full flex md:flex-row flex-col justify-between md:items-center p-2 space-y-2">
+        <div className="w-full">
+          <div className="md:p-2 space-y-4">
             <h2 className="md:text-4xl font-semibold sm:text-3xl text-2xl leading-relaxed tracking-wider">
               My Profile
             </h2>
-            <p className="md:text-base text-sm text-gray-500 flex items-center gap-x-1">
-              <HiOutlineSparkles className="text-gray-500" />
+            <p className="md:text-base text-sm text-gray-500">
               View profile information and manage this record.
             </p>
           </div>
         </div>
-        <div className="flex items-center gap-3">
+        <div className="flex justify-end items-center gap-3">
           <Link
             to="/profiles"
             className="inline-flex items-center gap-2 rounded-xl border border-gray-200 bg-white px-4 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-50 hover:border-gray-300 transition"

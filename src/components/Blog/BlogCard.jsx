@@ -78,12 +78,12 @@ const BlogCard = ({ blog }) => {
               {blog?.published ? "Published" : "None"}
             </p>
           </div>
-          <div className="flex items-center gap-1.5">
+          <div className="flex flex-wrap items-center gap-2">
             {blog?.tags?.length > 0 &&
               blog?.tags?.map((b, index) => (
                 <span
                   key={`${b}-${index}`}
-                  className="text-xs font-semibold tracking-wide bg-cyan-500/10 text-cyan-600 px-3 py-1 rounded-full border border-cyan-500/20 hover:ring-2 hover:ring-cyan-400/20 transition-all ease-out duration-200"
+                  className="text-xs font-semibold tracking-wide bg-cyan-500/10 text-cyan-600 px-3 py-1 rounded-full text-nowrap border border-cyan-500/20 hover:ring-2 hover:ring-cyan-400/20 transition-all ease-out duration-200"
                 >
                   {b}
                 </span>

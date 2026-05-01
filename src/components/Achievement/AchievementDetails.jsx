@@ -19,8 +19,8 @@ const AchievementDetails = () => {
   console.log(achievementDetail);
 
   return (
-    <div className="w-full flex justify-center px-4">
-      <div className="w-full max-w-6xl border border-gray-200 rounded-2xl bg-white shadow-sm p-6 md:p-10 space-y-10">
+    <div className="w-full flex justify-center md:px-4">
+      <div className="w-full max-w-6xl border border-gray-200 rounded-2xl bg-white shadow-sm sm:p-6 p-3 md:p-10 space-y-10">
         {/* Header */}
         <div className="flex justify-between items-center">
           <div className="space-y-2">
@@ -71,7 +71,7 @@ const AchievementDetails = () => {
                   to={`/achievements/${achievementDetail?.id}/edit`}
                   className="inline-flex items-center justify-center px-5 py-2 rounded-lg bg-gray-900 text-white text-sm font-semibold hover:bg-gray-800 transition"
                 >
-                  Edit Achievement
+                  Edit
                 </Link>
               </div>
             </div>

@@ -23,8 +23,8 @@ const BlogDetails = () => {
   // console.log(blogDetail);
 
   return (
-    <div className="w-full flex justify-center px-4 mt-6">
-      <div className="w-full max-w-7xl border border-gray-200 rounded-2xl bg-white shadow-sm p-6 md:p-10 space-y-10">
+    <div className="w-full flex justify-center md:px-4 mt-6">
+      <div className="w-full max-w-7xl border border-gray-200 rounded-2xl bg-white shadow-sm sm:p-6 p-3 md:p-10 space-y-10">
         {/* Header */}
         <div className="flex justify-between items-center">
           <div className="space-y-3">
@@ -51,8 +51,8 @@ const BlogDetails = () => {
           >
             <div className="w-full h-90 bg-white flex items-center justify-center p-6">
               {
-                blogDetail.cover_image ? (
-                  <img src={`${import.meta.env.VITE_BASE_URL}/storage/${blogDetail.cover_image}`} alt={blogDetail.title} className="w-full h-full object-cover transform transition-all ease-in-out duration-500 rounded-2xl group-hover:scale-105 shadow-sm"/>
+                blogDetail?.cover_image ? (
+                  <img src={`${import.meta.env.VITE_BASE_URL}/storage/${blogDetail?.cover_image}`} alt={blogDetail.title} className="w-full h-full object-cover transform transition-all ease-in-out duration-500 rounded-2xl group-hover:scale-105 shadow-sm"/>
                 ) : (
                   <div className="w-full h-full flex flex-col items-center justify-center bg-gray-100 text-gray-400 rounded-2xl">
                     <span className="text-sm font-medium">No image available</span>

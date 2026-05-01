@@ -20,19 +20,18 @@ const ProjectDetail = () => {
 
   return (
     <div className="w-full space-y-6 md:p-4">
-      <div className="w-full flex justify-between items-center p-2">
+      <div className="w-full flex md:flex-row flex-col justify-between md:items-center p-2">
         <div className="w-full mt-4">
-          <div className="p-2 space-y-4">
+          <div className="md:p-2 space-y-4">
             <h2 className="md:text-4xl font-semibold sm:text-3xl text-2xl">
               Projects
             </h2>
-            <p className="md:text-base text-sm text-gray-500 flex items-center gap-x-1">
-              <HiOutlineSparkles className="text-gray-500" />
+            <p className="md:text-base text-sm text-gray-500">
               View project information and manage this record.
             </p>
           </div>
         </div>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center md:justify-start justify-end md:gap-3 gap-1.5">
           <Link
             to="/projects"
             className="inline-flex items-center gap-2 rounded-xl border border-gray-200 bg-white px-4 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-50 hover:border-gray-300 transition"
@@ -50,9 +49,9 @@ const ProjectDetail = () => {
           </Link>
         </div>
       </div>
-      <div className="w-full my-8">
-        <div className="grid grid-cols-12 gap-8 items-start">
-          <div className='md:col-span-8 col-span-12 space-y-4'>
+      <div className="w-full my-8 max-sm:w-70 mx-auto">
+        <div className="w-full grid grid-cols-12 gap-8 items-start">
+          <div className='w-full max-sm:w-70 md:col-span-8 col-span-12 space-y-4'>
             <div className='bg-white border border-gray-300 shadow-sm rounded-2xl transition ease-in duration-300 md:p-4 p-2'>
               <div className='flex justify-between items-center'>
                 <h4 className="text-xl font-semibold text-gray-900">Overview</h4>
@@ -117,7 +116,7 @@ const ProjectDetail = () => {
               </div>
             </div>
           </div>
-          <div className='md:col-span-4 col-span-12 space-y-4'>
+          <div className='w-full max-sm:w-70 md:col-span-4 col-span-12 space-y-4'>
             <div className='bg-white border border-gray-200 rounded-2xl shadow-sm md:p-4 p-2'>
                 <h3 className="text-lg font-semibold text-gray-900">Record Info</h3>
                 <div className="mt-4 space-y-3 text-sm">

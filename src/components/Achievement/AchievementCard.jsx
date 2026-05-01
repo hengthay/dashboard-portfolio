@@ -53,8 +53,8 @@ const AchievementCard = ({ achievement }) => {
       className="w-full flex justify-between group items-center bg-white border border-gray-300 min-h-20 rounded-2xl p-4 gap-x-6 hover:shadow-sm"
       key={achievement.id}
     >
-      <div className="w-full flex flex-col sm:flex-row items-center gap-4">
-        <p className="inline-flex items-center text-sm font-semibold rounded-full px-2.5 py-1 bg-gray-100 text-gray-700 border border-gray-200">#{achievement.id}</p>
+      <div className="w-full flex flex-col sm:flex-row items-start md:gap-6 gap-3">
+        <p className="inline-flex items-start text-sm font-semibold rounded-full px-2.5 py-1 bg-gray-100 text-gray-700 border border-gray-200">#{achievement.id}</p>
         <div className="w-full sm:w-40 sm:h-30 h-35">
           <img
             src={`${import.meta.env.VITE_BASE_URL}/storage/${achievement.icon_url}`}

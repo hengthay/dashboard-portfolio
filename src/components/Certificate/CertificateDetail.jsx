@@ -19,7 +19,7 @@ const CertificateDetail = () => {
   }, [id, dispatch]);
 
   return (
-    <div className="w-full flex justify-center px-4 py-6 md:py-10">
+    <div className="w-full flex justify-center md:px-4 py-6 md:py-10">
       <div className="w-full max-w-7xl space-y-8">
         {/* Header */}
         <div className="bg-white border border-gray-200 rounded-2xl shadow-sm p-5 sm:p-6 md:p-8">

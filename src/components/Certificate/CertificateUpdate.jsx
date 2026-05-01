@@ -112,7 +112,7 @@ const CertificateUpdate = () => {
       ? `${import.meta.env.VITE_BASE_URL}/storage/${currentImage}`
       : null);
   return (
-    <div className="w-full md:p-8 p-2 mx-auto space-y-8">
+    <div className="w-full md:p-8 mx-auto space-y-8">
       <div className="flex items-center justify-between">
         <div>
           <h2 className="md:text-4xl font-semibold sm:text-3xl text-2xl text-gray-900">
@@ -125,7 +125,7 @@ const CertificateUpdate = () => {
 
         <Link
           to="/certificates"
-          className="inline-flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-gray-900"
+          className="inline-flex items-center md:gap-2 gap-1 text-sm font-medium text-gray-600 hover:text-gray-900"
         >
           <FiArrowLeft />
           Back
@@ -134,10 +134,10 @@ const CertificateUpdate = () => {
 
       <form
         onSubmit={handleSubmit}
-        className="bg-white border border-gray-200 rounded-xl p-6 space-y-6 shadow-sm"
+        className="w-full bg-white border border-gray-200 rounded-xl p-6 space-y-6 shadow-sm"
         encType="multipart/form-data"
       >
-        <div className="grid grid-cols-12 w-full max-sm:w-70 justify-center gap-6 mx-auto">
+        <div className="grid grid-cols-12 w-full justify-center gap-6 mx-auto">
           <div className="md:col-span-8 col-span-12 space-y-4">
             {/* Title */}
             <div className="space-y-2 flex flex-col">
@@ -245,7 +245,7 @@ const CertificateUpdate = () => {
             className="inline-flex items-center gap-2 px-5 py-2 rounded-lg bg-gray-900 text-white text-sm font-semibold hover:bg-gray-800 transition cursor-pointer"
           >
             <FiSave />
-            Save Certificate
+            Save
           </button>
         </div>
         {isError && <p className="text-base text-red-500">{isError}</p>}

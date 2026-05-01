@@ -10,6 +10,7 @@ import { RiProfileLine } from "react-icons/ri";
 import { useDispatch } from "react-redux";
 import { logoutUser } from "../feature/auth/authSlice";
 import Swal from "sweetalert2";
+import ProfileImage from "../assets/profile.jpg";
 
 const SideBar = ({ isOpen, onClose }) => {
   const location = useLocation();
@@ -99,13 +100,13 @@ const SideBar = ({ isOpen, onClose }) => {
       <aside
         className={`fixed z-20 min-h-screen bg-gray-200 shadow 
         transition-all duration-300 ease-in-out
-        ${isOpen ? "w-60" : "w-23"}`}
+        ${isOpen ? "w-60" : "w-18"}`}
       >
-        <div className="flex flex-col p-4 md:p-6 space-y-10">
+        <div className={`flex flex-col p-4 md:p-6 space-y-10 ${!isOpen ? "justify-center items-center" : "justify-start"}`}>
           {/* Profile */}
           <div className="flex items-center gap-3">
             <img
-              src="https://i.pravatar.cc/40"
+              src={ProfileImage}
               alt="user"
               className="w-10 h-10 bg-gray-500 rounded-full object-cover"
             />
@@ -129,7 +130,7 @@ const SideBar = ({ isOpen, onClose }) => {
                 <li key={item.id}>
                   <Link
                     to={item.pathName}
-                    className={`flex items-center gap-3 px-3 py-2 rounded-md transition-all
+                    className={`flex items-center md:gap-3 gap-1.5 md:px-3 md:py-2 p-2 rounded-md transition-all
                     ${
                       isActive
                         ? "bg-blue-200 text-blue-700 font-medium"

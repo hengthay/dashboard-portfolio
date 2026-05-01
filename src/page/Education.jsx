@@ -45,18 +45,17 @@ const Education = () => {
 
   return (
     <div className="w-full space-y-6">
-      <div className="w-full mt-4">
-        <div className="p-2 space-y-4">
+      <div className="w-full my-4">
+        <div className="space-y-4 my-4 md:p-2 p-0">
           <h2 className="md:text-4xl font-semibold sm:text-3xl text-2xl">
             Educations
           </h2>
-          <p className="md:text-base text-sm text-gray-500 flex items-center">
-            <HiOutlineSparkles className="text-gray-500" />
+          <p className="md:text-base text-sm text-gray-500">
             There are all the educations data for display on page.
           </p>
         </div>
         <div className="w-full md:p-2">
-          <div className="flex flex-col justify-between items-center sm:flex-row gap-3 w-full md:w-auto">
+          <div className="flex flex-col justify-between items-center sm:flex-row gap-3 w-full md:w-auto space-y-2">
             <div className="relative w-full lg:max-w-md">
               <FiSearch className="absolute left-1 top-1/2 -translate-y-1/2 text-gray-400" />
               <input
@@ -67,7 +66,7 @@ const Education = () => {
                 placeholder="Search Education..."
               />
             </div>
-            <div className="flex md:flex-row flex-col justify-center items-center gap-x-3">
+            <div className="flex flex-wrap justify-start md:justify-center items-center md:gap-2 gap-3">
               <div className="flex gap-x-2">
                 {educationType.map((type, index) => (
                   <span
@@ -85,7 +84,7 @@ const Education = () => {
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-gray-900 text-white font-semibold hover:bg-gray-800 transition cursor-pointer"
               >
                 <IoMdAdd size={24} />
-                Create Certificate
+                Create Education
               </Link>
             </div>
           </div>

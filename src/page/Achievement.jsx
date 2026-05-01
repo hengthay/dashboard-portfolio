@@ -52,19 +52,18 @@ const Achievement = () => {
 
   return (
     <div className="w-full space-y-6">
-      <div className="mt-4">
+      <div className="w-full my-4">
         {/* Header */}
-        <div className="p-2 space-y-4">
+        <div className="space-y-4 my-4 md:p-2 p-0">
           <h2 className="md:text-4xl font-semibold sm:text-3xl text-2xl">
             Achievements
           </h2>
-          <p className="md:text-base text-sm text-gray-500 flex items-center">
-            <HiOutlineSparkles className="text-gray-500" />
+          <p className="md:text-base text-sm text-gray-500">
             There are all the achivement data for display on page.
           </p>
         </div>
         <div className="w-full md:p-2">
-          <div className="flex flex-col justify-between items-center sm:flex-row gap-3 w-full md:w-auto">
+          <div className="flex flex-col justify-between items-center sm:flex-row gap-3 w-full md:w-auto space-y-2">
             <div className="relative w-full lg:max-w-md">
               <FiSearch className="absolute left-1 top-1/2 -translate-y-1/2 text-gray-400" />
               <input
@@ -75,7 +74,7 @@ const Achievement = () => {
                 placeholder="Search Achievement..."
               />
             </div>
-            <div className="flex md:flex-row flex-col justify-center items-center gap-x-3">
+            <div className="flex flex-wrap justify-center items-center md:gap-2 gap-3">
               <select
                 value={sort}
                 onChange={(e) => setSort(e.target.value)}
@@ -88,7 +87,7 @@ const Achievement = () => {
 
               <Link
                 to={"/achievements/create"}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-gray-900 text-white font-semibold hover:bg-gray-800 transition cursor-pointer"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-gray-900 text-white font-semibold hover:bg-gray-800 transition cursor-pointer text-nowrap"
               >
                 <IoMdAdd size={24} />
                 Create Achievement

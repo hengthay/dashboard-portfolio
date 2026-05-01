@@ -50,18 +50,17 @@ const Certificate = () => {
 
   return (
     <div className="w-full space-y-6">
-      <div className="w-full mt-4">
-        <div className="p-2 space-y-4">
+      <div className="w-full my-4">
+        <div className="space-y-4 my-4 md:p-2 p-0">
           <h2 className="md:text-4xl font-semibold sm:text-3xl text-2xl">
             Certificates
           </h2>
-          <p className="md:text-base text-sm text-gray-500 flex items-center">
-            <HiOutlineSparkles className="text-gray-500" />
+          <p className="md:text-base text-sm text-gray-500">
             There are all the certificates data for display on page.
           </p>
         </div>
         <div className="w-full md:p-2">
-          <div className="flex flex-col justify-between items-center sm:flex-row gap-3 w-full md:w-auto">
+          <div className="flex flex-col justify-between items-center sm:flex-row gap-3 w-full md:w-auto space-y-2">
             <div className="relative w-full lg:max-w-md">
               <FiSearch className="absolute left-1 top-1/2 -translate-y-1/2 text-gray-400" />
               <input
@@ -72,7 +71,7 @@ const Certificate = () => {
                 placeholder="Search Certificate..."
               />
             </div>
-            <div className="flex md:flex-row flex-col justify-center items-center gap-x-3">
+            <div className="flex flex-wrap justify-center items-center md:gap-2 gap-3">
               <select
                 value={sort}
                 onChange={(e) => setSort(e.target.value)}

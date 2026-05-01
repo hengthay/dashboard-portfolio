@@ -19,15 +19,6 @@ const NotFound = () => {
       >
         Back to Home
       </button>
-      {/* 
-      <div className="mt-10">
-        <img
-          src="https://illustrations.popsy.co/gray/404-error.svg"
-          alt="404 Illustration"
-          className="w-72 mx-auto opacity-90"
-        />
-      </div> 
-      */}
     </div>
   );
 };

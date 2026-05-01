@@ -61,12 +61,12 @@ const ProjectCard = ({ project }) => {
           {/* Overlay */}
           <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           {/* Link Demo Projet */}
-          <div className="absolute inset-0 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-4 group-hover:translate-y-0">
+          <div className="absolute inset-0 flex items-center justify-center md:gap-4 gap-2 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-4 group-hover:translate-y-0">
             <a
               href={`${project.demo_url}`}
               target="_blank"
               rel="noreferrer"
-              className="px-5 py-2.5 rounded-full text-sm font-medium bg-white/90 text-black backdrop-blur-md hover:bg-white hover:scale-105 transition-all duration-200 shadow-lg"
+              className="md:px-5 px-3 md:py-2.5 py-2 rounded-full text-sm font-medium bg-white/90 text-black backdrop-blur-md hover:bg-white hover:scale-105 transition-all duration-200 shadow-lg text-nowrap"
             >
               View Demo
             </a>
@@ -74,7 +74,7 @@ const ProjectCard = ({ project }) => {
               href={`${project.github_url}`}
               target="_blank"
               rel="noreferrer"
-              className="px-5 py-2.5 rounded-full text-sm font-medium border border-white/70 text-white backdrop-blur-md hover:bg-white hover:text-black hover:scale-105 transition-all duration-200 shadow-lg"
+              className="md:px-5 px-3 md:py-2.5 py-2 rounded-full text-sm font-medium border border-white/70 text-white backdrop-blur-md hover:bg-white hover:text-black hover:scale-105 transition-all duration-200 shadow-lg text-nowrap"
             >
               GitHub Repo
             </a>
@@ -84,7 +84,7 @@ const ProjectCard = ({ project }) => {
           <h2 className="text-base sm:text-lg md:text-xl font-semibold text-gray-900 truncate leading-relaxed tracking-wider">{project.title ?? "--"}</h2>
           <p className="font-normal sm:text-base text-sm leading-relaxed tracking-wide text-gray-500">{project.description ?? "--"}</p>
         </div>
-        <div className="my-2 flex flex-wrap items-center gap-x-2">
+        <div className="my-2 flex flex-wrap items-center gap-2">
           <p className="text-sm font-medium text-gray-400 leading-relaxed tracking-wider">
             Technology :
           </p>
@@ -93,7 +93,7 @@ const ProjectCard = ({ project }) => {
               project.technologies.map((tech, index) => (
                 <span
                   key={`${tech}-${index}`}
-                  className="px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                  className="px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-500/10 text-emerald-400 text-nowrap border border-emerald-500/20">
                   {tech}
                 </span>
               ))

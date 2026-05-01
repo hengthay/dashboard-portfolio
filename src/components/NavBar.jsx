@@ -1,13 +1,14 @@
 import React from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { FaBell, FaSearch } from "react-icons/fa";
+import ProfileImage from "../assets/profile.jpg";
 
 const NavBar = ({ onToggle, sidebarOpen }) => {
   return (
     <header
       className={`fixed top-0 right-0 z-20 h-16 bg-white border-b border-gray-200
       transition-all duration-300 shadow
-      ${sidebarOpen ? "left-60" : "left-23"}`}
+      ${sidebarOpen ? "left-60" : "left-18"}`}
     >
       <div className="flex items-center justify-between px-4 md:px-6 h-16">
         {/* Left */}
@@ -45,7 +46,7 @@ const NavBar = ({ onToggle, sidebarOpen }) => {
           </button>
           <div className="flex items-center gap-2 cursor-pointer hover:bg-gray-100 px-2 py-1 rounded-md">
             <img
-              src="https://i.pravatar.cc/40"
+              src={ProfileImage}
               alt="profile"
               className="w-8 h-8 rounded-full object-cover"
             />

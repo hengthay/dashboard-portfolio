@@ -20,14 +20,13 @@ const EducationDetail = () => {
   console.log(educationDetail);
   return (
     <div className="w-full space-y-6 md:p-4">
-      <div className="w-full flex justify-between items-center p-2">
+      <div className="w-full flex justify-between items-center md:p-2">
         <div className="w-full mt-4">
           <div className="p-2 space-y-4">
             <h2 className="md:text-4xl font-semibold sm:text-3xl text-2xl">
               Educations
             </h2>
-            <p className="md:text-base text-sm text-gray-500 flex items-center gap-x-1">
-              <HiOutlineSparkles className="text-gray-500" />
+            <p className="md:text-base text-sm text-wrap text-gray-500">
               View education information and manage this record.
             </p>
           </div>
@@ -41,7 +40,7 @@ const EducationDetail = () => {
             </span>
           </div>
         </div>
-        <div className="flex items-center gap-3">
+        <div className="flex md:flex-row flex-col items-center gap-3">
           <Link
             to="/educations"
             className="inline-flex items-center gap-2 rounded-xl border border-gray-200 bg-white px-4 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-50 hover:border-gray-300 transition"
@@ -59,22 +58,21 @@ const EducationDetail = () => {
           </Link>
         </div>
       </div>
-      <div className="w-full my-8">
-        <div className="grid grid-cols-12 gap-8 items-start">
-          <div className="md:col-span-8 col-span-12 space-y-4">
-            <div className="bg-white border border-gray-300 shadow-sm rounded-2xl transition ease-in duration-300 md:p-4 p-2">
+      <div className="w-full max-sm:w-70 my-8 mx-auto">
+        <div className="w-full grid grid-cols-12 gap-8 items-start">
+          <div className="w-full md:col-span-8 col-span-12 space-y-4">
+            <div className="w-full max-sm:w-70 bg-white border border-gray-300 shadow-sm rounded-2xl transition ease-in duration-300 md:p-4 p-2">
               <h4 className="text-xl font-semibold text-gray-900">Overview</h4>
               <p className="text-sm text-gray-500 mt-1">Main information about this education record</p>
               <div className="mt-6 space-y-4">
                 <div className="space-y-1">
                   <p className="text-xs font-semibold text-gray-500">Institution</p>
-                  <p className="text-lg font-bold text-gray-900">
+                  <p className="md:text-lg text-sm font-bold text-gray-900 text-wrap">
                     {educationDetail?.institution ?? "--"}
                   </p>
                 </div>
-
-                
-                <div className="grid sm:grid-cols-2 grid-cols-1 gap-4">
+ 
+                <div className="w-full grid sm:grid-cols-2 grid-cols-1 gap-4">
                   <div className="rounded-2xl border border-gray-200 bg-gray-50 p-4">
                     <p className="text-xs font-semibold text-gray-500">Degree</p>
                     <p className="mt-1 text-sm font-bold text-gray-900">
@@ -90,7 +88,7 @@ const EducationDetail = () => {
                   </div>
                 </div>
 
-                <div className="grid sm:grid-cols-2 grid-cols-1 gap-4">
+                <div className="w-full grid sm:grid-cols-2 grid-cols-1 gap-4">
                   <div className="rounded-2xl border border-emerald-200 bg-emerald-50 p-4">
                     <p className="text-xs font-semibold text-emerald-700">Start</p>
                     <p className="mt-1 text-sm font-bold text-emerald-900">{educationDetail?.start_date ? formatDate(educationDetail?.start_date) : "--"}</p>
@@ -104,7 +102,7 @@ const EducationDetail = () => {
               </div>
             </div>
           </div>
-          <div className="md:col-span-4 col-span-12 space-y-4">
+          <div className="w-full max-sm:w-70 md:col-span-4 col-span-12 space-y-4">
             <div className="bg-white border border-gray-200 rounded-2xl shadow-sm md:p-4 p-2">
               <h3 className="text-lg font-semibold text-gray-900">Record Info</h3>
 

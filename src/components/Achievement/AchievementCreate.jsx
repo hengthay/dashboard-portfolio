@@ -77,9 +77,9 @@ const AchievementCreate = () => {
   };
 
   return (
-    <div className="w-full p-8 mx-auto space-y-8">
+    <div className="w-full md:p-8 mx-auto space-y-8">
       {/* Header */}
-      <div className="flex items-center justify-between">
+      <div className="flex md:items-center items-start justify-between">
         <div>
           <h2 className="md:text-4xl font-semibold sm:text-3xl text-2xl text-gray-900">
             Add New Achievement
@@ -91,7 +91,7 @@ const AchievementCreate = () => {
 
         <Link
           to="/achievements"
-          className="inline-flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-gray-900"
+          className="inline-flex items-center md:gap-2 gap-1 text-sm font-medium text-gray-600 hover:text-gray-900"
         >
           <FiArrowLeft />
           Back
@@ -101,10 +101,10 @@ const AchievementCreate = () => {
       {/* Form */}
       <form
         onSubmit={handleSubmit}
-        className="bg-white border border-gray-200 rounded-xl p-6 space-y-6 shadow-sm"
+        className="w-full bg-white border border-gray-200 rounded-xl md:p-6 p-3 space-y-6 shadow-sm mx-auto"
         encType="multipart/form-data"
       >
-        <div className="grid grid-cols-12 w-full max-sm:w-70 items-center justify-center gap-6 mx-auto">
+        <div className="grid grid-cols-12 w-fulll items-center justify-center gap-6 mx-auto">
           <div className="md:col-span-8 col-span-12 space-y-4">
             {/* Title */}
             <div className="space-y-2 flex flex-col">
@@ -118,7 +118,7 @@ const AchievementCreate = () => {
                 onChange={handleChange}
                 required
                 placeholder="e.g. Hackathon Winner"
-                className="w-full border border-gray-300 rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-gray-200"
+                className="border border-gray-300 rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-gray-200"
               />
             </div>
 
@@ -203,7 +203,7 @@ const AchievementCreate = () => {
               className="inline-flex items-center gap-2 px-5 py-2 rounded-lg bg-gray-900 text-white text-sm font-semibold hover:bg-gray-800 transition cursor-pointer"
             >
               <FiSave />
-              Save Achievement
+              Save
             </button>
           </div>
         {isError && <p className="text-base text-red-500">{isError}</p>}
