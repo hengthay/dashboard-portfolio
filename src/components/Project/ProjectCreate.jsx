@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import { createProject } from '../../feature/project/projectSlice';
+import { createProject, resetProjectStatus } from '../../feature/project/projectSlice';
 import Swal from 'sweetalert2';
 import { FiArrowLeft, FiSave, FiUpload } from 'react-icons/fi';
 
@@ -82,12 +82,16 @@ const ProjectCreate = () => {
 
       await dispatch(createProject(formData)).unwrap();
 
+      // Reset Project Status
+      dispatch(resetProjectStatus());
+
       Swal.fire({
         title: "Created!",
         text: "Your Project is created successfully!",
         icon: "success",
         timer: 1500,
       });
+
       const timeOut = setTimeout(() => {
         navigate("/projects");
       }, 2000);

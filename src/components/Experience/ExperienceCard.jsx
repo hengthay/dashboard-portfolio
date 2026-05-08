@@ -58,7 +58,7 @@ const ExperienceCard = ({ experience }) => {
             #{experience.id ?? "--"}
           </span>
         </div>
-        <div className="flex flex-wrap items-center gap-2">
+        <div className="flex flex-col items-start gap-2">
           <p className="font-medium sm:text-base text-sm leading-relaxed tracking-wider">
             {experience.position ?? "--"}
           </p>

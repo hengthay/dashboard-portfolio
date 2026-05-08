@@ -86,7 +86,7 @@ export const updateCertificate = createAsyncThunk(
   "certificates/updateCertificate",
   async ({ id, formData }, thunkAPI) => {
     try {
-      const res = await axiosInstance.put(
+      const res = await axiosInstance.post(
         `${API_BASE_URL}/certificates/${id}`,
         formData,
         {
@@ -134,7 +134,11 @@ export const removeCertificateById = createAsyncThunk(
 const certificateSlice = createSlice({
   name: "certificates",
   initialState,
-  reducers: {},
+  reducers: {
+    resetCertficateStatus: (state) => {
+      state.status = 'idle';
+    }
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchCertificate.pending, (state) => {
@@ -221,6 +225,7 @@ const certificateSlice = createSlice({
 });
 
 export default certificateSlice.reducer;
+export const { resetCertficateStatus } = certificateSlice.actions;
 export const selectCertificate = (state) => state.certificates.certificateData;
 export const selectCertificateStatus = (state) => state.certificates.status;
 export const selectCertificateError = (state) => state.certificates.error;

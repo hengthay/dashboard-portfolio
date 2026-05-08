@@ -120,7 +120,7 @@ const Certificate = () => {
             )}
 
             <div className="w-full flex flex-col gap-4">
-              {certificates.length > 0 &&
+              {certificateStatus === 'succeeded' && certificates.length > 0 &&
                 filteredCertificates.map((certificate) => (
                   <CertificateCard certificate={certificate} key={certificate.id} />
                 ))}

@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import {
   fetchAchievementDetail,
+  resetAchievementStatus,
   selectAchievementDetail,
   updateAchievement,
 } from "../../feature/achievement/achievementSlice";
@@ -87,12 +88,16 @@ const AchievementUpdate = () => {
 
       await dispatch(updateAchievement({ id, formData })).unwrap();
 
+      // Reset Achievement Status
+      dispatch(resetAchievementStatus());
+
       Swal.fire({
         title: "Updated",
         text: "Your Achievement is updated successfully!",
         icon: "success",
         timer: 1500,
       });
+      
       const timeOut = setTimeout(() => {
         navigate("/achievements");
       }, 2000);

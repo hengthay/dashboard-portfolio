@@ -84,7 +84,7 @@ export const updateBlog = createAsyncThunk(
   async ({ id, formData }, thunkAPI) => {
     try {
 
-      const res = await axiosInstance.put(`${API_BASE_URL}/blogs/${id}`, formData, {
+      const res = await axiosInstance.post(`${API_BASE_URL}/blogs/${id}`, formData, {
         withCredentials: true,
         headers: { 'Content-Type': "multipart/form-data" }
       });
@@ -130,7 +130,11 @@ export const removeBlogById = createAsyncThunk(
 const blogSlice = createSlice({
   name: "blogs",
   initialState,
-  reducers: {},
+  reducers: {
+    resetBlogStatus: (state) => {
+      state.status = 'idle';
+    }
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchBlog.pending, (state) => {
@@ -212,6 +216,7 @@ const blogSlice = createSlice({
 });
 
 export default blogSlice.reducer;
+export const { resetBlogStatus } = blogSlice.actions;
 export const selectBlog = state => state.blogs.blogsData;
 export const selectBlogStatus = state => state.blogs.status;
 export const selectBlogError = state => state.blogs.error;

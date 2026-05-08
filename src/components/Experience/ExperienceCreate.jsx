@@ -3,7 +3,7 @@ import { FiArrowLeft, FiSave } from "react-icons/fi";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import { createExperience } from "../../feature/experience/experienceSlice";
+import { createExperience, resetExperienceStatus } from "../../feature/experience/experienceSlice";
 
 const ExperienceCreate = () => {
   const [form, setForm] = useState({
@@ -48,12 +48,16 @@ const ExperienceCreate = () => {
 
       await dispatch(createExperience(formData)).unwrap();
 
+      // Reset Experience Status
+      dispatch(resetExperienceStatus());
+
       Swal.fire({
         title: "Created!",
         text: "Your Experience is created successfully!",
         icon: "success",
         timer: 1500,
       });
+
       const timeOut = setTimeout(() => {
         navigate("/experiences");
       }, 2000);

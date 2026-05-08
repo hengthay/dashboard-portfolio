@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import { createSkill } from '../../feature/skill/skillSlice';
+import { createSkill, resetSkillStatus } from '../../feature/skill/skillSlice';
 import { FiArrowLeft, FiSave } from 'react-icons/fi';
 import Swal from 'sweetalert2';
 
@@ -45,12 +45,16 @@ const SkillCreate = () => {
 
       await dispatch(createSkill(formData)).unwrap();
 
+      // Reset Skill Status
+      dispatch(resetSkillStatus());
+
       Swal.fire({
         title: "Created!",
         text: "Your Skill is created successfully!",
         icon: "success",
         timer: 1500,
       });
+      
       const timeOut = setTimeout(() => {
         navigate("/skills");
       }, 2000);
@@ -150,6 +154,7 @@ const SkillCreate = () => {
                 <option value="">Select Category</option>
                 <option value="Frotend Development">Frotend Development</option>
                 <option value="Backend Development">Backend Development</option>
+                <option value="Full-Stack Development">Full-Stack Development</option>
                 <option value="Databse Management">Database Management</option>
                 <option value="DevOps & Tools">DevOps & Tools</option>
                 <option value="Mobile Development">Mobile Development</option>

@@ -75,7 +75,7 @@ export const updateProject = createAsyncThunk(
   "projects/updateProject", async ({ id, formData }, thunkAPI) => {
     try {
       console.log('formdata', formData);
-      const res = await axiosInstance.put(`${API_BASE_URL}/projects/${id}`, formData, {
+      const res = await axiosInstance.post(`${API_BASE_URL}/projects/${id}`, formData, {
         headers: {"Content-Type": "multipart/form"}
       });
 
@@ -116,7 +116,9 @@ const projectSlice = createSlice({
   name: "projects",
   initialState,
   reducers: {
-
+    resetProjectStatus: (state) => {
+      state.status = 'idle';
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -199,6 +201,7 @@ const projectSlice = createSlice({
 });
 
 export default projectSlice.reducer;
+export const { resetProjectStatus } = projectSlice.actions;
 export const selectProject = state => state.projects.projectsData;
 export const selectProjectStatus = state => state.projects.status;
 export const selectProjectError = state => state.projects.error;

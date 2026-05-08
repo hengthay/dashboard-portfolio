@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { FiArrowLeft, FiSave, FiUpload } from 'react-icons/fi';
 import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import { createProfile } from '../../feature/profile/profileSlice';
+import { createProfile, resetProfileStatus } from '../../feature/profile/profileSlice';
 import Swal from 'sweetalert2';
 
 const ProfileCreate = () => {
@@ -107,12 +107,16 @@ const ProfileCreate = () => {
 
       await dispatch(createProfile(formData)).unwrap();
 
+      // Reset Profile Status
+      dispatch(resetProfileStatus());
+      
       Swal.fire({
         title: "Created!",
         text: "Your Profile is created successfully!",
         icon: "success",
         timer: 1500,
       });
+
       const timeOut = setTimeout(() => {
         navigate("/profiles");
       }, 2000);

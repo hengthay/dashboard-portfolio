@@ -3,7 +3,7 @@ import { FiArrowLeft, FiSave } from "react-icons/fi";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
-import { fetchExperienceDetail, selectExperienceDetail, updateExperience } from "../../feature/experience/experienceSlice";
+import { fetchExperienceDetail, resetExperienceStatus, selectExperienceDetail, updateExperience } from "../../feature/experience/experienceSlice";
 
 const ExperienceUpdate = () => {
 
@@ -71,12 +71,16 @@ const ExperienceUpdate = () => {
 
       await dispatch(updateExperience({ id, formData })).unwrap();
 
+      // Reset Experience Status
+      dispatch(resetExperienceStatus());
+
       Swal.fire({
         title: "Updated!",
         text: "Your Experience is updated successfully!",
         icon: "success",
         timer: 1500,
       });
+
       const timeOut = setTimeout(() => {
         navigate("/experiences");
       }, 2000);

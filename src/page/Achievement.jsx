@@ -133,7 +133,7 @@ const Achievement = () => {
                 />
               ))} */}
 
-            {achievements.length > 0 &&
+            {achievementStatus === 'succeeded' && achievements.length > 0 &&
               filteredAchievements.map((achievement) => (
                 <AchievementCard
                   achievement={achievement}

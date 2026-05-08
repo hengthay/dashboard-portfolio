@@ -113,7 +113,9 @@ const experienceSlice = createSlice({
   name: "experiences",
   initialState,
   reducers: {
-
+    resetExperienceStatus: (state) => {
+      state.status = 'idle';
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -197,6 +199,7 @@ const experienceSlice = createSlice({
 });
 
 export default experienceSlice.reducer;
+export const { resetExperienceStatus } = experienceSlice.actions;
 export const selectExperience = state => state.experiences.experienceData;
 export const selectExperienceStatus = state => state.experiences.status;
 export const selectExperienceError = state => state.experiences.error;

@@ -113,7 +113,9 @@ const educationSlice = createSlice({
   name: "educations",
   initialState,
   reducers: {
-
+    resetEducationStatus: (state) => { 
+      state.status = 'idle';
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -197,6 +199,7 @@ const educationSlice = createSlice({
 })
 
 export default educationSlice.reducer;
+export const { resetEducationStatus } = educationSlice.actions;
 export const selectEducation = state => state.educations.educationData;
 export const selectEducationStatus = state => state.educations.status;
 export const selectEducationError = state => state.educations.error;

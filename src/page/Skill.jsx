@@ -118,7 +118,7 @@ const Skill = () => {
           </div>
           <div className='grid md:grid-cols-4 sm:grid-cols-2 grid-cols-1 gap-8 mt-14'>
             {
-              skills.length > 0 && (
+              skillStatus === 'succeeded' && skills.length > 0 && (
                 filteredSkill.map((skill) => (
                   <SkillCard skill={skill} key={skill.id}/>
                 ))

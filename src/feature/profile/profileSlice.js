@@ -68,7 +68,7 @@ export const createProfile = createAsyncThunk(
 export const updateProfile = createAsyncThunk(
   'profiles/updateProfile', async ({ id, formData }, thunkAPI) => {
     try {
-      const res = await axiosInstance.put(`${API_BASE_URL}/profiles/${id}`, formData, {
+      const res = await axiosInstance.post(`${API_BASE_URL}/profiles/${id}`, formData, {
         headers: { "Content-Type" : "multipart/form"}
       });
 
@@ -107,7 +107,9 @@ const profileSlice = createSlice({
   name: "profiles",
   initialState,
   reducers: {
-
+    resetProfileStatus: (state) => {
+      state.status = 'idle';
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -191,6 +193,7 @@ const profileSlice = createSlice({
 });
 
 export default profileSlice.reducer;
+export const { resetProfileStatus } = profileSlice.actions;
 export const selectProfile = state => state.profiles.profileData;
 export const selectProfileStatus = state => state.profiles.status;
 export const selectProfileError = state => state.profiles.error;

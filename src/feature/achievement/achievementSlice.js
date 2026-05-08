@@ -140,7 +140,11 @@ export const removeAchievementById = createAsyncThunk(
 const achievementSlice = createSlice({
   name: "achievements",
   initialState,
-  reducers: {},
+  reducers: {
+    resetAchievementStatus: (state) => {
+      state.status = 'idle';
+    }
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchAchievement.pending, (state) => {
@@ -227,6 +231,7 @@ const achievementSlice = createSlice({
 });
 
 export default achievementSlice.reducer;
+export const { resetAchievementStatus } = achievementSlice.actions;
 export const selectAchievement = (state) => state.achievements.achievementData;
 export const selectAchievementStatus = (state) => state.achievements.status;
 export const selectAchievementError = (state) => state.achievements.error;

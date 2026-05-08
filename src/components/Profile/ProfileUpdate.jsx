@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import Swal from 'sweetalert2';
-import { fetchProfileDetail, selectProfileDetail, updateProfile } from '../../feature/profile/profileSlice';
+import { fetchProfileDetail, resetProfileStatus, selectProfileDetail, updateProfile } from '../../feature/profile/profileSlice';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { FiArrowLeft, FiSave, FiUpload } from 'react-icons/fi';
 import { useDispatch, useSelector } from 'react-redux';
@@ -127,6 +127,7 @@ const ProfileUpdate = () => {
       }
 
       const formData = new FormData();
+      formData.append('_method', 'PUT');
       formData.append("name", form.name);
       formData.append("email", form.email);
       formData.append("introduce", form.introduce);
@@ -142,6 +143,9 @@ const ProfileUpdate = () => {
 
       await dispatch(updateProfile({ id, formData })).unwrap();
 
+      // Reset Profile Status
+      dispatch(resetProfileStatus());
+            
       Swal.fire({
         title: "Update!",
         text: "Your Profile is updated successfully!",

@@ -9,6 +9,8 @@ import { API_BASE_URL, axiosInstance } from "../components/APIConfig";
 import { IoIosArrowRoundForward } from "react-icons/io";
 import ActivityGraph from "../components/ActivityGraph";
 import RaderGraph from "../components/RaderGraph";
+import ProfileImage from "../assets/profile.jpg";
+
 const Home = () => {
   const [count, setCount] = useState({
     projects: 0,
@@ -262,7 +264,7 @@ const Home = () => {
         <div className="bg-white rounded-xl h-80 border border-gray-200 p-4">
           <div className="flex items-center gap-3">
             <img
-              src="https://i.pravatar.cc/80"
+              src={ProfileImage}
               alt="Admin"
               className="w-12 h-12 rounded-full object-cover"
             />

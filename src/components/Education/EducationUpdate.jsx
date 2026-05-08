@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { createEducation, fetchEducationDetail, selectEducationDetail, updateEducation } from "../../feature/education/educationSlice";
+import { createEducation, fetchEducationDetail, resetEducationStatus, selectEducationDetail, updateEducation } from "../../feature/education/educationSlice";
 import { FiArrowLeft, FiSave } from "react-icons/fi";
 import Swal from "sweetalert2";
 
@@ -14,13 +14,14 @@ const EducationUpdate = () => {
     start_date: "",
     end_date: "",
   });
+
   const { id } = useParams();
   const education = useSelector(selectEducationDetail);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [isError, setIsError] = useState("");
   const [loading, setLoading] = useState(false);
-  console.log(education)
+  
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -29,10 +30,12 @@ const EducationUpdate = () => {
       [name]: value,
     }));
   };
+
   // Fetch Detail by ID
   useEffect(() => {
     if (id) dispatch(fetchEducationDetail(id));
   }, [id, dispatch]);
+
   // When redux is ready
   useEffect(() => {
     if (!education) return;
@@ -45,6 +48,7 @@ const EducationUpdate = () => {
       start_date: education.start_date || "",
       end_date: education.end_date || "",
     })
+    
   }, [education]);
 
   const handleSubmit = async (e) => {
@@ -67,6 +71,9 @@ const EducationUpdate = () => {
       formData.append("end_date", form.end_date);
 
       await dispatch(updateEducation({ id, formData })).unwrap();
+
+      // Reset Education Status
+      dispatch(resetEducationStatus());
 
       Swal.fire({
         title: "Updated!",

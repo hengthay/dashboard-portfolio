@@ -3,7 +3,7 @@ import { FiArrowLeft, FiSave, FiUpload } from "react-icons/fi";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import { createBlog } from "../../feature/blog/blogSlice";
+import { createBlog, resetBlogStatus } from "../../feature/blog/blogSlice";
 
 const BlogCreate = () => {
   const [form, setForm] = useState({
@@ -79,6 +79,9 @@ const BlogCreate = () => {
       });
 
       await dispatch(createBlog(formData)).unwrap();
+
+      // Reset Blog Status
+      dispatch(resetBlogStatus());
 
       Swal.fire({
         title: "Created!",

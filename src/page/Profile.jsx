@@ -92,7 +92,7 @@ const Profile = () => {
           </div>
           <div className="w-full grid md:grid-cols-3 grid-cols-1 gap-4 mt-14">
             {
-              profiles.length > 0 && (
+              profileStatus === 'succeeded' && profiles.length > 0 && (
                 filteredProfile.map((profile) => (
                   <ProfileCard profile={profile} key={profile.id}/>
                 ))

@@ -120,7 +120,7 @@ const Blog = () => {
 
           <div className="w-full flex flex-col gap-4">
             {
-              blogs.length > 0 && (
+              blogStatus === 'succeeded' && blogs.length > 0 && (
                 filteredBlogs.map((blog) => (
                   <BlogCard blog={blog} key={blog.id}/>
                 ))

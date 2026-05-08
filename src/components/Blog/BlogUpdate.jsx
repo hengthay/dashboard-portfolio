@@ -5,6 +5,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import {
   fetchBlogDetail,
+  resetBlogStatus,
   selectBlogDetail,
   updateBlog,
 } from "../../feature/blog/blogSlice";
@@ -117,6 +118,9 @@ const BlogUpdate = () => {
       });
 
       await dispatch(updateBlog({ id, formData })).unwrap();
+
+      // Reset Blog Status
+      dispatch(resetBlogStatus());
 
       Swal.fire({
         title: "Updated!",

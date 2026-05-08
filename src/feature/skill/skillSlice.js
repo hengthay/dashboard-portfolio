@@ -74,7 +74,7 @@ export const createSkill = createAsyncThunk(
 export const updateSkill = createAsyncThunk(
   'skills/updateSkill', async ({ id, formData }, thunkAPI) => {
     try {
-      const res = await axiosInstance.put(`${API_BASE_URL}/skills/${id}`, formData, {
+      const res = await axiosInstance.post(`${API_BASE_URL}/skills/${id}`, formData, {
         headers: { "Content-Type": "multipart/form" }
       });
 
@@ -114,7 +114,9 @@ const skillSlice = createSlice({
   name: "skills",
   initialState,
   reducers: {
-
+    resetSkillStatus: (state) => {
+      state.status = 'idle';
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -197,6 +199,7 @@ const skillSlice = createSlice({
 });
 
 export default skillSlice.reducer;
+export const { resetSkillStatus } = skillSlice.actions;
 export const selectSkills = state => state.skills.skillsData;
 export const selectSkillStatus = state => state.skills.status;
 export const selectSkillError = state => state.skills.error;

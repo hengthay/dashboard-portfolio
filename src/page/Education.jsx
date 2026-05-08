@@ -117,7 +117,7 @@ const Education = () => {
           </div>
 
           <div className="w-full grid md:grid-cols-3 grid-cols-1 gap-4 mt-14">
-            {educations.length > 0 &&
+            {educationStatus === 'succeeded' && educations.length > 0 &&
               filteredEducation.map((education) => (
                 <EducationCard education={education} key={education.id}/>
               ))}

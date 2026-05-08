@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import { fetchProjectDetail, selectProjectDetail, updateProject } from '../../feature/project/projectSlice';
+import { fetchProjectDetail, resetProjectStatus, selectProjectDetail, updateProject } from '../../feature/project/projectSlice';
 import Swal from 'sweetalert2';
 import { FiArrowLeft, FiSave, FiUpload } from 'react-icons/fi';
 
@@ -60,7 +60,7 @@ const ProjectUpdate = () => {
   useEffect(() => {
     if (id) dispatch(fetchProjectDetail(id));
   }, [id]);
-  // console.log(project)
+
   // When redux is ready
   useEffect(() => {
     try {
@@ -82,7 +82,7 @@ const ProjectUpdate = () => {
       console.log(error);
     }
   }, [project]);
-      console.log(form.description);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -94,6 +94,7 @@ const ProjectUpdate = () => {
         return;
       }
       const formData = new FormData();
+      formData.append("_method", 'PUT');
       formData.append("title", form.title);
       formData.append("description", form.description);
       formData.append("category", form.category);
@@ -109,6 +110,9 @@ const ProjectUpdate = () => {
       });
 
       await dispatch(updateProject({ id, formData })).unwrap();
+
+      // Reset Project Status
+      dispatch(resetProjectStatus());
 
       Swal.fire({
         title: "Updated!",
@@ -157,10 +161,10 @@ const ProjectUpdate = () => {
       <div className="flex md:items-center items-start justify-between">
         <div>
           <h2 className="md:text-4xl font-semibold sm:text-3xl text-2xl text-gray-900">
-            Add New Blog
+            Update Project
           </h2>
           <p className="text-sm text-gray-500 mt-1">
-            Fill in the form to create a new blog.
+            Fill in the form to update a new project.
           </p>
         </div>
 

@@ -60,11 +60,15 @@ const SkillUpdate = () => {
       }
 
       const formData = new FormData();
+      formData.append("_method", 'PUT');
       formData.append("name", form.name);
       formData.append("category", form.category);
       formData.append("level", Number(form.level));
 
       await dispatch(updateSkill({id, formData})).unwrap();
+
+      // Reset Skill Status
+      dispatch(resetSkillStatus());
 
       Swal.fire({
         title: "Updated!",
@@ -172,6 +176,7 @@ const SkillUpdate = () => {
                 <option value="">Select Category</option>
                 <option value="Frontend Development">Frontend Development</option>
                 <option value="Backend Development">Backend Development</option>
+                <option value="Full-Stack Development">Full-Stack Development</option>
                 <option value="Databse Management">Database Management</option>
                 <option value="DevOps & Tools">DevOps & Tools</option>
                 <option value="Mobile Development">Mobile Development</option>

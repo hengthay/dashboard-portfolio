@@ -2,7 +2,7 @@ import { useState } from "react";
 import { FiUpload, FiSave, FiArrowLeft } from "react-icons/fi";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { createAchievement } from "../../feature/achievement/achievementSlice";
+import { createAchievement, resetAchievementStatus } from "../../feature/achievement/achievementSlice";
 import Swal from "sweetalert2";
 
 const AchievementCreate = () => {
@@ -48,6 +48,9 @@ const AchievementCreate = () => {
       formData.append("icon_url", form.icon_url);
 
       await dispatch(createAchievement(formData)).unwrap();
+
+      // Reset Achievement Status
+      dispatch(resetAchievementStatus());
 
       Swal.fire({
         title: "Created!",

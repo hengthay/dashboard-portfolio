@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { createEducation } from "../../feature/education/educationSlice";
+import { createEducation, resetEducationStatus } from "../../feature/education/educationSlice";
 import { FiArrowLeft, FiSave } from "react-icons/fi";
 import Swal from "sweetalert2";
 
@@ -50,12 +50,16 @@ const EducationCreate = () => {
 
       await dispatch(createEducation(formData)).unwrap();
 
+      // Reset Education Status
+      dispatch(resetEducationStatus());
+      
       Swal.fire({
         title: "Created!",
         text: "Your Education is created successfully!",
         icon: "success",
         timer: 1500,
       });
+
       const timeOut = setTimeout(() => {
         navigate("/educations");
       }, 2000);

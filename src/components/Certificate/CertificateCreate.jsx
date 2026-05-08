@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FiArrowLeft, FiSave, FiUpload } from "react-icons/fi";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import { createCertificate } from "../../feature/certificate/certificateSlice";
+import { createCertificate, resetCertficateStatus } from "../../feature/certificate/certificateSlice";
 import { useDispatch } from "react-redux";
 
 const CertificateCreate = () => {
@@ -52,6 +52,9 @@ const CertificateCreate = () => {
 
       await dispatch(createCertificate(formData)).unwrap();
 
+      // Reset Certficate Status
+      dispatch(resetCertficateStatus());
+      
       Swal.fire({
         title: "Created!",
         text: "Your Certificate is created successfully!",
