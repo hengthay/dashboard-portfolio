@@ -155,7 +155,7 @@ const SkillCreate = () => {
                 <option value="Frotend Development">Frotend Development</option>
                 <option value="Backend Development">Backend Development</option>
                 <option value="Full-Stack Development">Full-Stack Development</option>
-                <option value="Databse Management">Database Management</option>
+                <option value="Database Management">Database Management</option>
                 <option value="DevOps & Tools">DevOps & Tools</option>
                 <option value="Mobile Development">Mobile Development</option>
                 <option value="Other">Other</option>
