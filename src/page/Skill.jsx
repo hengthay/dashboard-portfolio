@@ -20,7 +20,7 @@ const Skill = () => {
   }, [skillStatus, dispatch]);
 
   const categories = ["all", ...new Set(skills.map(s => s.category))];
-
+  console.log(categories);
   const filteredSkill = useMemo(() => {
     const q = search.trim().toLowerCase();
 
