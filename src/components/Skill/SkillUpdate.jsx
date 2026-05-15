@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import Swal from 'sweetalert2';
-import { fetchSkillDetail, selectSkillDetail, updateSkill } from '../../feature/skill/skillSlice';
+import { fetchSkillDetail, resetSkillStatus, selectSkillDetail, updateSkill } from '../../feature/skill/skillSlice';
 import { FiArrowLeft, FiSave } from 'react-icons/fi';
 
 const SkillUpdate = () => {
