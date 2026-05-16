@@ -2,7 +2,7 @@ import { bindActionCreators, createAsyncThunk, createSlice } from "@reduxjs/tool
 import { API_BASE_URL, axiosInstance } from "../../components/APIConfig";
 
 const initialState = {
-  userData: [] || null,
+  userData: localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')) : null,
   status: 'idle',
   error: null,
 }
@@ -47,7 +47,12 @@ const authSlice = createSlice({
   name: "auths",
   initialState,
   reducers: {
-
+    forceLogout: (state) => {
+      state.userData = null,
+      state.error = null,
+      state.status = 'idle',
+      localStorage.removeItem('userData')
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -59,9 +64,12 @@ const authSlice = createSlice({
         state.error = null;
         state.status = 'succeeded';
         state.userData = action.payload;
+
+        // Set token to localStorage
+        localStorage.setItem("userData", JSON.stringify(action.payload));
       })
-      .addCase(loginUser.rejected, (state) => {
-        state.error = 'Unable to login due to Internal Server!';
+      .addCase(loginUser.rejected, (state, action) => {
+        state.error = action.payload;
         state.status = 'failed';
       })
       .addCase(logoutUser.pending, (state) => {
@@ -72,15 +80,19 @@ const authSlice = createSlice({
         state.error = null;
         state.status = 'succeeded';
         state.userData = null;
+
+        // Remove token from localStorage
+        localStorage.removeItem("userData");
       })
-      .addCase(logoutUser.rejected, (state) => {
-        state.error = 'Unable to login due to Internal Server!';
+      .addCase(logoutUser.rejected, (state, action) => {
+        state.error = action.payload;
         state.status = 'failed';
       })
   }
 })
 
 export default authSlice.reducer;
+export const { forceLogout } = authSlice.actions;
 export const selectUser = state => state.auths.userData;
 export const selectUserStatus = state => state.auths.status;
 export const selectUserError = state => state.auths.error;

@@ -74,7 +74,6 @@ export const createProject = createAsyncThunk(
 export const updateProject = createAsyncThunk(
   "projects/updateProject", async ({ id, formData }, thunkAPI) => {
     try {
-      console.log('formdata', formData);
       const res = await axiosInstance.post(`${API_BASE_URL}/projects/${id}`, formData, {
         headers: {"Content-Type": "multipart/form"}
       });

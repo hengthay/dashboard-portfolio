@@ -151,7 +151,7 @@ const BlogCreate = () => {
             {/* Title */}
             <div className="space-y-1 flex flex-col">
               <label id="title" className="text-sm font-medium text-gray-700">
-                Blog Title
+                Blog Title <span className="text-red-500">*</span>
               </label>
               <input
                 type="text"
@@ -166,7 +166,7 @@ const BlogCreate = () => {
             </div>
             <div className="space-y-1 flex flex-col">
               <label id="slug" className="text-sm font-medium text-gray-700">
-                Slug Title
+                Slug Title <span className="text-red-500">*</span>
               </label>
               <input
                 type="text"
@@ -186,15 +186,17 @@ const BlogCreate = () => {
               >
                 Published
               </label>
-              <input
-                type="text"
+              <select
                 id="published"
                 name="published"
                 value={form.published}
                 onChange={handleChange}
-                placeholder="e.g. 0"
                 className="w-full border border-gray-300 rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-gray-200"
-              />
+              >
+                <option value="" defaultChecked disabled>Choose a Status</option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+              </select>
             </div>
             {/* Description */}
             <div className="space-y-1 flex flex-col">
@@ -212,8 +214,9 @@ const BlogCreate = () => {
               />
             </div>
             <div className="space-y-2 flex flex-col">
-              <label className="text-sm font-medium text-gray-700">Tags</label>
-
+              <label className="text-sm font-medium text-gray-700">
+                Tags <span className="text-red-500">*</span>
+              </label>
               <div className="flex md:flex-row flex-col gap-2">
                 <input
                   type="text"

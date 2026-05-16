@@ -320,8 +320,9 @@ const ProjectUpdate = () => {
               </p>
             </div>
             <div className="space-y-2 flex flex-col">
-              <label className="text-sm font-medium text-gray-700">Technologies</label>
-
+              <label className="text-sm font-medium text-gray-700">
+                Technologies <span className="text-red-500">*</span>
+              </label>
               <div className="flex md:flex-row flex-col gap-2">
                 <input
                   type="text"

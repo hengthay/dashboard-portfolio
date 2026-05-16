@@ -146,7 +146,7 @@ const CertificateUpdate = () => {
             {/* Title */}
             <div className="space-y-2 flex flex-col">
               <label className="text-sm font-medium text-gray-700">
-                Certificate Title
+                Certificate Title <span className="text-red-500">*</span>
               </label>
               <input
                 type="text"
