@@ -71,9 +71,7 @@ const ExperienceCard = ({ experience }) => {
           Created at • {experience.created_at ? formatDate(experience?.created_at) : "--"}
         </p>
 
-        {/* Actions */}
         <div className="w-full flex md:flex-row flex-col gap-2 my-2">
-          {/* View */}
           <Link
             to={`/experiences/${experience.id}`}
             className={`p-2 rounded-xl bg-amber-100 text-amber-600 
@@ -90,7 +88,6 @@ const ExperienceCard = ({ experience }) => {
             </span>
           </Link>
 
-          {/* Edit */}
           <Link
             to={`/experiences/${experience.id}/edit`}
             className={`p-2 rounded-xl bg-blue-100 text-blue-600 
@@ -107,7 +104,6 @@ const ExperienceCard = ({ experience }) => {
             </span>
           </Link>
 
-          {/* Delete */}
           <button
             type="button"
             onClick={() => handleDelete(experience.id)}

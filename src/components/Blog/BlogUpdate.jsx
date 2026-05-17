@@ -165,7 +165,7 @@ const BlogUpdate = () => {
 
   return (
     <div className="w-full md:p-8 mx-auto space-y-8">
-      {/* Header */}
+
       <div className="flex md:items-center items-start justify-between">
         <div>
           <h2 className="md:text-4xl font-semibold sm:text-3xl text-2xl text-gray-900">
@@ -185,7 +185,6 @@ const BlogUpdate = () => {
         </Link>
       </div>
 
-      {/* Form */}
       <form
         onSubmit={handleSubmit}
         className="w-full bg-white border border-gray-200 rounded-xl p-6 space-y-6 shadow-sm"
@@ -193,7 +192,7 @@ const BlogUpdate = () => {
       >
         <div className="grid grid-cols-12 items-center justify-center gap-6 mx-auto">
           <div className="md:col-span-8 col-span-12 flex flex-col item-start justify-start space-y-4">
-            {/* Title */}
+
             <div className="space-y-1">
               <label id="title" className="text-sm font-medium text-gray-700">
                 Blog Title <span className="text-red-500">*</span>
@@ -243,7 +242,7 @@ const BlogUpdate = () => {
                 <option value="0">No</option>
               </select>
             </div>
-            {/* Description */}
+
             <div className="space-y-1">
               <label id="content" className="text-sm font-medium text-gray-700">
                 Content
@@ -286,7 +285,7 @@ const BlogUpdate = () => {
                   </button>
                 </div>
               </div>
-              {/* Display tags */}
+
               <div className="flex flex-wrap gap-2">
                 {form.tags.map((t, idx) => (
                   <span
@@ -307,7 +306,6 @@ const BlogUpdate = () => {
             </div>
           </div>
 
-          {/* Image upload */}
           <div className="space-y-2 md:col-span-4 col-span-12">
             <p className="text-sm font-medium text-gray-700 mb-2">
               Blog Icon / Image
@@ -337,7 +335,6 @@ const BlogUpdate = () => {
                 )}
               </div>
 
-              {/* Upload */}
               <p className="flex justify-end items-end w-full">
                 <label
                   id="cover_image"
@@ -375,7 +372,7 @@ const BlogUpdate = () => {
             </div>
           </div>
         </div>
-        {/* Actions */}
+
         <div className="flex justify-end gap-3 pt-4">
           <Link
             to="/blogs"

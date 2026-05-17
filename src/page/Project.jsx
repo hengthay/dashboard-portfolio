@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { fetchProject, selectProject, selectProjectStatus } from "../feature/project/projectSlice";
 import ProjectCard from "../components/Project/ProjectCard";
+import ProjectSkeleton from "../components/Skeleton-Loading/ProjectSkeleton";
 
 const Project = () => {
 
@@ -51,7 +52,7 @@ const Project = () => {
           </p>
         </div>
         <div className="w-full md:p-2">
-          <div className="flex flex-col justify-between items-center sm:flex-row gap-3 w-full md:w-auto space-y-2">
+          <div className="flex flex-col justify-between items-center lg:flex-row gap-3 w-full md:w-auto space-y-2">
             <div className="relative w-full lg:max-w-md">
               <FiSearch className="absolute left-1 top-1/2 -translate-y-1/2 text-gray-400" />
               <input
@@ -86,7 +87,7 @@ const Project = () => {
           </div>
           <div className="mt-10">
             {projectStatus === "loading" && (
-              <p className="text-gray-500 text-center">Loading experience...</p>
+              <ProjectSkeleton />
             )}
 
             {/* Not found */}

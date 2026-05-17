@@ -143,7 +143,6 @@ const CertificateUpdate = () => {
       >
         <div className="grid grid-cols-12 w-full justify-center gap-6 mx-auto">
           <div className="md:col-span-8 col-span-12 space-y-4">
-            {/* Title */}
             <div className="space-y-2 flex flex-col">
               <label className="text-sm font-medium text-gray-700">
                 Certificate Title <span className="text-red-500">*</span>
@@ -187,14 +186,12 @@ const CertificateUpdate = () => {
             </div>
           </div>
           <div className="md:col-span-4 col-span-12">
-            {/* Image upload */}
             <div className="space-y-2 flex flex-col w-full">
               <label className="text-sm font-medium text-gray-700">
                 Certificate Icon / Image
               </label>
 
               <div className="flex flex-col items-center gap-6">
-                {/* Preview */}
                 <div className="w-full h-50 border border-dashed border-gray-300 rounded-xl flex items-center justify-center overflow-hidden bg-gray-50">
                   {displayedImage ? (
                     <img
@@ -217,7 +214,6 @@ const CertificateUpdate = () => {
                   )}
                 </div>
 
-                {/* Upload */}
                 <p className="flex justify-end items-end w-full">
                   <label className="cursor-pointer inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gray-900 text-white text-sm font-semibold hover:bg-gray-800 transition">
                     <FiUpload />
@@ -235,7 +231,7 @@ const CertificateUpdate = () => {
             </div>
           </div>
         </div>
-        {/* Actions */}
+
         <div className="flex justify-end gap-3 pt-4">
           <Link
             to="/certificates"

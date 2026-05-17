@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { fetchBlog, selectBlog, selectBlogStatus } from "../feature/blog/blogSlice";
 import BlogCard from "../components/Blog/BlogCard";
+import BlogSkeleton from "../components/Skeleton-Loading/BlogSkeleton";
 
 const Blog = () => {
   const blogs = useSelector(selectBlog);
@@ -91,10 +92,13 @@ const Blog = () => {
             </div>
           </div>
         </div>
+
         <div className="w-full md:pt-4 pt-6 mt-10">
-          {blogStatus === "loading" && (
-            <p className="text-gray-500 text-center">Loading blogs...</p>
-          )}
+          {
+            blogStatus === "loading" && (
+              <BlogSkeleton />
+            )
+          }
 
           {/* Not found */}
           {blogStatus !== "loading" &&

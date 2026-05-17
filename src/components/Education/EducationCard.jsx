@@ -50,7 +50,7 @@ const EducationCard = ({ education }) => {
       className="w-full group bg-white border border-gray-200 rounded-2xl p-4 sm:p-5 hover:shadow-lg hover:border-gray-300 transition"
     >
       <div className="flex flex-col sm:flex-row sm:items-center">
-        {/* Content */}
+
         <div className="flex-1 min-w-0 space-y-4">
           <div className="flex flex-wrap items-center gap-2">
             <h3 className="text-base sm:text-lg md:text-xl font-semibold text-gray-900 truncate">
@@ -62,7 +62,6 @@ const EducationCard = ({ education }) => {
             </span>
           </div>
           <div className="mt-3 flex flex-wrap items-center gap-2">
-            {/* Degree + Field */}
             <p className="text-sm sm:text-base text-gray-700">
               <span className="font-semibold">{education?.degree  ?? "--"}</span>
               <span className="text-gray-400"> • </span>
@@ -102,9 +101,7 @@ const EducationCard = ({ education }) => {
             </span>
           </div>
 
-          {/* Actions */}
           <div className="flex md:flex-row flex-col gap-2 sm:items-end justify-end my-2">
-            {/* View */}
             <Link
               to={`/educations/${education?.id}`}
               className={`p-2 rounded-xl bg-amber-100 text-amber-600 
@@ -121,7 +118,6 @@ const EducationCard = ({ education }) => {
               </span>
             </Link>
 
-            {/* Edit */}
             <Link
               to={`/educations/${education?.id}/edit`}
               className={`p-2 rounded-xl bg-blue-100 text-blue-600 
@@ -138,7 +134,6 @@ const EducationCard = ({ education }) => {
               </span>
             </Link>
 
-            {/* Delete */}
             <button
               type="button"
               onClick={() => handleDelete(education?.id)}

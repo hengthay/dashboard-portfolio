@@ -47,7 +47,6 @@ const CertificateCard = ({ certificate }) => {
   return (
     <div className="w-full group bg-white border border-gray-200 rounded-2xl p-4 sm:p-5 hover:shadow-lg hover:border-gray-300 transition">
       <div className="flex flex-col sm:flex-row sm:items-center gap-4">
-        {/* Image */}
         <div className="w-full sm:w-44 sm:h-32 h-44 overflow-hidden rounded-xl bg-gray-100 border border-gray-200">
           {
             certificate?.image ? (
@@ -66,7 +65,6 @@ const CertificateCard = ({ certificate }) => {
           
         </div>
 
-        {/* Content */}
         <div className="flex-1 min-w-0">
           <div className="flex flex-wrap items-center gap-2">
             <h3 className="text-base sm:text-lg md:text-xl font-semibold text-gray-900 truncate">
@@ -94,7 +92,6 @@ const CertificateCard = ({ certificate }) => {
             </p>
           </div>
 
-          {/* Small footer */}
           <div className="mt-3 flex items-center gap-2">
             <span className="text-xs text-gray-400">
               Updated: {certificate?.updated_at?.slice(0, 10)}
@@ -102,9 +99,7 @@ const CertificateCard = ({ certificate }) => {
           </div>
         </div>
 
-        {/* Actions */}
         <div className="flex flex-col gap-2 sm:items-end">
-          {/* View */}
           <Link
             to={`/certificates/${certificate?.id}`}
             className={`p-2 rounded-xl bg-amber-100 text-amber-600 
@@ -121,7 +116,6 @@ const CertificateCard = ({ certificate }) => {
             </span>
           </Link>
 
-          {/* Edit */}
           <Link
             to={`/certificates/${certificate?.id}/edit`}
             className={`p-2 rounded-xl bg-blue-100 text-blue-600 
@@ -142,7 +136,6 @@ const CertificateCard = ({ certificate }) => {
             </span>
           </Link>
 
-          {/* Delete */}
           <button
             type="button"
             onClick={() => handleDelete(certificate?.id)}

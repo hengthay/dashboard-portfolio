@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { fetchSkill, selectSkills, selectSkillStatus } from '../feature/skill/skillSlice'
 import SkillCard from '../components/Skill/SkillCard'
+import SkillSkeleton from '../components/Skeleton-Loading/SkillSkeleton'
 
 const Skill = () => {
 
@@ -91,7 +92,7 @@ const Skill = () => {
           </div>
           <div className="mt-10">
             {skillStatus === "loading" && (
-              <p className="text-gray-500 text-center">Loading skill...</p>
+              <SkillSkeleton />
             )}
 
             {/* Not found */}
@@ -116,7 +117,7 @@ const Skill = () => {
                 </div>
               )}
           </div>
-          <div className='grid md:grid-cols-4 sm:grid-cols-2 grid-cols-1 gap-8 mt-14'>
+          <div className='grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 md:gap-8 gap-4 mt-14'>
             {
               skillStatus === 'succeeded' && skills.length > 0 && (
                 filteredSkill.map((skill) => (

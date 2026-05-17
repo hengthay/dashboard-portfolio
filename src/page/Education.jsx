@@ -10,6 +10,7 @@ import {
   selectEducationStatus,
 } from "../feature/education/educationSlice";
 import EducationCard from "../components/Education/EducationCard";
+import EducationSkeleton from "../components/Skeleton-Loading/EducationSkeleton";
 
 const Education = () => {
   const educations = useSelector(selectEducation);
@@ -55,7 +56,7 @@ const Education = () => {
           </p>
         </div>
         <div className="w-full md:p-2">
-          <div className="flex flex-col justify-between items-center sm:flex-row gap-3 w-full md:w-auto space-y-2">
+          <div className="flex flex-col justify-between items-center lg:flex-row gap-3 w-full md:w-auto space-y-2">
             <div className="relative w-full lg:max-w-md">
               <FiSearch className="absolute left-1 top-1/2 -translate-y-1/2 text-gray-400" />
               <input
@@ -90,7 +91,7 @@ const Education = () => {
           </div>
           <div className="mt-10">
             {educationStatus === "loading" && (
-              <p className="text-gray-500 text-center">Loading educations...</p>
+              <EducationSkeleton />
             )}
 
             {/* Not found */}

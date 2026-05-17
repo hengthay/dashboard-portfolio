@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { fetchExperience, selectExperience, selectExperienceStatus } from "../feature/experience/experienceSlice";
 import ExperienceCard from "../components/Experience/ExperienceCard";
+import ExperienceSkeleton from "../components/Skeleton-Loading/ExperienceSkeleton";
 
 const Experience = () => {
 
@@ -63,7 +64,7 @@ const Experience = () => {
                 placeholder="Search Experience..."
               />
             </div>
-            <div className="flex flex-wrap justify-center items-center md:gap-2 gap-3">
+            <div className="w-full flex flex-wrap justify-end items-center md:gap-2 gap-3">
               <select
                 value={sort}
                 onChange={(e) => setSort(e.target.value)}
@@ -85,7 +86,7 @@ const Experience = () => {
           </div>
           <div className="mt-10">
             {experienceStatus === "loading" && (
-              <p className="text-gray-500 text-center">Loading experience...</p>
+              <ExperienceSkeleton />
             )}
 
             {/* Not found */}

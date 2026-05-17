@@ -6,6 +6,7 @@ import { Link, useOutletContext } from "react-router-dom";
 import { fetchProfile, selectProfile, selectProfileStatus } from "../feature/profile/profileSlice";
 import { useDispatch, useSelector } from "react-redux";
 import ProfileCard from "../components/Profile/ProfileCard";
+import ProfileSkeleton from "../components/Skeleton-Loading/ProfileSkeleton";
 
 const Profile = () => {
   const [search, setSearch] = useState("");
@@ -65,7 +66,7 @@ const Profile = () => {
           </div>
           <div className="mt-10">
             {profileStatus === "loading" && (
-              <p className="text-gray-500 text-center">Loading profiles...</p>
+              <ProfileSkeleton />
             )}
 
             {/* Not found */}

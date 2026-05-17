@@ -84,7 +84,10 @@ const AchievementUpdate = () => {
       const formData = new FormData();
       formData.append("title", form.title.trim());
       formData.append("description", form.description.trim());
-      formData.append("icon_url", form.icon_url);
+      
+      if (form.icon_url) {
+        formData.append("icon_url", form.icon_url);
+      }
 
       await dispatch(updateAchievement({ id, formData })).unwrap();
 

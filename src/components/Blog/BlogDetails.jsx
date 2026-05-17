@@ -25,7 +25,7 @@ const BlogDetails = () => {
   return (
     <div className="w-full flex justify-center md:px-4 mt-6">
       <div className="w-full max-w-7xl border border-gray-200 rounded-2xl bg-white shadow-sm sm:p-6 p-3 md:p-10 space-y-10">
-        {/* Header */}
+
         <div className="flex justify-between items-center">
           <div className="space-y-3">
             <h3 className="md:text-4xl font-bold sm:text-3xl text-2xl text-gray-900">

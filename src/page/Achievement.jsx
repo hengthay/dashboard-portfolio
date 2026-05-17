@@ -10,6 +10,7 @@ import {
   selectAchievementStatus,
 } from "../feature/achievement/achievementSlice";
 import AchievementCard from "../components/Achievement/AchievementCard";
+import AchievementSkeleton from "../components/Skeleton-Loading/AchievementSkeleton";
 
 const Achievement = () => {
   const dispatch = useDispatch();
@@ -74,7 +75,7 @@ const Achievement = () => {
                 placeholder="Search Achievement..."
               />
             </div>
-            <div className="flex flex-wrap justify-center items-center md:gap-2 gap-3">
+            <div className="w-full flex flex-wrap justify-end items-center md:gap-2 gap-3">
               <select
                 value={sort}
                 onChange={(e) => setSort(e.target.value)}
@@ -99,7 +100,7 @@ const Achievement = () => {
         <div className="w-full md:pt-4 pt-6 mt-10">
           {/* Loading */}
           {achievementStatus === "loading" && (
-            <p className="text-gray-500 text-center">Loading achievements...</p>
+            <AchievementSkeleton />
           )}
 
           {/* Not found */}
@@ -125,14 +126,6 @@ const Achievement = () => {
             )}
 
           <div className="w-full flex flex-col gap-4">
-            {/* {achievements.length > 0 &&
-              filteredAchievements.map((achievement) => (
-                <AchievementCard
-                  achievement={achievement}
-                  key={achievement.id}
-                />
-              ))} */}
-
             {achievementStatus === 'succeeded' && achievements.length > 0 &&
               filteredAchievements.map((achievement) => (
                 <AchievementCard

@@ -10,6 +10,7 @@ import {
   selectCertificateStatus,
 } from "../feature/certificate/certificateSlice";
 import CertificateCard from "../components/Certificate/CertificateCard";
+import CertificateSkeleton from "../components/Skeleton-Loading/CertificateSkeleton";
 
 const Certificate = () => {
   const certificates = useSelector(selectCertificate);
@@ -59,6 +60,7 @@ const Certificate = () => {
             There are all the certificates data for display on page.
           </p>
         </div>
+        
         <div className="w-full md:p-2">
           <div className="flex flex-col justify-between items-center sm:flex-row gap-3 w-full md:w-auto space-y-2">
             <div className="relative w-full lg:max-w-md">
@@ -71,7 +73,7 @@ const Certificate = () => {
                 placeholder="Search Certificate..."
               />
             </div>
-            <div className="flex flex-wrap justify-center items-center md:gap-2 gap-3">
+            <div className="w-full flex flex-wrap justify-end items-center md:gap-2 gap-3">
               <select
                 value={sort}
                 onChange={(e) => setSort(e.target.value)}
@@ -93,9 +95,7 @@ const Certificate = () => {
           </div>
           <div className="w-full md:pt-4 pt-6 mt-10">
             {certificateStatus === "loading" && (
-              <p className="text-gray-500 text-center">
-                Loading certificates...
-              </p>
+              <CertificateSkeleton />
             )}
 
             {/* Not found */}

@@ -21,7 +21,7 @@ const CertificateDetail = () => {
   return (
     <div className="w-full flex justify-center md:px-4 py-6 md:py-10">
       <div className="w-full max-w-7xl space-y-8">
-        {/* Header */}
+
         <div className="bg-white border border-gray-200 rounded-2xl shadow-sm p-5 sm:p-6 md:p-8">
           <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
             <div className="space-y-2">
@@ -53,7 +53,6 @@ const CertificateDetail = () => {
           </div>
         </div>
 
-        {/* Body */}
         <div className="bg-white border border-gray-200 rounded-2xl shadow-sm overflow-hidden">
           <div className="grid grid-cols-12">
             {/* Image */}
@@ -81,7 +80,7 @@ const CertificateDetail = () => {
             {/* Info */}
             <div className="col-span-12 lg:col-span-5">
               <div className="p-5 sm:p-6 md:p-8 space-y-6">
-                {/* Title + badge */}
+
                 <div className="space-y-2">
                   <div className="flex flex-wrap items-center gap-2">
                     <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 leading-snug">
@@ -98,7 +97,6 @@ const CertificateDetail = () => {
                   </p>
                 </div>
 
-                {/* Info cards */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3">
                   <div className="rounded-2xl border border-gray-200 bg-gray-50 p-4">
                     <p className="text-xs font-semibold text-gray-500">Issuer</p>
@@ -131,7 +129,6 @@ const CertificateDetail = () => {
                   </div>
                 </div>
 
-                {/* Bottom actions */}
                 <div className="pt-2 flex flex-col sm:flex-row gap-3">
                   <Link
                     to="/certificates"
@@ -148,7 +145,6 @@ const CertificateDetail = () => {
                   </Link>
                 </div>
 
-                {/* Small note */}
                 <p className="text-xs text-gray-400">
                   Tip: Use a high-resolution image for best display quality.
                 </p>
@@ -157,7 +153,6 @@ const CertificateDetail = () => {
           </div>
         </div>
 
-        {/* Optional: empty state while loading */}
         {!certificateDetail && (
           <div className="text-center text-sm text-gray-500">
             Loading certificate...
